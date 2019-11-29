@@ -16,7 +16,7 @@
   width: 80px;
   height: 80px;
   float: left;
-  background-image: url("images/earth.png");
+  background-image: url("../images/earth.png");
   background-size: 100%
 }
 
