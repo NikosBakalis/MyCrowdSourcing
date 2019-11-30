@@ -25,7 +25,7 @@
 }
 
 .inner_header{
-  width: 1000px;
+  width: 1100px;
   height: 100%;
   display: block;
   margin: 0 auto;
@@ -44,7 +44,7 @@
   vertical-align: middle;
   font-family: 'Montserrat';
   font-size: 32px;
-  font-weight: 20;
+  font-weight: bold;
 }
 
 .navigation{
