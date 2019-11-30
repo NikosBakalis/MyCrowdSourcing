@@ -13,11 +13,15 @@
 }
 
 .image_earth{
-  width: 80px;
-  height: 80px;
+  display: block;
+  width: 70px;
+  height: 70px;
   float: left;
   background-image: url("../images/earth.png");
-  background-size: 100%
+  background-size: 100%;
+  margin-left: 20px;
+  margin-top: 5px;
+
 }
 
 .inner_header{
