@@ -13,6 +13,7 @@
 .footer .footer_content .footer_section{
   flex: 1;
   padding: 25px;
+  font-family: 'Montserrat';
 }
 
 .footer .footer_content h1, h2{
