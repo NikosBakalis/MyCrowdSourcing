@@ -3,6 +3,7 @@
   color: #d3d3d3;
   height: 420px;
   position: relative;
+  font-family: 'Montserrat';
 }
 
 .footer .footer_content{
@@ -13,7 +14,6 @@
 .footer .footer_content .footer_section{
   flex: 1;
   padding: 25px;
-  font-family: 'Montserrat';
 }
 
 .footer .footer_content h1, h2{
@@ -35,8 +35,8 @@
   color: white;
   border: 1px solid gray;
   width: 45px;
-  height: 40px;
-  padding-top: 5px;
+  height: 33px;
+  padding-top: 7px;
   margin-top: 15px;
   margin-right: 5px;
   text-align: center;

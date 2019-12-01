@@ -12,7 +12,7 @@
   background-color: #101010;
 }
 
-.image_earth{
+.header .image_earth{
   display: block;
   width: 70px;
   height: 70px;
@@ -24,20 +24,20 @@
 
 }
 
-.inner_header{
+.header .inner_header{
   width: 1100px;
   height: 100%;
   display: block;
   margin: 0 auto;
 }
 
-.logo_container{
+.header .inner_header .logo_container{
   height: 100%;
   display: table;
   float: left;
 }
 
-.logo_container h1{
+.header .inner_header .logo_container h1{
   color: white;
   height: 100%;
   display: table-cell;
@@ -47,23 +47,31 @@
   font-weight: bold;
 }
 
-.navigation{
+.header .inner_header .navigation{
   float: right;
   height: 100%;
 }
 
-.navigation a{
+.header .inner_header .navigation a{
   height: 100%;
   display: table;
   float: left;
   padding: 0px 10px
 }
 
-.navigation a li{
+.header .inner_header .navigation a li{
   display: table-cell;
   vertical-align: middle;
   height: 100%;
   color: white;
   font-family: 'Montserrat';
   font-size: 16px;
+}
+
+.header .login_logout a{
+  float: right;
+  display: block;
+  vertical-align: middle;
+  padding: 30px 20px;
+  color: white;
 }
