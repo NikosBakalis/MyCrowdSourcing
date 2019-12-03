@@ -1,3 +1,9 @@
+<?php
+
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -10,7 +16,13 @@
     <div class="header">
       <div class="image_earth"></div>
       <div class="login_logout">
-        <a href="login.php">Login/Logout</a>
+        <?php
+          if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
+            echo '<a href="includes/logout.inc.php">Logout</a>';
+          } else {
+            echo '<a href="login.php">Login/Signup</a>';
+          }
+        ?>
       </div>
       <div class="inner_header">
         <div class="logo_container">
