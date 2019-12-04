@@ -47,9 +47,6 @@ if(isset($_POST['login_submit'])){
             $some1 = mysqli_stmt_get_result($stmt1);
             $row1 = mysqli_fetch_array($some1);
             $type = $row1['type'];
-            // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
-            // $_SESSION['userID'] = $row1['id'];
-            // $_SESSION['userUsername'] = $row1['username'];
             if ($type == "admin") { //This one right here executes only if the logged in user is an admin.
               header("Location: ../admin.php?login=success_as_admin");
               exit();
