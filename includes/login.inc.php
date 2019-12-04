@@ -32,34 +32,29 @@ if(isset($_POST['login_submit'])){
           exit();
         }
         else if ($passwordCheck == true){ //This one right here activates when we enter the password correct.
-          $sql = "SELECT type FROM users WHERE email=?";
-          $stmt = mysqli_stmt_init($connection);
-          if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
+          session_start();
+          $_SESSION['userID'] = $row['id'];
+          $_SESSION['userUsername'] = $row['username'];
+          $type = "SELECT type FROM users WHERE email=?";
+          $stmt1 = mysqli_stmt_init($connection);
+          if (!mysqli_stmt_prepare($stmt1, $type)) { //This one right here will check if the sql statement above working properly.
             header("Location: ../login.php?error=sql_error");
             exit();
           }
           else { //This one right here will execute if the sql statement above working properly.
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            mysqli_stmt_execute($stmt);
-            $some = mysqli_stmt_get_result($stmt);
-            $row = mysqli_fetch_array($some);
-            $type = $row['type'];
-            echo $type;
+            mysqli_stmt_bind_param($stmt1, "s", $email);
+            mysqli_stmt_execute($stmt1);
+            $some1 = mysqli_stmt_get_result($stmt1);
+            $row1 = mysqli_fetch_array($some1);
+            $type = $row1['type'];
+            // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
+            // $_SESSION['userID'] = $row1['id'];
+            // $_SESSION['userUsername'] = $row1['username'];
             if ($type == "admin") { //This one right here executes only if the logged in user is an admin.
-              // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
-              $_SESSION['userID'] = $row['id'];
-              $_SESSION['userUsername'] = $row['username'];
-              $_SESSION['userEmail'] = $row['email'];
-              $_SESSION['userType'] = $row['type'];
               header("Location: ../admin.php?login=success_as_admin");
               exit();
             }
             else if ($type == "user") { //This one right here executes only if the logged in user is a typical user.
-              // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
-              $_SESSION['userID'] = $row['id'];
-              $_SESSION['userUsername'] = $row['username'];
-              $_SESSION['userEmail'] = $row['email'];
-              $_SESSION['userType'] = $row['type'];
               header("Location: ../index.php?login=success");
               exit();
             }
@@ -68,6 +63,7 @@ if(isset($_POST['login_submit'])){
               exit();
             }
           }
+          exit();
         }
       }
       else { //This one right here sends the user a no user error because he searched something that not exists in our database.

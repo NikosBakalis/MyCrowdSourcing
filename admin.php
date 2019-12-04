@@ -2,7 +2,7 @@
   include 'header.php';
 ?>
 
-<?php echo "ADMIN" ?>
+<?php echo $_SESSION['userID'] ?>
 
 <?php
   include 'footer.php';
