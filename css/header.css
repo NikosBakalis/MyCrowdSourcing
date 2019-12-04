@@ -47,6 +47,10 @@
   font-weight: bold;
 }
 
+.header .inner_header .logo_container h1 span{
+	color: #05f7ff
+}
+
 .header .inner_header .navigation{
   float: right;
   height: 100%;
