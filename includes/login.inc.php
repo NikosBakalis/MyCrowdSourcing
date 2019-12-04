@@ -32,12 +32,42 @@ if(isset($_POST['login_submit'])){
           exit();
         }
         else if ($passwordCheck == true){ //This one right here activates when we enter the password correct.
-          session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
-          $_SESSION['userID'] = $row['id'];
-          $_SESSION['userUsername'] = $row['username'];
-          $_SESSION['userEmail'] = $row['email'];
-          header("Location: ../index.php?login=success");
-          exit();
+          $sql = "SELECT type FROM users WHERE email=?";
+          $stmt = mysqli_stmt_init($connection);
+          if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
+            header("Location: ../login.php?error=sql_error");
+            exit();
+          }
+          else {
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            $some = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_array($some);
+            $type = $row['type'];
+            echo $type;
+            if ($type == "admin") {
+              session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
+              $_SESSION['userID'] = $row['id'];
+              $_SESSION['userUsername'] = $row['username'];
+              $_SESSION['userEmail'] = $row['email'];
+              $_SESSION['userType'] = $row['type'];
+              header("Location: ../admin.php?login=success");
+              exit();
+            }
+            else if ($type == "user") {
+              session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
+              $_SESSION['userID'] = $row['id'];
+              $_SESSION['userUsername'] = $row['username'];
+              $_SESSION['userEmail'] = $row['email'];
+              $_SESSION['userType'] = $row['type'];
+              header("Location: ../index.php?login=success");
+              exit();
+            }
+            else {
+              header("Location: ../index.php?login=success");
+              exit();
+            }
+          }
         }
       }
       else { //This one right here sends the user a no user error because he searched something that not exists in our database.
