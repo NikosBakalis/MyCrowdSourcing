@@ -46,7 +46,7 @@ if(isset($_POST['login_submit'])){
             $type = $row['type'];
             echo $type;
             if ($type == "admin") { //This one right here executes only if the logged in user is an admin.
-              session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
+              // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
               $_SESSION['userID'] = $row['id'];
               $_SESSION['userUsername'] = $row['username'];
               $_SESSION['userEmail'] = $row['email'];
@@ -55,7 +55,7 @@ if(isset($_POST['login_submit'])){
               exit();
             }
             else if ($type == "user") { //This one right here executes only if the logged in user is a typical user.
-              session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
+              // session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
               $_SESSION['userID'] = $row['id'];
               $_SESSION['userUsername'] = $row['username'];
               $_SESSION['userEmail'] = $row['email'];

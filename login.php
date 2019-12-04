@@ -46,7 +46,7 @@
         <p>You are logged out!</p>
       </div>
     </main>
-</body>
+  </body>
 </html>
 
 
