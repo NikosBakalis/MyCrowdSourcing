@@ -38,23 +38,23 @@ if(isset($_POST['login_submit'])){
             header("Location: ../login.php?error=sql_error");
             exit();
           }
-          else {
+          else { //This one right here will execute if the sql statement above working properly.
             mysqli_stmt_bind_param($stmt, "s", $email);
             mysqli_stmt_execute($stmt);
             $some = mysqli_stmt_get_result($stmt);
             $row = mysqli_fetch_array($some);
             $type = $row['type'];
             echo $type;
-            if ($type == "admin") {
+            if ($type == "admin") { //This one right here executes only if the logged in user is an admin.
               session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
               $_SESSION['userID'] = $row['id'];
               $_SESSION['userUsername'] = $row['username'];
               $_SESSION['userEmail'] = $row['email'];
               $_SESSION['userType'] = $row['type'];
-              header("Location: ../admin.php?login=success");
+              header("Location: ../admin.php?login=success_as_admin");
               exit();
             }
-            else if ($type == "user") {
+            else if ($type == "user") { //This one right here executes only if the logged in user is a typical user.
               session_start(); //This one right here starts a session between the user and the server, with some importan parameters like these right below.
               $_SESSION['userID'] = $row['id'];
               $_SESSION['userUsername'] = $row['username'];
@@ -63,8 +63,8 @@ if(isset($_POST['login_submit'])){
               header("Location: ../index.php?login=success");
               exit();
             }
-            else {
-              header("Location: ../index.php?login=success");
+            else { //This one right here executes in the extreme case no-one of the above works and sends the user back to index page.
+              header("Location: ../index.php?error=not_user_nor_admin");
               exit();
             }
           }
