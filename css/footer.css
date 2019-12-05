@@ -91,6 +91,10 @@
   border-radius: 15px;
 }
 
+.footer .footer_content .contact_form .contact_btn:hover{
+  border-color: black;
+}
+
 .footer .footer_copyright{
   background: #343a40;
   color: #686868;
