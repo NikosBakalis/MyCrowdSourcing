@@ -15,7 +15,7 @@ if(isset($_POST['login_submit'])){
     exit();
   }
   else { //This one right here checks if the email of the user exists in the database.
-    $sql = "SELECT * FROM users WHERE email=?";
+    $sql = "SELECT * FROM user WHERE email=?";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
       header("Location: ../login.php?error=sql_error");
@@ -35,7 +35,7 @@ if(isset($_POST['login_submit'])){
           session_start();
           $_SESSION['userID'] = $row['id'];
           $_SESSION['userUsername'] = $row['username'];
-          $type = "SELECT type FROM users WHERE email=?";
+          $type = "SELECT type FROM user WHERE email=?";
           $stmt = mysqli_stmt_init($connection);
           if (!mysqli_stmt_prepare($stmt, $type)) { //This one right here will check if the sql statement above working properly.
             header("Location: ../login.php?error=sql_error");
