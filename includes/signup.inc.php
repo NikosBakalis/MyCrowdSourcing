@@ -51,7 +51,7 @@ if (isset($_POST['signup_submit'])) {
     exit();
   }
   else { //This one right here checks if the email of the user is already used in the database.
-    $sql = "SELECT email FROM users WHERE email=?";
+    $sql = "SELECT email FROM user WHERE email=?";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
       header("Location: ../signup.php?error=sql_error");
@@ -67,7 +67,7 @@ if (isset($_POST['signup_submit'])) {
         exit();
       }
       else { //This one right here checks if the email of the user is already used in the database again.
-        $sql = "INSERT INTO users(id, firstname, lastname, username, email, pwd) VALUES(?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO user(id, firstname, lastname, username, email, pwd) VALUES(?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($connection);
         if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly again.
           header("Location: ../signup.php?error=sql_error");
