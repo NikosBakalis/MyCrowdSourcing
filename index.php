@@ -24,7 +24,10 @@
           Top Left
         </div>
         <div id="top_right">
-          Top Right
+          <form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="upload_file">
+            <button type="submit" name="submit_file">UPLOAD</button>
+          </form>
         </div>
         <div id="bottom_left">
           Bottom Left
