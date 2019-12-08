@@ -3,7 +3,7 @@
 if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
   $file = $_FILES['upload_file']; //This one right here stores the uploaded file to $file variable.
 
-  print_r($file); //This one right here provides us the 'info' we use right below.
+  //print_r($file); //This one right here provides us the 'info' we use right below.
   $file_name = $file['name']; //This one right here stores the name of the file to $file_name variable.
   $file_tmp_name = $file['tmp_name']; //You can...
   $file_size = $file['size']; //get this...
@@ -22,7 +22,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
         $file_destination = '../uploads/'.$file_name_new; //This one right here finally uploads the file to the destination we want to.
         move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
         header("Location: ../index.php?upload=success");
-        //header("Location: ../index.php?upload=success");
+        //header("Location: ../admin.php");
       }
       else {
         echo "Your file is too big!";
@@ -43,5 +43,7 @@ else { //This one right here sent the curious user back to home when he tries to
   header("Location: ../index.php");
   exit();
 }
+
+include('from_json_to_mysql.inc.php');
 
 ?>
