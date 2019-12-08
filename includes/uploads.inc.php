@@ -23,6 +23,8 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
         move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
         header("Location: ../index.php?upload=success");
         //header("Location: ../admin.php");
+        include('from_json_to_mysql.inc.php');
+        my_parser();
       }
       else {
         echo "Your file is too big!";
@@ -43,7 +45,5 @@ else { //This one right here sent the curious user back to home when he tries to
   header("Location: ../index.php");
   exit();
 }
-
-include('from_json_to_mysql.inc.php');
 
 ?>

@@ -10,7 +10,7 @@ function is_dir_empty($dir) { //This one right here is the basic function to sea
     return (count(scandir($dir)) == 2);
   }
 }
-//function my_parser(){
+function my_parser(){
   if (!is_dir_empty("../uploads")) {
     echo "Something to parse!";
     require 'dbhandler.inc.php';
@@ -83,6 +83,8 @@ function is_dir_empty($dir) { //This one right here is the basic function to sea
   else {
     echo "Nothing to parse!";
   }
-//}
+}
+
+//my_parser();
 
 ?>
