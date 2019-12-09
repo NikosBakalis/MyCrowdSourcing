@@ -24,10 +24,16 @@
           Top Left
         </div>
         <div id="top_right">
-          <form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="upload_file">
-            <button type="submit" name="submit_file">UPLOAD</button>
-          </form>
+          <?php
+            if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
+              echo '<form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="upload_file">
+                    <button type="submit" name="submit_file">UPLOAD</button>
+                    </form>';
+            } else {
+              echo 'Top Right';
+            }
+          ?>
         </div>
         <div id="bottom_left">
           Bottom Left
