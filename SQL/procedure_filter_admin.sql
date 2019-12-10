@@ -7,7 +7,7 @@ BEGIN
     DECLARE activities VARCHAR(255);
     DECLARE tmp VARCHAR(255);
     SELECT activity_stream INTO activities;
-    DROP TABLE IF EXISTS activity_stream;
+    DROP TABLE IF EXISTS activity_table;
     CREATE TABLE activity_table(
         activity_type VARCHAR(20)
     );
