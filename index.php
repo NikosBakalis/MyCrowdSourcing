@@ -14,11 +14,34 @@
     crossorigin=""></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title></title>
+    <style>
+      #mapid{
+        height: 180px;
+      }
+    </style>
   </head>
   <body>
     <section class="main">
       This right here will be the main page of our Website
-      <div class="circled_leaflet_map"></div>
+      <div class="circled_leaflet_map">
+        <div id="mapid"></div>
+      </div>
+      <script>
+        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+        //const tilesUrl = 'https://a.tile.openstreetmap.org/${z}/${x}/${y}.png';
+
+        //const tiles = L.tileLayer(tileUrl, {attribution});
+
+        //tiles.addTo(map);
+      </script>
       <div class="more_info">
         <div id="top_left">
           Top Left

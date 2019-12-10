@@ -2,6 +2,8 @@
   width: 800px;
   height: 800px;
   border-radius: 50%;
+  position: relative;
+  z-index: 500;
   border-style: solid;
   border-width: 2px;
   border-color: red;
