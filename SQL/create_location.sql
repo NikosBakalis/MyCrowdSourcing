@@ -9,6 +9,6 @@ CREATE TABLE location(
     velocity TINYINT,
     altitude MEDIUMINT,
     PRIMARY KEY (userID, timestamp_l),
-    FOREIGN KEY (userID) REFERENCES users(id)
+    FOREIGN KEY (userID) REFERENCES user(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
