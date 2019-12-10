@@ -2,7 +2,7 @@ CREATE TABLE location(
 	userID VARCHAR(200) NOT NULL,
     timestamp_l DATETIME NOT NULL,
     latitude DECIMAL(10, 8) NOT NULL,
-    longtitude DECIMAL(11, 8) NOT NULL,
+    longitude DECIMAL(11, 8) NOT NULL,
     accuracy MEDIUMINT,
     heading SMALLINT,
     vertical_accuracy TINYINT,
