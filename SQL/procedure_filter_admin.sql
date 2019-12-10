@@ -21,16 +21,16 @@ BEGIN
         SELECT TRIM(activities) INTO activities;
         /*SELECT activities;*/
     END WHILE;
-    SELECT * FROM activity_table;
-    select * from location
-    inner join activity
-    on location.userID = activity.userID
-    and location.timestamp_l = activity.timestamp_l
-    inner join activity_details
-    on activity.userID = activity_details.userID
-    and activity.timestamp_l = activity_details.timestamp_l
-    and activity.timestamp_a = activity_details.timestamp_a
-    where activity_details.type in (select * from activity_table)
+    SELECT * FROM activity_table; /* Double check if this one right here is working properly */
+    SELECT * FROM location
+    INNER JOIN activity
+    ON location.userID = activity.userID
+    AND location.timestamp_l = activity.timestamp_l
+    INNER JOIN activity_details
+    ON activity.userID = activity_details.userID
+    AND activity.timestamp_l = activity_details.timestamp_l
+    AND activity.timestamp_a = activity_details.timestamp_a
+    WHERE activity_details.type IN (select * from activity_table)
     AND (activity_details.timestamp_l BETWEEN time_begin AND time_end);
 
 END$$
