@@ -21,19 +21,39 @@ if(isset($_POST['from_mysql_to_json'])){
 
     $file_for_user = fopen("file_for_user.json", "w") or die("Unable to open file.");
 
+    $recordObject = new stdClass();
+
+    $userObject = new stdClass();
+
+    $locationObject = new stdClass();
+    $locationObject->timestamp_l = $row['timestamp_l'];
+    $locationObject->latitude = $row['latitude'];
+    $locationObject->longitude = $row['longitude'];
+    $locationObject->accuracy = $row['accuracy'];
+    
+
+    $activityObject = new stdClass();
+    $activityObject->timestamp_a = $row['timestamp_a'];
+    $activityObject->activity = array();
+
+    $detailObject = new stdClass();
+    $detailObject->type = $row['type'];
+    $detailObject->confidence = $row['confidence'];
+
+
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) //This one right here allows us to fetch rows from table associated with the name we gave them on database.
     {
         $output = $row['userID']." ".$row['timestamp_l']." ".$row['latitude']." ".$row['longitude']." ".$row['accuracy']." ".$row['heading']." ".$row['vertical_accuracy']." ".$row['velocity']." "
         .$row['altitude']." ".$row['timestamp_a']." ".$row['type']." ".$row['confidence'];
         echo "<br>";
 
-        echo json_encode($row);
-        fwrite($file_for_user, json_encode($row));
+        echo json_encode($row, JSON_PRETTY_PRINT);
+        fwrite($file_for_user, json_encode($row, JSON_PRETTY_PRINT));
         fwrite($file_for_user, "\n");
+
+
     }
     fclose($file_for_user);
-
-    // echo "DONE!";
   }
 }
 else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 3-4-5-6.

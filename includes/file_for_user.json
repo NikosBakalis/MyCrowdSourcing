@@ -1,0 +1,700 @@
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:53:49",
+    "latitude": "38.28456280",
+    "longitude": "21.78773830",
+    "accuracy": 23,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 112,
+    "timestamp_a": "2018-05-03 11:53:45",
+    "type": "STILL",
+    "confidence": 20
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:53:49",
+    "latitude": "38.28456280",
+    "longitude": "21.78773830",
+    "accuracy": 23,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 112,
+    "timestamp_a": "2018-05-03 11:53:45",
+    "type": "UNKNOWN",
+    "confidence": 21
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:53:49",
+    "latitude": "38.28456280",
+    "longitude": "21.78773830",
+    "accuracy": 23,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 112,
+    "timestamp_a": "2018-05-03 11:53:45",
+    "type": "WALKING",
+    "confidence": 27
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:58:19",
+    "latitude": "38.28455360",
+    "longitude": "21.78773940",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 11:57:16",
+    "type": "STILL",
+    "confidence": 51
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:58:19",
+    "latitude": "38.28455360",
+    "longitude": "21.78773940",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 11:57:16",
+    "type": "UNKNOWN",
+    "confidence": 12
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:58:19",
+    "latitude": "38.28455360",
+    "longitude": "21.78773940",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 11:57:16",
+    "type": "WALKING",
+    "confidence": 6
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:59:54",
+    "latitude": "38.28455440",
+    "longitude": "21.78774070",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 12:00:14",
+    "type": "STILL",
+    "confidence": 89
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:59:54",
+    "latitude": "38.28455440",
+    "longitude": "21.78774070",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 12:00:14",
+    "type": "UNKNOWN",
+    "confidence": 1
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 11:59:54",
+    "latitude": "38.28455440",
+    "longitude": "21.78774070",
+    "accuracy": 22,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 111,
+    "timestamp_a": "2018-05-03 12:00:14",
+    "type": "WALKING",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:11:43",
+    "type": "STILL",
+    "confidence": 72
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:11:43",
+    "type": "UNKNOWN",
+    "confidence": 4
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:11:43",
+    "type": "WALKING",
+    "confidence": 12
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:16:02",
+    "type": "STILL",
+    "confidence": 52
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:16:02",
+    "type": "UNKNOWN",
+    "confidence": 21
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:15:50",
+    "latitude": "38.28414270",
+    "longitude": "21.78512800",
+    "accuracy": 1899,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:16:02",
+    "type": "WALKING",
+    "confidence": 7
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:21",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:15",
+    "type": "STILL",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:21",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:15",
+    "type": "UNKNOWN",
+    "confidence": 40
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:21",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:15",
+    "type": "WALKING",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:55",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 33,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:55",
+    "type": "STILL",
+    "confidence": 87
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:55",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 33,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:55",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:20:55",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 33,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:20:55",
+    "type": "WALKING",
+    "confidence": 5
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:24:45",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:24:43",
+    "type": "STILL",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:24:45",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:24:43",
+    "type": "UNKNOWN",
+    "confidence": 40
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:24:45",
+    "latitude": "38.28604960",
+    "longitude": "21.79038700",
+    "accuracy": 47,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:24:43",
+    "type": "WALKING",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:28:09",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 28,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:27:56",
+    "type": "STILL",
+    "confidence": 89
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:28:09",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 28,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:27:56",
+    "type": "UNKNOWN",
+    "confidence": 2
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:28:09",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 28,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:27:56",
+    "type": "WALKING",
+    "confidence": 1
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:31:23",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 33,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:30:54",
+    "type": "STILL",
+    "confidence": 93
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:31:23",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 33,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:30:54",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:34:23",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 17,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:34:17",
+    "type": "STILL",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:34:23",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 17,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:34:17",
+    "type": "UNKNOWN",
+    "confidence": 31
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:34:23",
+    "latitude": "38.28588640",
+    "longitude": "21.78959810",
+    "accuracy": 17,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 106,
+    "timestamp_a": "2018-05-03 12:34:17",
+    "type": "WALKING",
+    "confidence": 28
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:58:52",
+    "latitude": "38.28700890",
+    "longitude": "21.78628480",
+    "accuracy": 89,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:58:33",
+    "type": "STILL",
+    "confidence": 33
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:58:52",
+    "latitude": "38.28700890",
+    "longitude": "21.78628480",
+    "accuracy": 89,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:58:33",
+    "type": "UNKNOWN",
+    "confidence": 21
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 12:58:52",
+    "latitude": "38.28700890",
+    "longitude": "21.78628480",
+    "accuracy": 89,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 12:58:33",
+    "type": "WALKING",
+    "confidence": 24
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:02:28",
+    "latitude": "38.28702190",
+    "longitude": "21.78627150",
+    "accuracy": 16,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:01:42",
+    "type": "STILL",
+    "confidence": 95
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:02:28",
+    "latitude": "38.28702190",
+    "longitude": "21.78627150",
+    "accuracy": 16,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:01:42",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:05:02",
+    "latitude": "38.28704060",
+    "longitude": "21.78624950",
+    "accuracy": 15,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:04:53",
+    "type": "STILL",
+    "confidence": 10
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:05:02",
+    "latitude": "38.28704060",
+    "longitude": "21.78624950",
+    "accuracy": 15,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:04:53",
+    "type": "UNKNOWN",
+    "confidence": 31
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:05:02",
+    "latitude": "38.28704060",
+    "longitude": "21.78624950",
+    "accuracy": 15,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:04:53",
+    "type": "WALKING",
+    "confidence": 28
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:08:31",
+    "latitude": "38.28700840",
+    "longitude": "21.78628430",
+    "accuracy": 16,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:08:48",
+    "type": "STILL",
+    "confidence": 55
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:08:31",
+    "latitude": "38.28700840",
+    "longitude": "21.78628430",
+    "accuracy": 16,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:08:48",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:08:31",
+    "latitude": "38.28700840",
+    "longitude": "21.78628430",
+    "accuracy": 16,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:08:48",
+    "type": "WALKING",
+    "confidence": 8
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:11:11",
+    "latitude": "38.28700840",
+    "longitude": "21.78628430",
+    "accuracy": 255,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 13:11:19",
+    "type": "STILL",
+    "confidence": 96
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:11:11",
+    "latitude": "38.28700840",
+    "longitude": "21.78628430",
+    "accuracy": 255,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 13:11:19",
+    "type": "UNKNOWN",
+    "confidence": 2
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:13:07",
+    "latitude": "38.28700840",
+    "longitude": "21.78629070",
+    "accuracy": 17,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:13:12",
+    "type": "STILL",
+    "confidence": 95
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 13:13:07",
+    "latitude": "38.28700840",
+    "longitude": "21.78629070",
+    "accuracy": 17,
+    "heading": null,
+    "vertical_accuracy": 2,
+    "velocity": null,
+    "altitude": 100,
+    "timestamp_a": "2018-05-03 13:13:12",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 14:36:23",
+    "latitude": "38.26563970",
+    "longitude": "21.76862900",
+    "accuracy": 82,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 14:36:18",
+    "type": "STILL",
+    "confidence": 32
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 14:36:23",
+    "latitude": "38.26563970",
+    "longitude": "21.76862900",
+    "accuracy": 82,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 14:36:18",
+    "type": "UNKNOWN",
+    "confidence": 3
+}
+{
+    "userID": "6Dv\/QRz1edfR\/DOPHpSV9fJRP2buZiQw",
+    "timestamp_l": "2018-05-03 14:36:23",
+    "latitude": "38.26563970",
+    "longitude": "21.76862900",
+    "accuracy": 82,
+    "heading": null,
+    "vertical_accuracy": null,
+    "velocity": null,
+    "altitude": null,
+    "timestamp_a": "2018-05-03 14:36:18",
+    "type": "WALKING",
+    "confidence": 48
+}
