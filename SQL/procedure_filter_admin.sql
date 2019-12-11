@@ -13,7 +13,7 @@ BEGIN
     );
     WHILE (activities > '') DO
         SELECT SUBSTRING_INDEX(activities, '.', 1) INTO tmp;
-        /*SELECT tmp;*/
+        /*SELECT tmp;*/ --This one right here is commented so as to get the results correctly on "from_mysql_to_json.sql" file.
         INSERT INTO activity_table VALUES (tmp);
         SELECT REPLACE(activities, tmp, ' ') INTO activities;
         SELECT TRIM(activities) INTO activities;
@@ -37,4 +37,4 @@ END$$
 
 DELIMITER ;
 
-CALL filter_json('2018-05-03 11:53:49', '2018-05-03 14:36:23', 'WALKING.STILL.DRIVING.UNKNOWN');
+-- CALL filter_json('2018-05-03 11:53:49', '2018-05-03 14:36:23', 'WALKING.STILL.DRIVING.UNKNOWN');
