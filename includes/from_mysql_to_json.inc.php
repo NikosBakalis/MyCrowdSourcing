@@ -17,14 +17,21 @@ if(isset($_POST['from_mysql_to_json'])){
     mysqli_stmt_execute($stmt);
 
     $result = $stmt->get_result(); //This one right here returns the array result of the $stmt to the $result variable.
-    // $stmt->free_result();
+    $stmt->free_result();
+
+    $file_for_user = fopen("file_for_user.json", "w") or die("Unable to open file.");
 
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) //This one right here allows us to fetch rows from table associated with the name we gave them on database.
     {
-        echo $row['userID']." ".$row['timestamp_l']." ".$row['latitude']." ".$row['longitude']." ".$row['accuracy']." ".$row['heading']." ".$row['vertical_accuracy']." ".$row['velocity']." "
+        $output = $row['userID']." ".$row['timestamp_l']." ".$row['latitude']." ".$row['longitude']." ".$row['accuracy']." ".$row['heading']." ".$row['vertical_accuracy']." ".$row['velocity']." "
         .$row['altitude']." ".$row['timestamp_a']." ".$row['type']." ".$row['confidence'];
         echo "<br>";
+
+        echo json_encode($row);
+        fwrite($file_for_user, json_encode($row));
+        fwrite($file_for_user, "\n");
     }
+    fclose($file_for_user);
 
     // echo "DONE!";
   }
