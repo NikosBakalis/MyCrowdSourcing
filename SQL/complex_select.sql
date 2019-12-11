@@ -7,3 +7,7 @@ on activity.userID = activity_details.userID
 and activity.timestamp_l = activity_details.timestamp_l
 and activity.timestamp_a = activity_details.timestamp_a
 where activity_details.type in (select * from activity_table);
+--
+--
+-- This one right here has to be removed.
+-- It has been placed successfully to the "procedure_filter_admin.sql"
