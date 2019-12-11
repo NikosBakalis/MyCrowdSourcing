@@ -41,25 +41,39 @@ if(isset($_POST['from_mysql_to_json'])){
 
       if ($row['userID'] != $compareUserID) {
         $userObject = new stdClass();
-        $userObject->userID = $row['userID'];
+        if ($row['userID'] != null) {
+          $userObject->userID = $row['userID'];
+        }
         $userObject->locations = array();
         $compareUserID = $row['userID'];
-        echo "test1";
         array_push($recordObject->records, $userObject);
-        echo "test2";
 
         $compareTimestamp_l = "";
       }
 
       if ($row['timestamp_l'] != $compareTimestamp_l) {
         $locationObject = new stdClass();
-        $locationObject->timestamp_l = $row['timestamp_l'];
-        $locationObject->latitude = $row['latitude'];
-        $locationObject->longitude = $row['longitude'];
-        $locationObject->accuracy = $row['accuracy'];
-        $locationObject->heading = $row['heading'];
-        $locationObject->vertical_accuracy = $row['vertical_accuracy'];
-        $locationObject->velocity = $row['velocity'];
+        if ($row['timestamp_l'] != null) {
+          $locationObject->timestamp_l = $row['timestamp_l'];
+        }
+        if ($row['latitude'] != null) {
+          $locationObject->latitude = $row['latitude'];
+        }
+        if ($row['longitude'] != null) {
+          $locationObject->longitude = $row['longitude'];
+        }
+        if ($row['accuracy'] != null) {
+          $locationObject->accuracy = $row['accuracy'];
+        }
+        if ($row['heading'] != null) {
+          $locationObject->heading = $row['heading'];
+        }
+        if($row['vertical_accuracy'] != null){
+          $locationObject->vertical_accuracy = $row['vertical_accuracy'];
+        }
+        if ($row['velocity'] != null) {
+          $locationObject->velocity = $row['velocity'];
+        }
         $locationObject->activity = array();
         $compareTimestamp_l = $row['timestamp_l'];
         array_push($userObject->locations, $locationObject);
@@ -69,7 +83,9 @@ if(isset($_POST['from_mysql_to_json'])){
 
       if ($row['timestamp_a'] != $compareTimestamp_a) {
         $activityObject = new stdClass();
-        $activityObject->timestamp_a = $row['timestamp_a'];
+        if ($row['timestamp_a'] != null) {
+          $activityObject->timestamp_a = $row['timestamp_a'];
+        }
         $activityObject->activity = array();
         $compareTimestamp_a = $row['timestamp_a'];
         array_push($locationObject->activity, $activityObject);
@@ -79,13 +95,15 @@ if(isset($_POST['from_mysql_to_json'])){
 
       if ($row['type'] != $compareType) {
         $detailObject = new stdClass();
-        $detailObject->type = $row['type'];
-        $detailObject->confidence = $row['confidence'];
+        if ($row['type'] != null) {
+          $detailObject->type = $row['type'];
+        }
+        if ($row['confidence']) {
+          $detailObject->confidence = $row['confidence'];
+        }
         $compareType = $row['type'];
         array_push($activityObject->activity, $detailObject);
       }
-      // echo json_encode($row, JSON_PRETTY_PRINT);
-      // fwrite($file_for_user, json_encode($row, JSON_PRETTY_PRINT));
     }
     echo json_encode($recordObject, JSON_PRETTY_PRINT);
     fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT));
