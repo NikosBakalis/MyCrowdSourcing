@@ -22,37 +22,74 @@ if(isset($_POST['from_mysql_to_json'])){
     $file_for_user = fopen("file_for_user.json", "w") or die("Unable to open file.");
 
     $recordObject = new stdClass();
+    $recordObject->records = array();
 
-    $userObject = new stdClass();
-
-    $locationObject = new stdClass();
-    $locationObject->timestamp_l = $row['timestamp_l'];
-    $locationObject->latitude = $row['latitude'];
-    $locationObject->longitude = $row['longitude'];
-    $locationObject->accuracy = $row['accuracy'];
-    
-
-    $activityObject = new stdClass();
-    $activityObject->timestamp_a = $row['timestamp_a'];
-    $activityObject->activity = array();
-
-    $detailObject = new stdClass();
-    $detailObject->type = $row['type'];
-    $detailObject->confidence = $row['confidence'];
-
+    $compareUserID = "";
+    $compareTimestamp_l = "";
+    $compareTimestamp_a = "";
+    $compareType = "";
 
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) //This one right here allows us to fetch rows from table associated with the name we gave them on database.
     {
-        $output = $row['userID']." ".$row['timestamp_l']." ".$row['latitude']." ".$row['longitude']." ".$row['accuracy']." ".$row['heading']." ".$row['vertical_accuracy']." ".$row['velocity']." "
-        .$row['altitude']." ".$row['timestamp_a']." ".$row['type']." ".$row['confidence'];
-        echo "<br>";
+        // $output = $row['userID']." ".$row['timestamp_l']." ".$row['latitude']." ".$row['longitude']." ".$row['accuracy']." ".$row['heading']." ".$row['vertical_accuracy']." ".$row['velocity']." "
+        // .$row['altitude']." ".$row['timestamp_a']." ".$row['type']." ".$row['confidence'];
+        // echo "<br>";
+        //
+        // echo json_encode($row, JSON_PRETTY_PRINT);
+        // fwrite($file_for_user, json_encode($row));
+        // fwrite($file_for_user, "\n");
 
-        echo json_encode($row, JSON_PRETTY_PRINT);
-        fwrite($file_for_user, json_encode($row, JSON_PRETTY_PRINT));
-        fwrite($file_for_user, "\n");
+      if ($row['userID'] != $compareUserID) {
+        $userObject = new stdClass();
+        $userObject->userID = $row['userID'];
+        $userObject->locations = array();
+        $compareUserID = $row['userID'];
+        echo "test1";
+        array_push($recordObject->records, $userObject);
+        echo "test2";
 
+        $compareTimestamp_l = "";
+      }
 
+      if ($row['timestamp_l'] != $compareTimestamp_l) {
+        $locationObject = new stdClass();
+        $locationObject->timestamp_l = $row['timestamp_l'];
+        $locationObject->latitude = $row['latitude'];
+        $locationObject->longitude = $row['longitude'];
+        $locationObject->accuracy = $row['accuracy'];
+        $locationObject->heading = $row['heading'];
+        $locationObject->vertical_accuracy = $row['vertical_accuracy'];
+        $locationObject->velocity = $row['velocity'];
+        $locationObject->activity = array();
+        $compareTimestamp_l = $row['timestamp_l'];
+        array_push($userObject->locations, $locationObject);
+
+        $compareTimestamp_a = "";
+      }
+
+      if ($row['timestamp_a'] != $compareTimestamp_a) {
+        $activityObject = new stdClass();
+        $activityObject->timestamp_a = $row['timestamp_a'];
+        $activityObject->activity = array();
+        $compareTimestamp_a = $row['timestamp_a'];
+        array_push($locationObject->activity, $activityObject);
+
+        $compareType = "";
+      }
+
+      if ($row['type'] != $compareType) {
+        $detailObject = new stdClass();
+        $detailObject->type = $row['type'];
+        $detailObject->confidence = $row['confidence'];
+        $compareType = $row['type'];
+        array_push($activityObject->activity, $detailObject);
+      }
+      // echo json_encode($row, JSON_PRETTY_PRINT);
+      // fwrite($file_for_user, json_encode($row, JSON_PRETTY_PRINT));
     }
+    echo json_encode($recordObject, JSON_PRETTY_PRINT);
+    fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT));
+
     fclose($file_for_user);
   }
 }
