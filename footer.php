@@ -22,11 +22,11 @@
             <span><i class="fa fa-envelope"></i> &nbsp; bakalis.nikolas@gmail.com</span>
           </div>
           <div class="socials">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+            <a href="https://github.com/NikosBakalis/MyCrowdSourcing"><i class="fa fa-github"></i></a>
           </div>
         </div>
         <div class="footer_section links">
