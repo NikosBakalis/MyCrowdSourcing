@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['from_mysql_to_json'])){
-  header("Location: ../admin.php");
+  //header("Location: ../admin.php");
   require 'dbhandler.inc.php';
 
   $sql = "CALL filter_json(?, ?, ?)";
@@ -21,8 +21,9 @@ if(isset($_POST['from_mysql_to_json'])){
     $stmt->free_result();
 
     $file_unique_name = uniqid('', true);
+    $file_with_extension = $file_unique_name.".json";
 
-    $file_for_user = fopen("../downloadable/".$file_unique_name.".json", "w") or die("Unable to open file.");
+    $file_for_user = fopen("../downloadable/".$file_with_extension, "w") or die("Unable to open file.");
 
     $recordObject = new stdClass();
     $recordObject->records = array();
@@ -34,10 +35,10 @@ if(isset($_POST['from_mysql_to_json'])){
 
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) //This one right here allows us to fetch rows from table associated with the name we gave them on database.
     {
-      if ($row['userID'] != $compareUserID) {
-        $userObject = new stdClass();
+      if ($row['userID'] != $compareUserID) { //This one right here executes if userID change.
+        $userObject = new stdClass(); //This one right here creates new object.
         if ($row['userID'] != null) {
-          $userObject->userID = $row['userID'];
+          $userObject->userID = $row['userID']; //This one right here creates a new object only if userID changes value.
         }
         $userObject->locations = array();
         $compareUserID = $row['userID'];
@@ -108,12 +109,26 @@ if(isset($_POST['from_mysql_to_json'])){
         }
       }
     }
-    echo json_encode($recordObject, JSON_PRETTY_PRINT);
-    fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT));
+    //echo json_encode($recordObject, JSON_PRETTY_PRINT); //This one right here echos the $recordObject in html.
+    fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT)); //This one right here writes into the file.
 
-    fclose($file_for_user);
+    fclose($file_for_user); //This one right here closes the file.
   }
-  
+
+  /* Here I have to add the file download code! */
+  if (!empty($file_with_extension) && file_exists('../downloadable/'.$file_with_extension)) {
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="'.basename($file_with_extension));
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: '.filesize('../downloadable/'.$file_with_extension));
+    readfile('../downloadable/'.$file_with_extension);
+    unlink('../downloadable/'.$file_with_extension); //This one right here deletes the file we just parsed from the directory it has been uploaded.
+    exit;
+  }
+
 }
 else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 3-4-5-6.
   header("Location: ../index.php");
