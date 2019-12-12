@@ -1,7 +1,6 @@
 <?php
 
 if(isset($_POST['from_mysql_to_json'])){
-  //header("Location: ../admin.php");
   require 'dbhandler.inc.php';
 
   $sql = "CALL filter_json(?, ?, ?)";

@@ -4,7 +4,7 @@
 this sections using the submit button
 If that's true then we will let him continue
 else he will not see a thing!*/
-if(isset($_POST['login_submit'])){
+if(isset($_POST['login_submit'])){ //This one right here cheks if the user entered this area using the html button.
   require 'dbhandler.inc.php';
 
   $email = $_POST['email'];
