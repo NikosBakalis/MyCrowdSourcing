@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST['from_mysql_to_json'])){
+  header("Location: ../admin.php");
   require 'dbhandler.inc.php';
 
   $sql = "CALL filter_json(?, ?, ?)";
@@ -19,7 +20,9 @@ if(isset($_POST['from_mysql_to_json'])){
     $result = $stmt->get_result(); //This one right here returns the array result of the $stmt to the $result variable.
     $stmt->free_result();
 
-    $file_for_user = fopen("file_for_user.json", "w") or die("Unable to open file.");
+    $file_unique_name = uniqid('', true);
+
+    $file_for_user = fopen("../downloadable/".$file_unique_name.".json", "w") or die("Unable to open file.");
 
     $recordObject = new stdClass();
     $recordObject->records = array();
@@ -38,7 +41,9 @@ if(isset($_POST['from_mysql_to_json'])){
         }
         $userObject->locations = array();
         $compareUserID = $row['userID'];
-        array_push($recordObject->records, $userObject);
+        if ($userObject != null) {
+          array_push($recordObject->records, $userObject);
+        }
 
         $compareTimestamp_l = "";
       }
@@ -68,7 +73,9 @@ if(isset($_POST['from_mysql_to_json'])){
         }
         $locationObject->activity = array();
         $compareTimestamp_l = $row['timestamp_l'];
-        array_push($userObject->locations, $locationObject);
+        if ($locationObject != null) {
+          array_push($userObject->locations, $locationObject);
+        }
 
         $compareTimestamp_a = "";
       }
@@ -80,7 +87,9 @@ if(isset($_POST['from_mysql_to_json'])){
         }
         $activityObject->activity = array();
         $compareTimestamp_a = $row['timestamp_a'];
-        array_push($locationObject->activity, $activityObject);
+        if ($activityObject != null) {
+          array_push($locationObject->activity, $activityObject);
+        }
 
         $compareType = "";
       }
@@ -94,7 +103,9 @@ if(isset($_POST['from_mysql_to_json'])){
           $detailObject->confidence = $row['confidence'];
         }
         $compareType = $row['type'];
-        array_push($activityObject->activity, $detailObject);
+        if ($detailObject != null) {
+          array_push($activityObject->activity, $detailObject);
+        }
       }
     }
     echo json_encode($recordObject, JSON_PRETTY_PRINT);
@@ -102,6 +113,7 @@ if(isset($_POST['from_mysql_to_json'])){
 
     fclose($file_for_user);
   }
+  
 }
 else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 3-4-5-6.
   header("Location: ../index.php");
