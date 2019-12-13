@@ -10,8 +10,8 @@ if(isset($_POST['from_mysql_to_json'])){
     exit();
   }
   else {
-    $time_start = '2018-05-03 11:53:49'; //This one right here must be users input.
-    $time_end = '2018-05-03 14:36:23'; //This one right here too.
+    $time_start = '2017-05-03 11:53:49'; //This one right here must be users input.
+    $time_end = '2019-05-03 14:36:23'; //This one right here too.
     $activity_types = 'WALKING.STILL.DRIVING.UNKNOWN'; //This one right here too.
     mysqli_stmt_bind_param($stmt, "sss", $time_start, $time_end, $activity_types);
     mysqli_stmt_execute($stmt);

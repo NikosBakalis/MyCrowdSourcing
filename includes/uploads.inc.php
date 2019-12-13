@@ -22,10 +22,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
         $file_destination = '../uploads/'.$file_name_new; //This one right here finally uploads the file to the destination we want to.
 
         move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
-        //print_r("TEST");
         include('from_json_to_mysql.inc.php');
-        //echo $blah;
-        //require 'from_json_to_mysql.inc.php';
       }
       else {
         echo "Your file is too big!";
