@@ -5,6 +5,12 @@
 <?php
 
 echo $_SESSION['userID'];
+if ($_SESSION['type'] == 'admin') {
+  echo "You are the real admin";
+}
+else {
+  header("Location: index.php");
+}
 
 echo date(' d/m/Y H:i:s', 1575043129582 / 1000);
 

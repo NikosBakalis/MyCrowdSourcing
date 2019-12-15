@@ -35,6 +35,7 @@ if(isset($_POST['login_submit'])){ //This one right here cheks if the user enter
           session_start();
           $_SESSION['userID'] = $row['id'];
           $_SESSION['userUsername'] = $row['username'];
+          $_SESSION['type'] = $row['type'];
           $type = "SELECT type FROM user WHERE email=?";
           $stmt = mysqli_stmt_init($connection);
           if (!mysqli_stmt_prepare($stmt, $type)) { //This one right here will check if the sql statement above working properly.

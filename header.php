@@ -29,6 +29,11 @@
           <h1><span>MY</span>CROWDSOURCING</h1>
         </div>
         <ul class="navigation">
+          <?php
+            if (isset($_SESSION['userID']) && $_SESSION['type'] == 'admin') {
+              echo '<a href="admin.php"><li>Admin</li></a>';
+            }
+          ?>
           <a href="index.php"><li>Home</li></a>
           <a href="#"><li>About us</li></a>
           <a href="#"><li>Services</li></a>
