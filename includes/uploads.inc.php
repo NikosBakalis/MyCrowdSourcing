@@ -17,7 +17,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
 
   if (in_array($file_actual_extension, $allowed_extensions)) { //This one right here checks if the extension of the file that the user uploaded is valid.
     if ($file_error === 0) { //This one right here checks for more errors through the upload.
-      if ($file_size <= 40000000) { //This one right here limits the size of the file that the user wants yo upload.
+      if ($file_size <= 1073741824) { //This one right here limits the size of the file that the user wants yo upload. 1,073,741,824 = exactly 1GB.
         $file_name_new = uniqid('', true).".".$file_actual_extension; //This one right here renames the file that the user wants to upload to something unique so as to avoid having more than one file with the same name.
         $file_destination = '../uploads/'.$file_name_new; //This one right here finally uploads the file to the destination we want to.
 
