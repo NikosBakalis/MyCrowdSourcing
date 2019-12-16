@@ -49,7 +49,9 @@
           <br>
           <form action="index.html" method="post">
             <input type="email" name="email" class="text_input contact_input" placeholder="Your email address..."></input>
-            <textarea name="message" class="text_input contact_input" placeholder="Your message..."></textarea> <!--  This one right here has to limit its length and width size with JavaScript -->
+            <textarea name="message" class="text_input contact_input" placeholder="Your message..."></textarea> <!--  This one right here has to limit its length and width size with JavaScript. -->
+            <!-- This one right below will be usefull. -->
+            <!-- https://stackoverflow.com/questions/4459610/set-maxlength-in-html-textarea -->
             <button type="submit" name="button" class="btn btn_big contact_btn">
               <i class="fa fa-envelope"></i>
               Send
