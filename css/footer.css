@@ -21,7 +21,11 @@
 }
 
 .footer .footer_content .about h1 span{
-  color: #05f7ff
+  color: #05f7ff;
+}
+
+.footer .footer_content .about p a{
+  color: #05f7ff;
 }
 
 .footer .footer_content .about .contact span{

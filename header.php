@@ -26,7 +26,7 @@
       </div>
       <div class="inner_header">
         <div class="logo_container">
-          <h1><span>MY</span>CROWDSOURCING</h1>
+          <h1><span>MY</span>CROWDSOURCING<span>.</span>COM</h1>
         </div>
         <ul class="navigation">
           <?php

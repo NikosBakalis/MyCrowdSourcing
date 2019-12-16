@@ -11,11 +11,17 @@
     <div class="footer">
       <div class="footer_content">
         <div class="footer_section about">
-          <h1 class="logo_text"><span>MY</span>CROWDSOURCING</h1>
+          <h1 class="logo_text"><span>MY</span>CROWDSOURCING<span>.</span>COM</h1>
           <p>
-            We are this, and we make that,
-            and we do that and that and the other one,
-            that the others can't do!
+            is a sourcing model in which users
+            are allowed to apload their Google
+            Location History JSON from:
+            <a  href="https://takeout.google.com"> Here </a>
+            <br>After that all of your data will be
+            displayed in our maps.<br>
+            Feal free to visit:
+            <a href="#">Services</a>
+            for further info.
           </p>
           <div class="contact">
             <span><i class="fa fa-phone"></i> &nbsp; 6982063681</span>
@@ -42,8 +48,8 @@
           <h2>Contact us</h2>
           <br>
           <form action="index.html" method="post">
-            <input type="email" name="email" class="text_input contact_input" placeholder="Your email address...">
-            <textarea name="message" class="text_input contact_input" placeholder="Your message..."></textarea>
+            <input type="email" name="email" class="text_input contact_input" placeholder="Your email address..."></input>
+            <textarea name="message" class="text_input contact_input" placeholder="Your message..."></textarea> <!--  This one right here has to limit its length and width size with JavaScript -->
             <button type="submit" name="button" class="btn btn_big contact_btn">
               <i class="fa fa-envelope"></i>
               Send
