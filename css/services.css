@@ -1,0 +1,103 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+  box-sizing: border-box;
+}
+
+.services_section{
+  background: url(../images/earth-map-dark-texture-background-104605.jpg);
+  height: 1600px;
+  background-size: cover;
+  padding: 60px 0px;
+}
+
+.inner_width{
+  width: 100%;
+  max-width: 2000px;
+  margin: auto;
+  padding: 0px 20px;
+  overflow: hidden;
+}
+
+.section_title{
+  text-align: center;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+.border{
+  width: 160px;
+  height: 2px;
+  background: #82ccdd;
+  margin: 10px auto 220px auto;
+}
+
+.services_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service_box{
+  max-width: 33.33%;
+  padding: 50px;
+  text-align: center;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.service_icon{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border: 3px solid #82ccdd;
+  color: #82ccdd;
+  transform: rotate(45deg);
+  margin-bottom: 30px;
+  margin-top: 80px;
+}
+
+.service_icon i{
+  line-height: 70px;
+  transform: rotate(-45deg);
+  font-size: 26px;
+}
+
+.service_box:hover .service_icon{
+  background: #82ccdd;
+  color: #ddd;
+}
+
+.service_title{
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.service_description{
+  font-size: 14px;
+}
+
+.service_description a{
+  color: #05f7ff;
+}
+
+@@media screen and (max-width: 960px) {
+  .service_box{
+    max-width: 45%;
+  }
+}
+
+@@media screen and (max-width: 768px) {
+  .service_box{
+    max-width: 50%;
+  }
+}
+
+@@media screen and (max-width: 480px) {
+  .service_box{
+    max-width: 100%;
+  }
+}
