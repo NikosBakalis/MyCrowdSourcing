@@ -7,7 +7,7 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
     <link rel="stylesheet" type="text/css" href="css/services.css">
     <meta charset="utf-8">
     <title></title>
@@ -49,7 +49,7 @@
           </div>
           <div class="service_box">
             <div class="service_icon">
-              <i class="fas fa-map"></i>
+              <i class="fa fa-map-marker"></i> <!-- or fas fa-map with line 10 -->
             </div>
             <div class="service_title">
               Heat Maps
