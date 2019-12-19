@@ -7,22 +7,22 @@ else he will not see a thing!*/
 if(isset($_POST['login_submit'])){ //This one right here cheks if the user entered this area using the html button.
   require 'dbhandler.inc.php';
 
-  $email = $_POST['email'];
+  $username_or_email = $_POST['username_or_email'];
   $password = $_POST['password'];
 
-  if(empty($email) || empty($password)){ //This one right here checks if the user has left any blank value.
-    header("Location: ../login.php?error=empty_fields&email=".$email);
+  if(empty($username_or_email) || empty($password)){ //This one right here checks if the user has left any blank value.
+    header("Location: ../login.php?error=empty_fields&email=".$username_or_email);
     exit();
   }
   else { //This one right here checks if the email of the user exists in the database.
-    $sql = "SELECT * FROM user WHERE email=?";
+    $sql = "SELECT * FROM user WHERE username=? OR email=?";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
       header("Location: ../login.php?error=sql_error");
       exit();
     }
     else { //This one right here is called if the sql statement is working properly and executes it.
-      mysqli_stmt_bind_param($stmt, "s", $email);
+      mysqli_stmt_bind_param($stmt, "ss", $username_or_email, $username_or_email);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       if ($row = mysqli_fetch_assoc($result)) { //This one right here checks if we get an actual result from the database.
@@ -36,14 +36,14 @@ if(isset($_POST['login_submit'])){ //This one right here cheks if the user enter
           $_SESSION['userID'] = $row['id'];
           $_SESSION['userUsername'] = $row['username'];
           $_SESSION['type'] = $row['type'];
-          $type = "SELECT type FROM user WHERE email=?";
+          $type = "SELECT type FROM user WHERE username=? OR email=?";
           $stmt = mysqli_stmt_init($connection);
           if (!mysqli_stmt_prepare($stmt, $type)) { //This one right here will check if the sql statement above working properly.
             header("Location: ../login.php?error=sql_error");
             exit();
           }
           else { //This one right here will execute if the sql statement above working properly.
-            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_bind_param($stmt, "ss", $username_or_email, $username_or_email);
             mysqli_stmt_execute($stmt);
             $some = mysqli_stmt_get_result($stmt);
             $row = mysqli_fetch_array($some);

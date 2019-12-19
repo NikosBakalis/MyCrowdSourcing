@@ -35,7 +35,7 @@
             }
           ?>
         <form action="includes/login.inc.php" method="post">
-          <input type="text" name="email" placeholder="E-mail...">
+          <input type="text" name="username_or_email" placeholder="Username or e-mail...">
           <input type="password" name="password" placeholder="Password...">
           <button type="submit" name="login_submit">Login</button>
         </form>
