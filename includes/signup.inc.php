@@ -53,7 +53,9 @@ if (isset($_POST['signup_submit'])) {
   else { //This one right here checks if the email of the user is already used in the database.
     $sql = "SELECT email FROM user WHERE email=?";
     $stmt = mysqli_stmt_init($connection);
-    if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
+    $sql1 = "SELECT username FROM user WHERE username=?";
+    $stmt1 = mysqli_stmt_init($connection);
+    if (!mysqli_stmt_prepare($stmt, $sql) || !mysqli_stmt_prepare($stmt1, $sql1)) { //This one right here will check if the sql statement above working properly.
       header("Location: ../signup.php?error=sql_error");
       exit();
     }
@@ -61,8 +63,12 @@ if (isset($_POST['signup_submit'])) {
       mysqli_stmt_bind_param($stmt, "s", $email);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_store_result($stmt); //This one right here fecthes info from the database and thats why we dont use it again down after line 80.
+      mysqli_stmt_bind_param($stmt1, "s", $username);
+      mysqli_stmt_execute($stmt1);
+      mysqli_stmt_store_result($stmt1); //This one right here fecthes info from the database and thats why we dont use it again down after line 80.
       $resultCheck = mysqli_stmt_num_rows($stmt);
-      if ($resultCheck > 0) {
+      $resultCheck1 = mysqli_stmt_num_rows($stmt1);
+      if ($resultCheck > 0 || $resultCheck1 > 0) {
         header("Location: ../signup.php?error=user_already_taken&firstname=".$firstname."&lastname=".$lastname."&username=".$username);
         exit();
       }

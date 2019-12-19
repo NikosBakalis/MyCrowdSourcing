@@ -36,7 +36,7 @@
                 echo '<p class="signup_error">!!!DATABASE ERROR!!!</p>';
               }
               else if($_GET['error'] == "user_already_taken"){
-                echo '<p class="signup_error">There is already a user with that e-mail address!</p>';
+                echo '<p class="signup_error">There is already a user with that username or e-mail address!</p>';
               }
               else {
                 echo '<p class="signup_error">Unknown error!</p>';
