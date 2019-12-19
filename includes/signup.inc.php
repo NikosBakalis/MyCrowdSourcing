@@ -62,10 +62,10 @@ if (isset($_POST['signup_submit'])) {
     else { //This one right here is called if the sql statement is working properly and executes it.
       mysqli_stmt_bind_param($stmt, "s", $email);
       mysqli_stmt_execute($stmt);
-      mysqli_stmt_store_result($stmt); //This one right here fecthes info from the database and thats why we dont use it again down after line 80.
+      mysqli_stmt_store_result($stmt); //This one right here fecthes info from the database and thats why we dont use it again down after line 86.
       mysqli_stmt_bind_param($stmt1, "s", $username);
       mysqli_stmt_execute($stmt1);
-      mysqli_stmt_store_result($stmt1); //This one right here fecthes info from the database and thats why we dont use it again down after line 80.
+      mysqli_stmt_store_result($stmt1); //This one right here fecthes info from the database and thats why we dont use it again down after line 86.
       $resultCheck = mysqli_stmt_num_rows($stmt);
       $resultCheck1 = mysqli_stmt_num_rows($stmt1);
       if ($resultCheck > 0 || $resultCheck1 > 0) {
