@@ -20,7 +20,7 @@
             <br>After that all of your data will be
             displayed in our maps.<br>
             Feal free to visit:
-            <a href="#">Services</a>
+            <a href="services.php">Services</a>
             for further info.
           </p>
           <div class="contact">
