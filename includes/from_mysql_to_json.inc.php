@@ -1,5 +1,7 @@
 <?php
 
+ini_set('memory_limit', '-1');
+
 if(isset($_POST['from_mysql_to_json'])){
   require 'dbhandler.inc.php';
 
@@ -128,6 +130,7 @@ if(isset($_POST['from_mysql_to_json'])){
     header('Pragma: public');
     header('Content-Length: '.filesize('../downloadable/'.$file_with_extension));
     readfile('../downloadable/'.$file_with_extension);
+    //fgets('../downloadable/'.$file_with_extension);
     unlink('../downloadable/'.$file_with_extension); //This one right here deletes the file we just parsed from the directory it has been uploaded.
     exit;
   }
