@@ -108,12 +108,12 @@ if(isset($_POST['from_mysql_to_json'])){
         }
       }
     }
-    //echo json_encode($recordObject, JSON_PRETTY_PRINT); //This one right here echos the $recordObject in html.
+    // echo json_encode($recordObject, JSON_PRETTY_PRINT); //This one right here echos the $recordObject in html.
     // $pieces = str_split(json_encode($recordObject, JSON_PRETTY_PRINT), 1024 * 4);
     // foreach ($pieces as $piece) {
     //     fwrite($file_for_user, $piece, strlen($piece));
     // }
-    fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT)); //This one right here writes into the file. /* This one right here gets error when it comes to realy big files. Try to break fwrite to smaller pieces like above */
+    fwrite($file_for_user, json_encode($recordObject, JSON_PRETTY_PRINT)); //This one right here writes into the file. /* This one right here also gets error when it comes to realy big files. Try to break fwrite to smaller pieces like above */
 
     fclose($file_for_user); //This one right here closes the file.
   }
