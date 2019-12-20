@@ -2,6 +2,7 @@
 
 session_start();
 set_time_limit (0);
+ini_set('memory_limit', '1000M');
 
 //This one right here is a function that allow us to find all the places in a fixed distance away from a fixed center we want.
 //Following the circled distance logic.
