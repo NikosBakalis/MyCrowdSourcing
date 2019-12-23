@@ -1,0 +1,42 @@
+
+Notice: Undefined variable: locations_array in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 3
+
+Warning: Invalid argument supplied for foreach() in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 3
+
+Notice: Undefined variable: activities_array in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 17
+
+Warning: Invalid argument supplied for foreach() in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 17
+
+Notice: Undefined variable: activities_details_array in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 31
+
+Warning: Invalid argument supplied for foreach() in C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php on line 31
+
+Warning: fopen(../uploads/5e000292904aa0.42570119.json): failed to open stream: Permission denied in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php on line 48
+
+Fatal error: Uncaught Error: Class 'JsonMachine\Exception\InvalidArgumentException' not found in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php:17
+Stack trace:
+#0 C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php(48): JsonMachine\StreamBytes->__construct(false)
+#1 C:\xampp\htdocs\MyCrowdSourcing\includes\from_json_to_array_with_json_machine.inc.php(46): JsonMachine\JsonMachine::fromFile('../uploads/5e00...', '/locations')
+#2 C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php(2): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php on line 17
+
+Warning: fopen(../uploads/5e0002d87fadc3.13166176.json): failed to open stream: Permission denied in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php on line 48
+
+Fatal error: Uncaught Error: Class 'JsonMachine\Exception\InvalidArgumentException' not found in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php:17
+Stack trace:
+#0 C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php(48): JsonMachine\StreamBytes->__construct(false)
+#1 C:\xampp\htdocs\MyCrowdSourcing\includes\from_json_to_array_with_json_machine.inc.php(46): JsonMachine\JsonMachine::fromFile('../uploads/5e00...', '/locations')
+#2 C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php(2): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php on line 17
+
+Warning: fopen(../uploads/5e00050aba0ab3.17788646.json): failed to open stream: Permission denied in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php on line 48
+
+Fatal error: Uncaught Error: Class 'JsonMachine\Exception\InvalidArgumentException' not found in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php:17
+Stack trace:
+#0 C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\JsonMachine.php(48): JsonMachine\StreamBytes->__construct(false)
+#1 C:\xampp\htdocs\MyCrowdSourcing\includes\from_json_to_array_with_json_machine.inc.php(46): JsonMachine\JsonMachine::fromFile('../uploads/5e00...')
+#2 C:\xampp\htdocs\MyCrowdSourcing\includes\from_array_to_mysql.inc.php(2): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\MyCrowdSourcing\includes\json_machine\StreamBytes.php on line 17

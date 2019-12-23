@@ -29,7 +29,8 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
 
             move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
             // include('from_json_to_mysql_with_json_decode.inc.php');
-            include('from_json_to_mysql_with_json_machine.inc.php');
+            // include('from_json_to_mysql_with_json_machine.inc.php');
+            include('from_json_to_array_with_json_machine.inc.php');
           }
           else {
             echo "Your file is too big!";

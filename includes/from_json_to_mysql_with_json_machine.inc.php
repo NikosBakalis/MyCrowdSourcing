@@ -30,6 +30,7 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
     require 'dbhandler.inc.php';
 
     $locations = \JsonMachine\JsonMachine::fromFile('../uploads/'.$files, "/locations");
+
       foreach ($locations as $key => $location_values) {
         $sql1 = "INSERT INTO location(userID, timestamp_l, latitude, longitude, accuracy, heading, vertical_accuracy, velocity, altitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt1 = mysqli_stmt_init($connection);
@@ -42,7 +43,6 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
           $thisTimestampMs_l = date('Y-m-d H:i:s', $location_values['timestampMs'] / 1000);
           $thisLatitudeE7 = $location_values['latitudeE7'] / pow(10, 7);
           $thislongitudeE7 = $location_values['longitudeE7'] / pow(10, 7);
-
           if (getDistanceBetweenPointsNew(38.230462, 21.753150, $thisLatitudeE7, $thislongitudeE7) < 10.0) { //This one right here is the use of the function we created on line 11.
             mysqli_stmt_bind_param($stmt1, "ssddiiiii", $_SESSION['userID'], $thisTimestampMs_l, $thisLatitudeE7, $thislongitudeE7, $location_values['accuracy'], $location_values['heading'], $location_values['verticalAccuracy'], $location_values['velocity'], $location_values['altitude']);
             mysqli_stmt_execute($stmt1);
@@ -56,8 +56,8 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
                 }
                 else {
                   $thisTimestampMs_a = date('Y-m-d H:i:s', $activity_values['timestampMs'] / 1000); //This one right here help us change googles json data while parsing so as to use them later.
-                  mysqli_stmt_bind_param($stmt2, "sss", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a);
-                  mysqli_stmt_execute($stmt2);
+                    mysqli_stmt_bind_param($stmt2, "sss", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a);
+                    mysqli_stmt_execute($stmt2);
                   foreach ($activity_values['activity'] as $keyss => $activity_details_values) {
                     $sql3 = "INSERT INTO activity_details(userID, timestamp_l, timestamp_a, type, confidence) VALUES (?, ?, ?, ?, ?)";
                     $stmt3 = mysqli_stmt_init($connection);
