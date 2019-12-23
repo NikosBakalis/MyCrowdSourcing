@@ -4,7 +4,6 @@ session_start();
 set_time_limit (0);
 ini_set('memory_limit', '-1');
 
-header("Location: ../index.php"); //This one right here takes you back to the main page.
 require_once('json_machine\JsonMachine.php');
 
 //This one right here is a function that allow us to find all the places in a fixed distance away from a fixed center we want.
@@ -41,13 +40,10 @@ $activities_details_array = array();
 
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
   if ($files != '.' && $files != '..') { //This one right here excludes the "." and the ".." files from the folder searching.
-
-
     $locations = \JsonMachine\JsonMachine::fromFile('../uploads/'.$files, "/locations");
       foreach ($locations as $key => $location_values) {
         //This one right below help us change googles json data while parsing so as to use them later.
         $thisTimestampMs_l = date('Y-m-d H:i:s', $location_values['timestampMs'] / 1000);
-        echo $thisTimestampMs_l;
         $thisLatitudeE7 = $location_values['latitudeE7'] / pow(10, 7);
         $thislongitudeE7 = $location_values['longitudeE7'] / pow(10, 7);
         if (getDistanceBetweenPointsNew(38.230462, 21.753150, $thisLatitudeE7, $thislongitudeE7) < 10.0) { //This one right here is the use of the function we created on line 11.
@@ -159,6 +155,7 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
           } //if closes.
         } //functions if closes.
       } //foreach closes.
+      require_once('from_array_to_mysql.inc.php');
     unlink('../uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
   } //if closes.
 } //when closes.
@@ -170,6 +167,6 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
 // print("<pre>".print_r($activities_details_array, true)."</pre>");
 // unset($activities_details_array);
 
-require_once('from_array_to_mysql.inc.php');
+header("Location: ../index.php"); //This one right here takes you back to the main page.
 
 ?>

@@ -44,7 +44,7 @@ foreach ($activities_details_array as $item) {
 }
 unset($activities_details_array);
 
-// header("Location: ../index.php"); //This one right here takes you back to the main page.
+header("Location: ../index.php"); //This one right here takes you back to the main page.
 
 // print("<pre>".print_r($locations_array, true)."</pre>");
 
