@@ -28,7 +28,7 @@
       This right here will be the main page of our Website
       <div class="circled_leaflet_map">
         <div id="mapid"
-          style="width: 1000px;
+          style="width: 900px;
           height: 900px;
           border-radius: 50%;
           position: relative;
@@ -40,7 +40,8 @@
         var mymap = L.map('mapid').setView([38.230462, 21.753150], 12.5);
 
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=jYXMr02JU1RhJCrKJMBl', {
-        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'//,
+        //minZoom: 14
         }).addTo(mymap);
 
         //const tilesUrl = 'https://a.tile.openstreetmap.org/${z}/${x}/${y}.png';
