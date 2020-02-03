@@ -57,10 +57,51 @@
         <div id="top_right">
           <?php
             if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
-              echo '<form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="upload_file">
-                    <button type="submit" name="submit_file">UPLOAD</button>
-                    </form>';
+              // echo '<form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+              //       <input type="file" name="upload_file">
+              //       <button id="submit" type="submit" name="submit_file">UPLOAD</button>
+              //       </form>';
+              ?>
+
+              <form class="form" id="uploadForm">
+                <input type="file" name="upload_file" id="inpFile">
+                <input class="button" type="submit" name="submit_file" value="Upload">
+              </form>
+
+              <div class="progress_bar" id="progressBar">
+                <div class="progress_bar_fill">
+                  <span class="progress_bar_text">0%</span>
+                </div>
+              </div>
+
+              <script>
+                const uploadForm = document.getElementById("uploadForm");
+                const inpFile = document.getElementById("inpFile");
+                const progressBarFill = document.querySelector("#progressBar > .progress_bar_fill");
+                const progressBarText = progressBarFill.querySelector(".progress_bar_text");
+
+                uploadForm.addEventListener("submit", uploadFile);
+
+                function uploadFile(e){
+                  e.preventDefault();
+
+                  const xhr = new XMLHttpRequest();
+
+                  xhr.open("POST", "includes/uploads.inc.php");
+                  // xhr.open("POST", "includes/from_mysql_to_heatmap.inc.php");
+                  xhr.upload.addEventListener("progress", e => {
+                    const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
+
+                    progressBarFill.style.width = percent.toFixed(2) + "%";
+                    progressBarText.textContent = percent.toFixed(2) + "%";
+                  })
+                  xhr.setRequestHeader("Content-Type", "multipart/form-data");
+                  xhr.send(new FormData(uploadForm));
+                  //console.log($targetPath);
+                }
+              </script>
+
+              <?php
             } else {
               echo 'Top Right';
             }
