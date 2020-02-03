@@ -156,6 +156,8 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
         } //functions if closes.
       } //foreach closes.
       require_once('from_array_to_mysql.inc.php');
+      // execInBackground('../../../php/php.exe from_array_to_mysql.inc.php');
+      // popen(require_once('from_array_to_mysql.inc.php'), 'e');
     unlink('../uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
   } //if closes.
 } //when closes.
