@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
+// if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
   $file = $_FILES['upload_file']; //This one right here stores the uploaded file to $file variable.
 
   //print_r($file); //This one right here provides us the 'info' we use right below.
@@ -47,10 +47,10 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
       echo "You can't upload files of this type!";
       header("Location: ../index.php?upload=fail");
     }
-  }
-  else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
-    header("Location: ../index.php");
-    exit();
-  }
+  // }
+  // else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
+  //   header("Location: ../index.php");
+  //   exit();
+  // }
 
 ?>
