@@ -1,0 +1,75 @@
+{
+  "locations" : [ {
+    "timestampMs" : "1505832537989",
+    "latitudeE7" : 379418597,
+    "longitudeE7" : 237122944,
+    "accuracy" : 24,
+    "velocity" : 0,
+    "heading" : 190,
+    "altitude" : 148,
+    "activity" : [ {
+      "timestampMs" : "1505832536060",
+      "activity" : [ {
+        "type" : "ON_FOOT",
+        "confidence" : 92
+      }, {
+        "type" : "WALKING",
+        "confidence" : 54
+      }, {
+        "type" : "RUNNING",
+        "confidence" : 38
+      }, {
+        "type" : "ON_BICYCLE",
+        "confidence" : 8
+      } ]
+    } ]
+  }, {
+    "timestampMs" : "1505832553067",
+    "latitudeE7" : 379416835,
+    "longitudeE7" : 237122252,
+    "accuracy" : 12,
+    "velocity" : 1,
+    "heading" : 338,
+    "altitude" : 92
+  }, {
+    "timestampMs" : "1505832569067",
+    "latitudeE7" : 379418558,
+    "longitudeE7" : 237123330,
+    "accuracy" : 24,
+    "velocity" : 1,
+    "heading" : 25,
+    "altitude" : 100,
+    "activity" : [ {
+      "timestampMs" : "1505832570174",
+      "activity" : [ {
+        "type" : "TILTING",
+        "confidence" : 100
+      } ]
+    } ]
+  }, {
+    "timestampMs" : "1505832585000",
+    "latitudeE7" : 379419849,
+    "longitudeE7" : 237123338,
+    "accuracy" : 6,
+    "velocity" : 0,
+    "altitude" : 96
+  }, {
+    "timestampMs" : "1505832601000",
+    "latitudeE7" : 379422169,
+    "longitudeE7" : 237123571,
+    "accuracy" : 8,
+    "velocity" : 0,
+    "heading" : 14,
+    "altitude" : 95,
+    "activity" : [ {
+      "timestampMs" : "1505832604288",
+      "activity" : [ {
+        "type" : "ON_FOOT",
+        "confidence" : 100
+      }, {
+        "type" : "WALKING",
+        "confidence" : 100
+      } ]
+    } ]
+  } ]
+ }

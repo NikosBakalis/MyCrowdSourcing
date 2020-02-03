@@ -1,0 +1,138 @@
+{
+  "locations" : [ {
+    "timestampMs" : "1575042800043",
+    "latitudeE7" : 382338210,
+    "longitudeE7" : 217288506,
+    "accuracy" : 16,
+    "activity" : [ {
+      "timestampMs" : "1575042809000",
+      "activity" : [ {
+        "type" : "UNKNOWN",
+        "confidence" : 40
+      }, {
+        "type" : "IN_VEHICLE",
+        "confidence" : 10
+      }, {
+        "type" : "ON_BICYCLE",
+        "confidence" : 10
+      }, {
+        "type" : "ON_FOOT",
+        "confidence" : 10
+      }, {
+        "type" : "WALKING",
+        "confidence" : 10
+      }, {
+        "type" : "RUNNING",
+        "confidence" : 10
+      }, {
+        "type" : "STILL",
+        "confidence" : 10
+      }, {
+        "type" : "IN_ROAD_VEHICLE",
+        "confidence" : 10
+      }, {
+        "type" : "IN_RAIL_VEHICLE",
+        "confidence" : 10
+      }, {
+        "type" : "IN_FOUR_WHEELER_VEHICLE",
+        "confidence" : 10
+      }, {
+        "type" : "IN_CAR",
+        "confidence" : 10
+      } ]
+    } ]
+  }, {
+    "timestampMs" : "1575042820059",
+    "latitudeE7" : 382338166,
+    "longitudeE7" : 217288500,
+    "accuracy" : 16
+  }, {
+    "timestampMs" : "1575042840237",
+    "latitudeE7" : 382338194,
+    "longitudeE7" : 217288529,
+    "accuracy" : 16,
+    "activity" : [ {
+      "timestampMs" : "1575042846223",
+      "activity" : [ {
+        "type" : "STILL",
+        "confidence" : 33
+      }, {
+        "type" : "ON_FOOT",
+        "confidence" : 27
+      }, {
+        "type" : "WALKING",
+        "confidence" : 27
+      }, {
+        "type" : "IN_VEHICLE",
+        "confidence" : 18
+      }, {
+        "type" : "IN_RAIL_VEHICLE",
+        "confidence" : 18
+      }, {
+        "type" : "IN_ROAD_VEHICLE",
+        "confidence" : 17
+      }, {
+        "type" : "IN_FOUR_WHEELER_VEHICLE",
+        "confidence" : 17
+      }, {
+        "type" : "IN_CAR",
+        "confidence" : 17
+      }, {
+        "type" : "ON_BICYCLE",
+        "confidence" : 4
+      }, {
+        "type" : "UNKNOWN",
+        "confidence" : 1
+      } ]
+    } ]
+  }, {
+    "timestampMs" : "1575042860260",
+    "latitudeE7" : 382338208,
+    "longitudeE7" : 217288493,
+    "accuracy" : 16
+  }, {
+    "timestampMs" : "1575042880364",
+    "latitudeE7" : 382338199,
+    "longitudeE7" : 217288527,
+    "accuracy" : 16
+  }, {
+    "timestampMs" : "1575043007446",
+    "latitudeE7" : 382338309,
+    "longitudeE7" : 217288618,
+    "accuracy" : 15,
+    "activity" : [ {
+      "timestampMs" : "1575042955999",
+      "activity" : [ {
+        "type" : "STILL",
+        "confidence" : 99
+      }, {
+        "type" : "UNKNOWN",
+        "confidence" : 1
+      } ]
+    } ]
+  }, {
+    "timestampMs" : "1575043129603",
+    "latitudeE7" : 382338294,
+    "longitudeE7" : 217288621,
+    "accuracy" : 15,
+    "activity" : [ {
+      "timestampMs" : "1575043068573",
+      "activity" : [ {
+        "type" : "STILL",
+        "confidence" : 99
+      }, {
+        "type" : "UNKNOWN",
+        "confidence" : 1
+      } ]
+    }, {
+      "timestampMs" : "1575043129582",
+      "activity" : [ {
+        "type" : "STILL",
+        "confidence" : 99
+      }, {
+        "type" : "UNKNOWN",
+        "confidence" : 1
+      } ]
+    } ]
+  } ]
+ }
