@@ -91,7 +91,6 @@
 
                       xhr.open("POST", "includes/uploads.inc.php");
                       // xhr.open("POST", "includes/from_mysql_to_heatmap.inc.php");
-                      console.log("Message");
                       xhr.upload.addEventListener("progress", e => {
                         const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
 
@@ -100,7 +99,6 @@
                       })
                       //xhr.setRequestHeader("Content-Type", "multipart/form-data");
                       xhr.send(new FormData(upload_form));
-                      console.log("Test");
                     }
                 });
               });
