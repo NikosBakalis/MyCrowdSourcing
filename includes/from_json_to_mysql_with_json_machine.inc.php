@@ -3,8 +3,10 @@
 session_start();
 set_time_limit (0);
 ini_set('memory_limit', '-1');
-
-require_once('json_machine\JsonMachine.php');
+echo "1";
+ignore_user_abort(true);
+flush();
+require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/json_machine/JsonMachine.php');
 
 //This one right here is a function that allow us to find all the places in a fixed distance away from a fixed center we want.
 //Following the circled distance logic.
@@ -21,15 +23,16 @@ function getDistanceBetweenPointsNew($latitude_center, $longitude_center, $latit
         case 'Km' : $distance = $distance * 1.609344;
     }
 
-    return (round($distance,7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
+    return (round($distance, 7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
 }
 
-$resource = opendir("../uploads"); //This one right here checks the directory we want.
+$resource = opendir("C:/xampp/htdocs/MyCrowdSourcing/uploads"); //This one right here checks the directory we want.
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
   if ($files != '.' && $files != '..') { //This one right here excludes the "." and the ".." files from the folder searching.
-    require 'dbhandler.inc.php';
+    require 'C:/xampp/htdocs/MyCrowdSourcing/includes/dbhandler.inc.php';
+    echo "2";
 
-    $locations = \JsonMachine\JsonMachine::fromFile('../uploads/'.$files, "/locations");
+    $locations = \JsonMachine\JsonMachine::fromFile('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files, "/locations");
 
       foreach ($locations as $key => $location_values) {
         $sql1 = "INSERT INTO location(userID, timestamp_l, latitude, longitude, accuracy, heading, vertical_accuracy, velocity, altitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -55,6 +58,7 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
                   exit();
                 }
                 else {
+                  echo $thisTimestampMs_l;
                   $thisTimestampMs_a = date('Y-m-d H:i:s', $activity_values['timestampMs'] / 1000); //This one right here help us change googles json data while parsing so as to use them later.
                     mysqli_stmt_bind_param($stmt2, "sss", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a);
                     mysqli_stmt_execute($stmt2);
@@ -76,9 +80,11 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
           } //functions if closes.
         } //else closes.
       } //foreach closes.
-    unlink('../uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
+    unlink('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
   } //if closes.
 } //when closes.
+echo "4";
+proc_close($process);
 header("Location: ../index.php"); //This one right here takes you back to the main page.
 
 
