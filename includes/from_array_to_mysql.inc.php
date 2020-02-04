@@ -1,6 +1,6 @@
 <?php
 // include_once("from_json_to_array_with_json_machine.inc.php");
-require 'dbhandler.inc.php'; //This one  right here requires the file dbhandler.inc.php that creates the conection.
+require 'C:/xampp/htdocs/MyCrowdSourcing/includes/dbhandler.inc.php'; //This one  right here requires the file dbhandler.inc.php that creates the conection.
 
 foreach ($locations_array as $item) { //This one right here, $locations_array, is an array  from file from_json_to_array_with_json_machine.inc.php.
   $sql1 = "INSERT INTO location(userID, timestamp_l, latitude, longitude, accuracy, heading, vertical_accuracy, velocity, altitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -44,7 +44,7 @@ foreach ($activities_details_array as $item) { //This one right here, $activitie
 }
 unset($activities_details_array); //This one right here clears the $activities_details_array.
 
-header("Location: ../index.php"); //This one right here takes you back to the main page.
+// header("Location: ../index.php"); //This one right here takes you back to the main page.
 
 // print("<pre>".print_r($locations_array, true)."</pre>");
 
