@@ -1,5 +1,20 @@
 <?php
 
+function execInBackground($cmd) {
+  $descriptorspec = array(
+     0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
+     1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
+     2 => array("pipe", "w")   // stderr is a file to write to
+  );
+  $pipes = array();
+  if(substr(php_uname(), 0, 7) == "Windows"){
+    $process = /*pclose(*/proc_open($cmd, $descriptorspec, $pipes)/*)*/;
+  }
+  else {
+    exec($cmd . " > /dev/null &");
+  }
+}
+
 // if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
   $file = $_FILES['upload_file']; //This one right here stores the uploaded file to $file variable.
 
@@ -29,8 +44,12 @@
 
             move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
             // include('from_json_to_mysql_with_json_decode.inc.php');
-            // include('from_json_to_mysql_with_json_machine.inc.php');
-            include('from_json_to_array_with_json_machine.inc.php');
+            include('from_json_to_mysql_with_json_machine.inc.php');
+            echo "1";
+            // execInBackground('php C:\xampp\htdocs\MyCrowdSourcing\includes\from_json_to_mysql_with_json_machine.inc.php');
+            // execInBackground('php C:\xampp\htdocs\MyCrowdSourcing\includes\from_mysql_to_heatmap');
+            echo "string";
+            //include('from_json_to_array_with_json_machine.inc.php');
           }
           else {
             echo "Your file is too big!";
@@ -49,7 +68,7 @@
     }
   // }
   // else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
-  //   header("Location: ../index.php");
+    header("Location: ../index.php");
   //   exit();
   // }
 
