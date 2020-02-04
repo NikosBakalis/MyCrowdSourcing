@@ -4,7 +4,7 @@ session_start();
 set_time_limit (0);
 ini_set('memory_limit', '-1');
 
-require_once('json_machine\JsonMachine.php');
+require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/json_machine/JsonMachine.php');
 
 //This one right here is a function that allow us to find all the places in a fixed distance away from a fixed center we want.
 //Following the circled distance logic.
@@ -24,23 +24,24 @@ function getDistanceBetweenPointsNew($latitude_center, $longitude_center, $latit
     return (round($distance,7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
 }
 
-// function execInBackground($cmd) {
-//   if(substr(php_uname(), 0, 7) == "Windows"){
-//     pclose(proc_open("start /B ". $cmd, "r"));
-//   }
-//   else {
-//     exec($cmd . " > /dev/null &");
-//   }
-// }
+function execInBackground($cmd) {
+  if(substr(php_uname(), 0, 7) == "Windows"){
+    pclose(proc_open("start /B ". $cmd, "r"));
+  }
+  else {
+    exec($cmd . " > /dev/null &");
+  }
+}
 
-$resource = opendir("../uploads"); //This one right here checks the directory we want.
+// $resource = opendir("../uploads"); //This one right here checks the directory we want.
+$resource = opendir("C:/xampp/htdocs/MyCrowdSourcing/uploads");
 $locations_array = array();
 $activities_array = array();
 $activities_details_array = array();
 
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
   if ($files != '.' && $files != '..') { //This one right here excludes the "." and the ".." files from the folder searching.
-    $locations = \JsonMachine\JsonMachine::fromFile('../uploads/'.$files, "/locations");
+    $locations = \JsonMachine\JsonMachine::fromFile('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files, "/locations");
       foreach ($locations as $key => $location_values) {
         //This one right below help us change googles json data while parsing so as to use them later.
         $thisTimestampMs_l = date('Y-m-d H:i:s', $location_values['timestampMs'] / 1000);
@@ -155,10 +156,10 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
           } //if closes.
         } //functions if closes.
       } //foreach closes.
-      require_once('from_array_to_mysql.inc.php');
-      // execInBackground('../../../php/php.exe from_array_to_mysql.inc.php');
+      require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/from_array_to_mysql.inc.php');
+      // execInBackground('php from_array_to_mysql.inc.php');
       // popen(require_once('from_array_to_mysql.inc.php'), 'e');
-    unlink('../uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
+    unlink('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
   } //if closes.
 } //when closes.
 // print_r($locations_array);
@@ -169,6 +170,6 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
 // print("<pre>".print_r($activities_details_array, true)."</pre>");
 // unset($activities_details_array);
 
-header("Location: ../index.php"); //This one right here takes you back to the main page.
+ // header("Location: ../index.php"); //This one right here takes you back to the main page.
 
 ?>
