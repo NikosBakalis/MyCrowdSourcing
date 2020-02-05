@@ -1,6 +1,8 @@
 <?php
 
-function execInBackground($cmd) {
+session_start();
+
+function execInBackground($cmd, $current_userID) {
   $descriptorspec = array(
      0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
      1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
@@ -8,14 +10,21 @@ function execInBackground($cmd) {
   );
   $pipes = array();
   if(substr(php_uname(), 0, 7) == "Windows"){
-    $process = /*pclose(*/proc_open($cmd, $descriptorspec, $pipes)/*)*/;
+    $process = /*pclose(*/proc_open("start /B ". $cmd, $descriptorspec, $pipes)/*)*/;
   }
   else {
     exec($cmd . " > /dev/null &");
   }
+
+  $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!");
+  $txt = $_SESSION['userID']."\n";
+  fwrite($myfile, $txt);
+  fclose($myfile);
+
+  proc_close($process);
 }
 
-// if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
+if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
   $file = $_FILES['upload_file']; //This one right here stores the uploaded file to $file variable.
 
   //print_r($file); //This one right here provides us the 'info' we use right below.
@@ -43,33 +52,33 @@ function execInBackground($cmd) {
             $file_destination = '../uploads/'.$file_name_new; //This one right here finally uploads the file to the destination we want to.
 
             move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
-            // include('from_json_to_mysql_with_json_decode.inc.php');
-            include('from_json_to_mysql_with_json_machine.inc.php');
-            echo "1";
-            // execInBackground('php C:\xampp\htdocs\MyCrowdSourcing\includes\from_json_to_mysql_with_json_machine.inc.php');
-            // execInBackground('php C:\xampp\htdocs\MyCrowdSourcing\includes\from_mysql_to_heatmap');
-            echo "string";
-            //include('from_json_to_array_with_json_machine.inc.php');
+
+            execInBackground('C:/xampp/php/php.exe C:/xampp/htdocs/MyCrowdSourcing/includes/from_json_to_mysql_with_json_machine.inc.php', $_SESSION['userID']);
+            header("Location: ../index.php?upload=success");
+            exit();
           }
           else {
             echo "Your file is too big!";
             header("Location: ../index.php?upload=fail");
+            exit();
           }
         }
         else {
           echo "There was an error uploading your file!";
           header("Location: ../index.php?upload=fail");
+          exit();
         }
       }
     }
     else {
       echo "You can't upload files of this type!";
       header("Location: ../index.php?upload=fail");
+      exit();
     }
-  // }
-  // else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
+  }
+  else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
     header("Location: ../index.php");
-  //   exit();
-  // }
+    exit();
+  }
 
 ?>
