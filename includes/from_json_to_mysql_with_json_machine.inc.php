@@ -1,9 +1,8 @@
 <?php
 
-$myfile = fopen("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt", "r") or die("Unable to open file!");
-$_SESSION['userID'] = file_get_contents('C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt');
-fclose($myfile);
-$_SESSION['userID'] = str_replace("\n", "", $_SESSION['userID']);
+$myfile = fopen("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt", "r") or die("Unable to open file!"); // This one right here opes the file we creted on uploads.inc.php.
+$_SESSION['userID'] = file_get_contents('C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt'); // This one right here gets the contents of the file.
+fclose($myfile); // This one right here closes the file we opened.
 
 set_time_limit (0);
 ini_set('memory_limit', '-1');

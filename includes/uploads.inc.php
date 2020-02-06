@@ -2,26 +2,27 @@
 
 session_start();
 
+// This one right here is to create a function that executes some art of my code in the background.
 function execInBackground($cmd, $current_userID) {
   $descriptorspec = array(
      0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
      1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
      2 => array("pipe", "w")   // stderr is a file to write to
   );
-  $pipes = array();
-  if(substr(php_uname(), 0, 7) == "Windows"){
-    $process = /*pclose(*/proc_open("start /B ". $cmd, $descriptorspec, $pipes)/*)*/;
+  $pipes = array(); // This one right here is an empty array.
+  if(substr(php_uname(), 0, 7) == "Windows"){ // This one right here checks if we are on a suprime enviroment!!!
+    $process = /*pclose(*/proc_open("start /B ". $cmd, $descriptorspec, $pipes)/*)*/; // This one right here needs THREE arguments to execure!!!
   }
-  else {
-    exec($cmd . " > /dev/null &");
+  else { // This one right here checks if we use trollinux.
+    exec($cmd . " > /dev/null &"); // This one right here is like proc_open.
   }
 
-  $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!");
-  $txt = $_SESSION['userID']."\n";
-  fwrite($myfile, $txt);
-  fclose($myfile);
+  $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!"); //This one right here creates a file in uploads folder with name "current_userID.txt"
+  $txt = $_SESSION['userID']; // This one right here stores the value of the userID to a variable with name $txt.
+  fwrite($myfile, $txt); // This one right here writes in the file the userID of the current user.
+  fclose($myfile); // This one right here closes the file.
 
-  proc_close($process);
+  proc_close($process); // This one right here closes the process we opened before.
 }
 
 if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
