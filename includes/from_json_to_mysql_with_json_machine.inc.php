@@ -3,7 +3,7 @@
 $myfile = fopen("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt", "r") or die("Unable to open file!");
 $_SESSION['userID'] = file_get_contents('C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt');
 fclose($myfile);
-$_SESSION['userID'] = str_replace("\n", "", $_SESSION['userID']);
+// $_SESSION['userID'] = str_replace("\n", "", $_SESSION['userID']);
 
 set_time_limit (0);
 ini_set('memory_limit', '-1');
