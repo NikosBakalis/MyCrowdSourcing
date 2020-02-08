@@ -51,34 +51,39 @@
           attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'//,
           //minZoom: 14
         }).addTo(map);
-        function loadMap(points){
 
-          var heat = L.heatLayer(points, {radius: 15}).addTo(map);
+        var heat = L.heatLayer([[38.230462, 21.753150]], {radius: 15}).addTo(map), draw = true;
+
+        function load_heatmap(points){
+          var heat = L.heatLayer(points, {radius: 15}).addTo(map), draw = true;
+        }
+
+        function add_heatmap_points(points){
+          // var heat = L.heatLayer([[0, 0]], {radius: 15}).addTo(map), draw = true;
+          for (const values in points) {
+            // console.log(`${points[values]}`);
+            heat.addLatLng(points[values]);
+          }
         }
         //addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
         // var heat = L.heatLayer(this.responseText, {radius: 25}).addTo(map);
-
     </script>
+
     <script>
       Object.size = function(obj) {
         var size = 0, key;
         for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++;
+          if (obj.hasOwnProperty(key)) size++;
         }
         return size;
       };
-    </script>
-    <script>
-    </script>
-    <script>
-      function arr_diff (a1, a2) {
 
+      function array_diff (a1, a2) {
         var a = [], diff = [];
 
         for (var i = 0; i < a1.length; i++) {
             a[a1[i]] = true;
         }
-
         for (var i = 0; i < a2.length; i++) {
             if (a[a2[i]]) {
                 delete a[a2[i]];
@@ -86,15 +91,13 @@
                 a[a2[i]] = true;
             }
         }
-
         for (var k in a) {
             diff.push(k);
         }
-
         return diff;
       }
 
-      function findDiff(str1, str2) {
+      function string_diff(str1, str2) {
         var diff = "";
         str2.split("").forEach(function(val, i) {
           if (val != str1.charAt(i))
@@ -107,11 +110,10 @@
         return this.substr(0, index) + replacement + this.substr(index + replacement.length);
       }
       // var hello="Hello World";
-      // alert(hello.replaceAt(0, "["));
+      // alert(hello.replaceAt(0, "[")); --> [ello World
 
       var data = null;
-      var new_data = "";
-      // var data = null;
+      var new_data = null;
       var new_response = "";
       more_loads();
       function more_loads(){
@@ -123,7 +125,8 @@
           success: function(text){
             response = text;
             data = JSON.parse(response);
-            // loadMap(data);
+            // load_heatmap(data);
+            // if (new_response !== response) {
             if (Object.size(new_data) !== Object.size(data)) {
               console.log("new data != data");
               // console.log(Object.size(new_data));
@@ -140,54 +143,39 @@
               var obj_to_string = JSON.stringify(data);
               // console.log(new_obj_to_string);
               // console.log(obj_to_string);
-              var diff = findDiff(new_obj_to_string, obj_to_string);
-              var a = diff.replaceAt(0, "[")
+              var diff = string_diff(new_obj_to_string, obj_to_string);
+              var replacement = diff.replaceAt(0, "[")
               // console.log(a);
               // var final = JSON.parse(diff);
               // diff_array = JSON.parse(diff_array.toString());
-              // let diff = findDiff(new_response, response);
+              // let diff = string_diff(new_response, response);
               // console.log(diff);
-              var final = JSON.parse(a);
+              var final = JSON.parse(replacement);
+              // load_heatmap(final);
+              add_heatmap_points(final);
+              // console.log(typeof(final));
+              // if (draw) {
+              //   heat.addLatLng(final);
+              // }
               // console.log(diff);
               new_data = data;
               new_response = response;
-              loadMap(final);
               data = null;
               response = null;
               // console.log(jQuery.isEmptyObject(data));
-              more_loads();
               // var refreshIntervalId = setInterval(function(){ more_loads(); }, 10000);
+              more_loads();
             }
             else {
               console.log("What the actual fuck?");
-              // loadMap(data);
+              // load_heatmap(data);
               // clearInterval(refreshIntervalId);
             }
           }
         });
       }
     </script>
-    <!-- <script>
-    var new_data = null;
-    var data = 'null';
 
-    while (new_data !== data) {
-      var response = '';
-      $.ajax({
-        type: "POST",
-        url: "includes/from_mysql_to_heatmap.inc.php",
-        async: true,
-        success: function(text){
-          response = text;
-          data = JSON.parse(response);
-          // new_data = JSON.parse(response);
-          loadMap(data);
-          console.log(data);
-          console.log(new_data);
-        }
-      });
-    }
-    </script> -->
       <div class="more_info">
         <div id="top_left">
           Top Left
