@@ -55,6 +55,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
             move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
 
             execInBackground('C:/xampp/php/php.exe C:/xampp/htdocs/MyCrowdSourcing/includes/from_json_to_mysql_with_json_machine.inc.php', $_SESSION['userID']);
+            // include('from_json_to_array_with_json_machine.inc.php');
             header("Location: ../index.php?upload=success");
             exit();
           }
@@ -78,7 +79,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
     }
   }
   else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
-    header("Location: ../index.php");
+    // header("Location: ../index.php");
     exit();
   }
 
