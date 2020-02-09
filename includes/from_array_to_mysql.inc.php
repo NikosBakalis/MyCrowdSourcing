@@ -1,6 +1,17 @@
 <?php
+
+
+// $myfile = fopen("C:/xampp/htdocs/MyCrowdSourcing/uploads/test.txt", "w") or die("Unable to open file!"); //This one right here creates a file in uploads folder with name "current_userID.txt"
+// $txt = 'a7dg4uoq4kdh0pohrm55hcqpqo'; // This one right here stores the value of the userID to a variable with name $txt.
+// fwrite($myfile, $txt); // This one right here writes in the file the userID of the current user.
+// fclose($myfile); // This one right here closes the file.
+
+set_time_limit (0);
+ini_set('memory_limit', '-1');
 // include_once("from_json_to_array_with_json_machine.inc.php");
 require 'C:/xampp/htdocs/MyCrowdSourcing/includes/dbhandler.inc.php'; //This one  right here requires the file dbhandler.inc.php that creates the conection.
+
+// print_r($locations_array);
 
 foreach ($locations_array as $item) { //This one right here, $locations_array, is an array  from file from_json_to_array_with_json_machine.inc.php.
   $sql1 = "INSERT INTO location(userID, timestamp_l, latitude, longitude, accuracy, heading, vertical_accuracy, velocity, altitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

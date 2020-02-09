@@ -1,8 +1,12 @@
 <?php
 
-session_start();
-set_time_limit (0);
-ini_set('memory_limit', '-1');
+// $myfile = fopen("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt", "r") or die("Unable to open file!"); // This one right here opes the file we creted on uploads.inc.php.
+// $_SESSION['userID'] = file_get_contents('C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt'); // This one right here gets the contents of the file.
+// fclose($myfile); // This one right here closes the file we opened.
+
+// session_start();
+// set_time_limit (0);
+// ini_set('memory_limit', '-1');
 
 require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/json_machine/JsonMachine.php');
 
@@ -21,16 +25,7 @@ function getDistanceBetweenPointsNew($latitude_center, $longitude_center, $latit
         case 'Km' : $distance = $distance * 1.609344;
     }
 
-    return (round($distance,7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
-}
-
-function execInBackground($cmd) {
-  if(substr(php_uname(), 0, 7) == "Windows"){
-    pclose(proc_open("start /B ". $cmd, "r"));
-  }
-  else {
-    exec($cmd . " > /dev/null &");
-  }
+    return (round($distance, 7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
 }
 
 // $resource = opendir("../uploads"); //This one right here checks the directory we want.
@@ -40,7 +35,7 @@ $activities_array = array();
 $activities_details_array = array();
 
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
-  if ($files != '.' && $files != '..') { //This one right here excludes the "." and the ".." files from the folder searching.
+  if ($files != '.' && $files != '..' && $files != 'current_userID.txt' && $files != 'empty_text.txt') { //This one right here excludes the "." and the ".." files from the folder searching.
     $locations = \JsonMachine\JsonMachine::fromFile('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files, "/locations");
       foreach ($locations as $key => $location_values) {
         //This one right below help us change googles json data while parsing so as to use them later.
@@ -156,16 +151,22 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
           } //if closes.
         } //functions if closes.
       } //foreach closes.
-      require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/from_array_to_mysql.inc.php');
+      // require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/from_array_to_mysql.inc.php');
+
+      // $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!"); //This one right here creates a file in uploads folder with name "current_userID.txt"
+      // $txt = $_SESSION['userID']; // This one right here stores the value of the userID to a variable with name $txt.
+      // fwrite($myfile, $txt); // This one right here writes in the file the userID of the current user.
+      // fclose($myfile); // This one right here closes the file.
+      print("<pre>".print_r($locations_array, true)."</pre>");
+      // file_put_contents("array.json", json_encode($arr1));
+      execInBackground('C:/xampp/php/php.exe C:/xampp/htdocs/MyCrowdSourcing/includes/from_array_to_mysql.inc.php', $_SESSION['userID']);
       // execInBackground('php from_array_to_mysql.inc.php');
       // popen(require_once('from_array_to_mysql.inc.php'), 'e');
     unlink('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files); //This one right here deletes the file we just parsed from the directory it has been uploaded.
   } //if closes.
 } //when closes.
-// print_r($locations_array);
 // print("<pre>".print_r($locations_array, true)."</pre>");
 // unset($locations_array);
-// print("<pre>".print_r($activities_array, true)."</pre>");
 // unset($activities_array);
 // print("<pre>".print_r($activities_details_array, true)."</pre>");
 // unset($activities_details_array);
