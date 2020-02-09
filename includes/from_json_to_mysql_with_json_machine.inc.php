@@ -28,7 +28,7 @@ function getDistanceBetweenPointsNew($latitude_center, $longitude_center, $latit
 
 $resource = opendir("C:/xampp/htdocs/MyCrowdSourcing/uploads"); //This one right here checks the directory we want.
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
-  if ($files != '.' && $files != '..') { //This one right here excludes the "." and the ".." files from the folder searching.
+  if ($files != '.' && $files != '..' && $files != 'current_userID.txt' && $files != 'empty_text.txt') { //This one right here excludes the "." and the ".." files from the folder searching.
     require 'C:/xampp/htdocs/MyCrowdSourcing/includes/dbhandler.inc.php';
 
     $locations = \JsonMachine\JsonMachine::fromFile('C:/xampp/htdocs/MyCrowdSourcing/uploads/'.$files, "/locations");
