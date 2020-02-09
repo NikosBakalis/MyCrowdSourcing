@@ -58,7 +58,7 @@
           var heat = L.heatLayer(points, {radius: 15}).addTo(map), draw = true;
         }
 
-        function add_heatmap_points(points){
+        function draw_heatmap(points){
           // var heat = L.heatLayer([[0, 0]], {radius: 15}).addTo(map), draw = true;
           for (const values in points) {
             // console.log(`${points[values]}`);
@@ -137,30 +137,49 @@
             console.log(Object.size(new_data));
             console.log(Object.size(data));
             if (Object.size(data) === 0) {
+              counter = 0;
               // console.log("data = 0");
             }
             else if (Object.size(new_data) !== Object.size(data)) {
+              counter = 0;
+              draw = true;
               // console.log("new data != data");
               var new_obj_to_string = JSON.stringify(new_data);
               var obj_to_string = JSON.stringify(data);
               var diff = string_diff(new_obj_to_string, obj_to_string);
+              // console.log(diff);
               var replacements = diff.replaceAt(0, "[");
+              // console.log(replacements);
               var final = JSON.parse(replacements);
-              console.log(Object.size(final));
-              add_heatmap_points(final);
+              draw_heatmap(final);
               new_data = data;
               new_response = response;
               data = null;
               response = null;
+              // new_obj_to_string = null;
+              // obj_to_string = null;
+              // diff = null;
+              // replacements = null;
+              // final = null;
               more_loads();
             }
-            else if (Object.size(new_data) === Object.size(data) && counter < 10) {
+            else if (Object.size(new_data) === Object.size(data) && counter < 10) { // This one right here is trash code.
               counter = counter + 1;
-              wait(1000);
+              draw = false;
               more_loads();
             }
             else {
               console.log("What the actual fuck?");
+              // data = null;
+              // new_data = null;
+              // response = null;
+              // new_response = null;
+              // counter = 0;
+              // new_obj_to_string = null;
+              // obj_to_string = null;
+              // diff = null;
+              // replacements = null;
+              // final = null;
             }
           }
         });
