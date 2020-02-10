@@ -211,33 +211,32 @@
               </div> -->
 
               <script>
-              // $(document).ready(function() {
-              //   $('#submit_file').click(function() {
-              //       const upload_form = document.getElementById("upload_form");
-              //       const upload_file = document.getElementById("upload_file");
-              //       const progressBarFill = document.querySelector("#progressBar > .progress_bar_fill");
-              //       const progressBarText = progressBarFill.querySelector(".progress_bar_text");
-              //
-              //       upload_form.addEventListener("submit", uploadFile);
-              //
-              //       function uploadFile(e){
-              //         e.preventDefault();
-              //
-              //         const xhr = new XMLHttpRequest();
-              //
-              //         xhr.open("POST", "includes/uploads.inc.php");
-              //         // xhr.open("POST", "includes/from_mysql_to_heatmap.inc.php");
-              //         xhr.upload.addEventListener("progress", e => {
-              //           const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-              //
-              //           progressBarFill.style.width = percent.toFixed(2) + "%";
-              //           progressBarText.textContent = percent.toFixed(2) + "%";
-              //         })
-              //         //xhr.setRequestHeader("Content-Type", "multipart/form-data");
-              //         xhr.send(new FormData(upload_form));
-              //       }
-              //   });
-              // });
+                // $(document).ready(function() {
+                //   $('#submit_file').click(function() {
+                //       const upload_form = document.getElementById("upload_form");
+                //       const upload_file = document.getElementById("upload_file");
+                //       const progressBarFill = document.querySelector("#progressBar > .progress_bar_fill");
+                //       const progressBarText = progressBarFill.querySelector(".progress_bar_text");
+                //
+                //       upload_form.addEventListener("submit", uploadFile);
+                //
+                //       function uploadFile(e){
+                //         e.preventDefault();
+                //
+                //         const xhr = new XMLHttpRequest();
+                //
+                //         xhr.open("POST", "includes/uploads.inc.php");
+                //         xhr.upload.addEventListener("progress", e => {
+                //           const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
+                //
+                //           progressBarFill.style.width = percent.toFixed(2) + "%";
+                //           progressBarText.textContent = percent.toFixed(2) + "%";
+                //         })
+                //        // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+                //         xhr.send(new FormData(upload_form));
+                //       }
+                //   });
+                // });
               </script>
 
               <?php
