@@ -114,7 +114,7 @@ function more_loads(){
         // final = null;
         more_loads();
       }
-      else if (Object.size(new_data) === Object.size(data) && counter < 100) { // This one right here is trash code.
+      else if (Object.size(new_data) === Object.size(data) && counter < 10) { // This one right here is trash code.
         counter = counter + 1;
         draw = false;
         more_loads();
