@@ -35,7 +35,7 @@ else {
 
     <script>
       $(document).ready(function(){
-        $("form").submit(function(event){
+        $("#test").submit(function(event){
           event.preventDefault();
           var start_datetime = $("#start_datetime").val();
           var end_datetime = $("#end_datetime").val();
@@ -47,7 +47,7 @@ else {
       });
     </script>
 
-    <form action="includes/test.inc.php" method="post">
+    <form id="test" action="includes/test.inc.php" method="post">
       <input id="start_datetime" type="text" name="name">
       <input id="end_datetime" type="text" name="name">
       <button id="datetimes" type="submit" name="datetimes">Submit</button>
