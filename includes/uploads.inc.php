@@ -79,7 +79,7 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
     }
   }
   else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
-    // header("Location: ../index.php");
+    header("Location: ../index.php");
     exit();
   }
 
