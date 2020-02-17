@@ -30,7 +30,7 @@ if (isset($_POST['type_of_activity'])) {
       $result_2 = mysqli_query($connection, $sql_2);
       $resultCheck_2 = mysqli_num_rows($result_2);
       // echo $resultCheck_2 . '<br>';
-      echo $resultCheck_1 / $resultCheck_2 . "%";
+      echo ($resultCheck_2 / $resultCheck_1) * 100 . "%";
 
       // if ($resultCheck_2 > 0) {
       //   while ($row = mysqli_fetch_assoc($result_2)) {
