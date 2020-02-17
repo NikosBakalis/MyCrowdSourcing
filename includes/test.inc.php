@@ -15,12 +15,9 @@ if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
   if (empty($name) || empty($another_name)) {
     echo "<span class='form-error'>Fill in all fields!</span>";
     $error_empty = true;
-  } else {
-    echo "<span class='form-success'>Success!</span>";
-  }
-
-  if (!empty($name) && !empty($another_name)) {
-    $sql = "SELECT * FROM location WHERE timestamp_l > '$name' AND timestamp_l < '$another_name'";
+  } else if (!empty($name) && !empty($another_name)) {
+    // echo "<span class='form-success'>Success!</span>";
+    $sql = "SELECT * FROM location WHERE timestamp_l >= '$name' AND timestamp_l <= '$another_name'";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
       echo "Connection failed!";
@@ -39,7 +36,6 @@ if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
       }
     }
   }
-
   // echo $float_latitide;
 } else {
   echo "There was an error!";
