@@ -6,9 +6,9 @@ include 'dbhandler.inc.php';
 
 if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
   $name = $_POST['start_datetime'];
-  echo $name;
+  // echo $name;
   $another_name = $_POST['end_datetime'];
-  echo $another_name;
+  // echo $another_name;
 
   $error_empty = false;
 
@@ -33,6 +33,7 @@ if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
       if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
           echo $row['latitude'] . '<br>';
+          echo $row['longitude'] . '<br>';
           // $float_latitide = floatval($row['latitude']);
         }
       }
