@@ -79,7 +79,7 @@ more_loads();
 function more_loads(){
   // var response = '';
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: "includes/from_mysql_to_heatmap.inc.php",
     // async: true,
     success: function(text){
