@@ -117,10 +117,18 @@ function more_loads(){
       else if (Object.size(new_data) === Object.size(data) && counter < 10) { // This one right here is trash code.
         counter = counter + 1;
         draw = false;
+        // console.log(counter);
         more_loads();
       }
+      // else if (counter >= 10) { // This one right here is trash code.
+      //   setInterval(more_loads, 10000);
+      //   console.log(counter);
+      //   console.log('WHAT?');
+      // }
       else {
+        counter = 0;
         console.log("What the actual fuck?");
+        // var myVar = setInterval(more_loads, 10000);
         // data = null;
         // new_data = null;
         // response = null;
