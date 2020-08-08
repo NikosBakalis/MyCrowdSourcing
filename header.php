@@ -32,6 +32,7 @@
           <?php
             if (isset($_SESSION['userID']) && $_SESSION['type'] == 'admin') {
               echo '<a href="admin.php"><li>Admin</li></a>';
+              echo '<a href="dashboard.php"><li>Dashboard</li></a>';
             }
           ?>
           <a href="index.php"><li>Home</li></a>
