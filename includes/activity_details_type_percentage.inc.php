@@ -34,20 +34,13 @@ $bothArray = array();
         $sql_2 = "SELECT * FROM activity_details WHERE type = '$name'"; // This one right here selects everything from activity_details table where type is something that the admin choose in frontend. I want only the count but I will retrieve it with mysqli_num_rows() function.
         $result_2 = mysqli_query($connection, $sql_2); // This one right here stores the query into a variable.
         $resultCheck_2 = mysqli_num_rows($result_2); // This one right here stores the mysqli_num_rows() into a variable.
-        // echo "<tr>";
-        // echo "<td>" . $resultCheck_3["type"] . "</td>";
-        // echo "<td>" . ($resultCheck_2 / $resultCheck_1) * 100 . "%" . "</td>"; // This one right here echos the activity_percentage of the specific activity the user entered before.
-        // echo "</tr>";
-        array_push($typeArray, $resultCheck_3["type"]);
-        array_push($percentageArray, ($resultCheck_2 / $resultCheck_1) * 100);
+        array_push($typeArray, $resultCheck_3["type"]); // This one right here pushes to the array the type of the activity
+        array_push($percentageArray, ($resultCheck_2 / $resultCheck_1) * 100); // This one right here pushes to the array the activity_percentage of the activity.
       }
-      // print_r($typeArray);
-      // echo json_encode($typeArray);
-      // print_r($percentageArray);
-      // echo json_encode($percentageArray);
+
       $bothArray['typeArray'] = $typeArray;
       $bothArray['percentageArray'] = $percentageArray;
-      echo json_encode($bothArray);
+      echo json_encode($bothArray); // This one right here encodes both array to a JSON.
     }
   }
 

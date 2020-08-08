@@ -54,25 +54,6 @@ else {
       <p class="output"></p>
     </form>
 
-    <script>
-      $(document).ready(function(){
-        $("#test_2").submit(function(event){
-          event.preventDefault();
-          var type_of_activity = $("#type_of_activity").val();
-          $(".output_2").load("includes/activity_details_per_user.inc.php", {
-            type_of_activity: type_of_activity
-          });
-        });
-      });
-    </script>
-
-    <form id="test_2" class="" action="includes/activity_details_per_user.inc.php" method="post">
-      <input id="type_of_activity" type="text" name="name">
-      <button id="activity_percentage" type="submit" name="datetimes">Submit</button>
-      <p class="output_2"></p>
-    </form>
-
-
     <div class="circled_leaflet_map">
       <div id="mapid"
         style="width: 900px;
@@ -87,9 +68,6 @@ else {
     <script src="JavaScript/maps.js"></script>
   </body>
 </html>
-
-
-
 
 <?php
   include 'footer.php';
