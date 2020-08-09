@@ -2,8 +2,8 @@
 
 include 'dbhandler.inc.php';
 
-// if (isset($_POST['type_of_activity'])) { // This one right here checks if we are here from the 'type_of_activity' button in frontend.
-//   $name = $_POST['type_of_activity']; // This one right here stores the value that the user inserted into a variable.
+// if (!empty($_POST['className'])) { // This one right here checks if we are here from the 'type_of_activity' button in frontend.
+  // $name = $_POST['type_of_activity']; // This one right here stores the value that the user inserted into a variable.
 $name = "no";
 $typeArray = array();
 $percentageArray = array();
