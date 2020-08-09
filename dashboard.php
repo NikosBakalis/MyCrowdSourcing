@@ -108,15 +108,15 @@ else {
         });
         </script>
       </div>
-      <div id="div3" style="width:1000px;height:240px;padding-top:150px;padding-bottom:300px";>
+      <div id="div3" style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
         <canvas id="perMonthPercentageChart"></canvas>
         <script>
           $.post('includes/per_month_percentage.inc.php',
           function(result){
             var both = jQuery.parseJSON(result);
-            var userArray = [];
+            var monthArray = [];
             for (var i = 0; i < Object.values(both)[0].length; i++) {
-              userArray.push(Object.values(both)[0][i]);
+              monthArray.push(Object.values(both)[0][i]);
             }
             var ctx = document.getElementById('perMonthPercentageChart').getContext('2d');
             var perMonthPercentageChart = new Chart(ctx, {
@@ -143,7 +143,46 @@ else {
           });
         </script>
       </div>
-      <div id="div4"style="width:1000px;height:240px;padding-top:280px;padding-bottom:300px";>
+      <div id="div4"style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+        <canvas id="perDayPercentageChart"></canvas>
+        <script>
+          $.post('includes/per_day_percentage.inc.php',
+          function(result){
+            var both = jQuery.parseJSON(result);
+            var dayArray = [];
+            for (var i = 0; i < Object.values(both)[0].length; i++) {
+              dayArray.push(Object.values(both)[0][i]);
+            }
+            var ctx = document.getElementById('perDayPercentageChart').getContext('2d');
+            var perDayPercentageChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: Object.values(both)[0],
+                datasets: [{
+                  label: 'Percentage of the activity per day',
+                  data: Object.values(both)[1],
+                  backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                  borderWidth: 4
+                }]
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
+              }
+            });
+          });
+        </script>
+      </div>
+      <div id="div5"style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+
+      </div>
+      <div id="div6"style="width:1000px;height:240px;padding-top:150px;padding-bottom:300px";>
+
       </div>
     </div>
   </body>
