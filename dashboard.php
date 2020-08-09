@@ -29,38 +29,104 @@ else {
         return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + 0.5 + ')';
         // return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
       }
+      function rgba_x_number_array(number) {
+        var rgba_array = [];
+        for (var i = 0; i < number; i++) {
+          rgba_array.push(random_rgba());
+        }
+        return rgba_array;
+      }
     </script>
-    <div id="div1">
-      <canvas id="typePercentageChart" width="50" height="15"></canvas>
-      <script>
-        $.post('includes/activity_details_type_percentage.inc.php',
+    <div id="div0">
+      <div id="div1" style="width:1000px;height:240px;padding-top:20px;padding-bottom:150px";>
+        <canvas id="activityDetailsPercentageChart"></canvas>
+        <script>
+        $.post('includes/per_activity_details_percentage.inc.php',
         function(result){
           var both = jQuery.parseJSON(result);
           var typeArray = [];
           for (var i = 0; i < Object.values(both)[0].length; i++) {
             typeArray.push(Object.values(both)[0][i]);
           }
-          var ctx = document.getElementById('typePercentageChart').getContext('2d');
-          var typePercentageChart = new Chart(ctx, {
-              type: 'pie',
+          var ctx = document.getElementById('activityDetailsPercentageChart').getContext('2d');
+          var activityDetailsPercentageChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: Object.values(both)[0], // 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+              datasets: [{
+                label: 'Percentage of each type of activity',
+                data: Object.values(both)[1], // 12, 19, 3, 5, 2, 3
+                backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                borderWidth: 4
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: false
+                  }
+                }]
+              }
+            }
+          });
+        });
+        </script>
+      </div>
+      <div id="div2" style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+        <canvas id="perUserPercentageChart"></canvas>
+        <script>
+        $.post('includes/per_user_percentage.inc.php',
+        function(result){
+          var both = jQuery.parseJSON(result);
+          var userArray = [];
+          for (var i = 0; i < Object.values(both)[0].length; i++) {
+            userArray.push(Object.values(both)[0][i]);
+          }
+          var ctx = document.getElementById('perUserPercentageChart').getContext('2d');
+          var perUserPercentageChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: Object.values(both)[0],
+              datasets: [{
+                label: 'Percentage of the activity per user',
+                data: Object.values(both)[1],
+                backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                borderWidth: 4
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        });
+        </script>
+      </div>
+      <div id="div3" style="width:1000px;height:240px;padding-top:150px;padding-bottom:300px";>
+        <canvas id="perMonthPercentageChart"></canvas>
+        <script>
+          $.post('includes/per_month_percentage.inc.php',
+          function(result){
+            var both = jQuery.parseJSON(result);
+            var userArray = [];
+            for (var i = 0; i < Object.values(both)[0].length; i++) {
+              userArray.push(Object.values(both)[0][i]);
+            }
+            var ctx = document.getElementById('perMonthPercentageChart').getContext('2d');
+            var perMonthPercentageChart = new Chart(ctx, {
+              type: 'bar',
               data: {
-                labels: Object.values(both)[0], // 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+                labels: Object.values(both)[0],
                 datasets: [{
-                  label: 'Percentage of each type of activity',
-                  data: Object.values(both)[1], // 12, 19, 3, 5, 2, 3
-                  backgroundColor: [
-                    random_rgba(),      // 'rgba(255, 99, 132, 0.2)',
-                    random_rgba(),      // 'rgba(54, 162, 235, 0.2)',
-                    random_rgba(),      // 'rgba(255, 206, 86, 0.2)',
-                    random_rgba(),      // 'rgba(75, 192, 192, 0.2)',
-                    random_rgba(),      // 'rgba(153, 102, 255, 0.2)',
-                    random_rgba(),      // 'rgba(255, 159, 64, 0.2)',
-                    random_rgba(),      // 'rgba(44, 99, 132, 0.2)',
-                    random_rgba(),      // 'rgba(23, 162, 235, 0.2)',
-                    random_rgba(),      // 'rgba(67, 206, 86, 0.2)',
-                    random_rgba(),      // 'rgba(75, 192, 192, 0.2)',
-                    random_rgba()       // 'rgba(69, 102, 255, 0.2)'
-                  ],
+                  label: 'Percentage of the activity per month',
+                  data: Object.values(both)[1],
+                  backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
                   borderWidth: 4
                 }]
               },
@@ -73,17 +139,13 @@ else {
                   }]
                 }
               }
+            });
           });
-        });
-      </script>
+        </script>
+      </div>
+      <div id="div4"style="width:1000px;height:240px;padding-top:280px;padding-bottom:300px";>
+      </div>
     </div>
-    <div id="div2">
-
-    </div>
-    <div id="div3">
-    </div>
-    <div id="div4">
-</div>
   </body>
 </html>
 
