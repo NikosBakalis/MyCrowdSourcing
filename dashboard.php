@@ -38,7 +38,7 @@ else {
       }
     </script>
     <div id="div0">
-      <div id="div1" style="width:1000px;height:240px;padding-top:20px;padding-bottom:150px";>
+      <div id="div1" style="width:40%;height:240px;padding-top:20px;padding-bottom:150px;margin-right:auto; margin-left:0;";>
         <canvas id="activityDetailsPercentageChart"></canvas>
         <script>
         $.post('includes/per_activity_details_percentage.inc.php',
@@ -73,7 +73,7 @@ else {
         });
         </script>
       </div>
-      <div id="div2" style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+      <div id="div2" style="width:40%;height:240px;padding-top:150px;padding-bottom:150px;margin-left:auto; margin-right:0;";>
         <canvas id="perUserPercentageChart"></canvas>
         <script>
         $.post('includes/per_user_percentage.inc.php',
@@ -108,7 +108,7 @@ else {
         });
         </script>
       </div>
-      <div id="div3" style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+      <div id="div3" style="width:40%;height:240px;padding-top:150px;padding-bottom:150px;margin-left:auto; margin-left:0;";>
         <canvas id="perMonthPercentageChart"></canvas>
         <script>
           $.post('includes/per_month_percentage.inc.php',
@@ -143,7 +143,7 @@ else {
           });
         </script>
       </div>
-      <div id="div4"style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+      <div id="div4"style="width:40%;height:240px;padding-top:150px;padding-bottom:150px;margin-left:auto; margin-right:0;";>
         <canvas id="perDayPercentageChart"></canvas>
         <script>
           $.post('includes/per_day_percentage.inc.php',
@@ -178,7 +178,7 @@ else {
           });
         </script>
       </div>
-      <div id="div5"style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
+      <div id="div5"style="width:40%;height:240px;padding-top:150px;padding-bottom:150px;margin-left:auto; margin-left:0;";>
         <canvas id="perHourPercentageChart"></canvas>
         <script>
           $.post('includes/per_hour_percentage.inc.php',
@@ -213,7 +213,7 @@ else {
           });
         </script>
       </div>
-      <div id="div6"style="width:1000px;height:240px;padding-top:150px;padding-bottom:300px";>
+      <div id="div6"style="width:40%;height:240px;padding-top:150px;padding-bottom:300px;margin-left:auto; margin-right:0;";>
         <canvas id="perYearPercentageChart"></canvas>
         <script>
           $.post('includes/per_year_percentage.inc.php',
