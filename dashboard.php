@@ -179,10 +179,74 @@ else {
         </script>
       </div>
       <div id="div5"style="width:1000px;height:240px;padding-top:150px;padding-bottom:150px";>
-
+        <canvas id="perHourPercentageChart"></canvas>
+        <script>
+          $.post('includes/per_hour_percentage.inc.php',
+          function(result){
+            var both = jQuery.parseJSON(result);
+            var hourArray = [];
+            for (var i = 0; i < Object.values(both)[0].length; i++) {
+              hourArray.push(Object.values(both)[0][i]);
+            }
+            var ctx = document.getElementById('perHourPercentageChart').getContext('2d');
+            var perHourPercentageChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: Object.values(both)[0],
+                datasets: [{
+                  label: 'Percentage of the activity per hour',
+                  data: Object.values(both)[1],
+                  backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                  borderWidth: 4
+                }]
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
+              }
+            });
+          });
+        </script>
       </div>
       <div id="div6"style="width:1000px;height:240px;padding-top:150px;padding-bottom:300px";>
-
+        <canvas id="perYearPercentageChart"></canvas>
+        <script>
+          $.post('includes/per_year_percentage.inc.php',
+          function(result){
+            var both = jQuery.parseJSON(result);
+            var yearArray = [];
+            for (var i = 0; i < Object.values(both)[0].length; i++) {
+              yearArray.push(Object.values(both)[0][i]);
+            }
+            var ctx = document.getElementById('perYearPercentageChart').getContext('2d');
+            var perYearPercentageChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: Object.values(both)[0],
+                datasets: [{
+                  label: 'Percentage of the activity per year',
+                  data: Object.values(both)[1],
+                  backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                  borderWidth: 4
+                }]
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
+              }
+            });
+          });
+        </script>
       </div>
     </div>
   </body>
