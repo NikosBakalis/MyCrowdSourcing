@@ -23,7 +23,7 @@ else{
     $dayNumber = date("d", strtotime($timestamp_a));
     $dayLetter = date("D", strtotime($timestamp_a));
     if(!in_array($dayLetter, $dayArray, true)){
-      $sql_2 = "SELECT * FROM activity_details WHERE timestamp_a LIKE '____-__-$dayNumber%'"; // This one right here selects everything from activity_details table where type is something that the admin choose in frontend. I want only the count but I will retrieve it with mysqli_num_rows() function.
+      $sql_2 = "SELECT * FROM activity_details WHERE timestamp_a LIKE '____-__-$dayNumber __:__:__'"; // This one right here selects everything from activity_details table where type is something that the admin choose in frontend. I want only the count but I will retrieve it with mysqli_num_rows() function.
       $result_2 = mysqli_query($connection, $sql_2); // This one right here stores the query into a variable.
       $resultCheck_2 = mysqli_num_rows($result_2); // This one right here stores the mysqli_num_rows() into a variable.
       array_push($dayArray, $dayLetter); // This one right here pushes to the array the type of the activity
