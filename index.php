@@ -23,40 +23,110 @@
     <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script> -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title></title>
-    <style>
-      #mapid{
-        height: 180px;
-      }
+    <style type="text/css">
+    .map_table {
+      width: 100%;
+      border: 1px solid black;
+      table-layout: fixed;
+
+      background-position: center;
+      background-image: url("images/earth-map-dark-texture-background-104605.jpg");
+      color: white;
+      font-size: 200%;
+    }
+    tr {
+      height: 50%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    #top_left {
+    }
+    #bot_left {
+      vertical-align: middle;
+      text-align: center;
+    }
+    #top_right {
+      vertical-align: middle;
+      text-align: center;
+    }
+    #bot_right {
+      vertical-align: middle;
+      text-align: center;
+    }
+    #center {
+      width: 40%;
+    }
+    #mapid {
+      width: auto;
+      padding-top: 100%;
+      border-radius: 100%;
+      position: relative;
+      z-index: 500;
+      margin: auto;
+    }
+    #form_div {
+      margin: 0 auto;
+      width: 80%;
+    }
+    #file {
+      width: 100%;
+      font-size: 60%;
+    }
+    #submit {
+      width: 50%;
+      margin-top: 10%;
+      font-size: 60%;
+    }
     </style>
   </head>
   <body>
     <section class="main">
-      This right here will be the main page of our Website
       <div class="circled_leaflet_map">
-        <div id="mapid"
-          style="width: 900px;
-          height: 900px;
-          border-radius: 50%;
-          position: relative;
-          z-index: 500;
-          margin: auto">
-        </div>
+        <table class="map_table">
+          <tr>
+            <td id="top_left">
+
+                <?php
+                if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
+                  echo '<div id="form_div">
+                        <form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+                        <input id="file" type="file" name="upload_file">
+                        <button id="submit" type="submit" name="submit_file">UPLOAD</button>
+                        </form>
+                        </div>';
+                } else {
+                  echo 'Top Right';
+                }
+                ?>
+
+            </td>
+            <td id="center" rowspan="2">
+              <div id="mapid">
+              </div>
+            </td>
+            <td id="top_right">Top Right</td>
+          </tr>
+          <tr>
+            <td id="bot_left">Bottom Left</td>
+            <td id="bot_right">Bottom Right</td>
+          </tr>
+        </table>
+
       </div>
 
       <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script>
       <script src="JavaScript/maps.js"></script>
 
-      <div class="more_info">
-        <div id="top_left">
-          Top Left
-        </div>
-        <div id="top_right">
+      <!-- <div class="more_info">
+
+        <div> -->
           <?php
-            if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
-              echo '<form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="upload_file">
-                    <button id="submit" type="submit" name="submit_file">UPLOAD</button>
-                    </form>';
+            // if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
+            //   echo '<form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+            //         <input type="file" name="upload_file">
+            //         <button id="submit" type="submit" name="submit_file">UPLOAD</button>
+            //         </form>';
               ?>
 
               <!-- <form class="form" id="upload_form">
@@ -100,18 +170,13 @@
               </script>
 
               <?php
-            } else {
-              echo 'Top Right';
-            }
+            // } else {
+            //   echo 'Top Right';
+            // }
           ?>
-        </div>
-        <div id="bottom_left">
-          Bottom Left
-        </div>
-        <div id="bottom_right">
-          Bottom Right
-        </div>
-      </div>
+        <!-- </div> -->
+
+      <!-- </div> -->
     </section>
   </body>
 </html>
