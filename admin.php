@@ -12,57 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
     <title></title>
-    <style type="text/css">
-    .map_table {
-      width: 100%;
-      border: 1px solid black;
-      table-layout: fixed;
-
-      background-position: center;
-      background-image: url("images/earth-map-dark-texture-background-104605.jpg");
-      color: white;
-      font-size: 200%;
-    }
-    tr {
-      height: 50%;
-    }
-    td {
-      border: 1px solid black;
-    }
-    #top_left {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #bot_left {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #top_right {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #bot_right {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #center {
-      width: 40%;
-    }
-    #mapid {
-      width: auto;
-      padding-top: 100%;
-      border-radius: 100%;
-      position: relative;
-      z-index: 500;
-      margin: auto;
-    }
-    button {
-      width: 50%;
-      margin-top: 10%;
-      font-size: 60%;
-    }
-    </style>
   </head>
   <body>
 

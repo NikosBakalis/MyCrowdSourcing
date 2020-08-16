@@ -23,62 +23,6 @@
     <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script> -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title></title>
-    <style type="text/css">
-    .map_table {
-      width: 100%;
-      border: 1px solid black;
-      table-layout: fixed;
-
-      background-position: center;
-      background-image: url("images/earth-map-dark-texture-background-104605.jpg");
-      color: white;
-      font-size: 200%;
-    }
-    tr {
-      height: 50%;
-    }
-    td {
-      border: 1px solid black;
-    }
-    #top_left {
-    }
-    #bot_left {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #top_right {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #bot_right {
-      vertical-align: middle;
-      text-align: center;
-    }
-    #center {
-      width: 40%;
-    }
-    #mapid {
-      width: auto;
-      padding-top: 100%;
-      border-radius: 100%;
-      position: relative;
-      z-index: 500;
-      margin: auto;
-    }
-    #form_div {
-      margin: 0 auto;
-      width: 80%;
-    }
-    #file {
-      width: 100%;
-      font-size: 60%;
-    }
-    #submit {
-      width: 50%;
-      margin-top: 10%;
-      font-size: 60%;
-    }
-    </style>
   </head>
   <body>
     <section class="main">

@@ -7,9 +7,9 @@
 
 .services_section{
   background: url(../images/earth-map-dark-texture-background-104605.jpg);
-  height: 1600px;
-  background-size: cover;
-  padding: 60px 0px;
+  height: 100%;
+  background-position: center;
+  padding: 2% 0px;
 }
 
 .inner_width{
@@ -27,12 +27,12 @@
   font-size: 30px;
 }
 
-.border{
+/* .border{
   width: 160px;
   height: 2px;
   background: #82ccdd;
-  margin: 10px auto 220px auto;
-}
+  margin: 10px auto 20px auto;
+} */
 
 .services_container{
   display: flex;
@@ -42,7 +42,7 @@
 
 .service_box{
   max-width: 33.33%;
-  padding: 50px;
+  padding: 2%;
   text-align: center;
   color: #ddd;
   cursor: pointer;

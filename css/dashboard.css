@@ -1,9 +1,26 @@
-/* .div1 {
-  width:40%;
-  height:240px;
-  padding-top:20px;
-  padding-bottom:150px;
-  margin-right:auto;
-  margin-left:0;
-  border: 1px solid black;
-} */
+.main {
+  background-position: center;
+  background-size: cover;
+  background-image: url(../images/earth-map-dark-texture-background-104605.jpg);
+}
+
+#div0 {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 100px;
+}
+
+#row1, #row2, #row3 {
+  display: table-row;
+}
+
+#div1, #div3, #div5 {
+  display: table-cell;
+}
+
+#div2, #div4, #div6 {
+}

@@ -16,7 +16,6 @@
     <div class="services_section">
       <div class="inner_width">
         <h1 class="section_title">Services</h1>
-        <div class="border"></div>
         <div class="services_container">
           <div class="service_box">
             <div class="service_icon">
