@@ -23,4 +23,5 @@
 }
 
 #div2, #div4, #div6 {
+  display: table-cell;
 }
