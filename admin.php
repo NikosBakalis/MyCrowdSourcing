@@ -17,7 +17,7 @@
   </head>
   <body>
 
-    <script>
+    <!-- <script>
       $(document).ready(function(){
         $("#test").submit(function(event){
           event.preventDefault();
@@ -29,7 +29,9 @@
           });
         });
       });
-    </script>
+    </script> -->
+
+
 
     <section class="main">
       <div class="circled_leaflet_map">
@@ -50,12 +52,11 @@
               </div>
             </td>
             <td id="top_right">
-              <form id="test" action="includes/test.inc.php" method="post">
-
-                <input id="start_datetime" type="text" name="name">
-                <input id="end_datetime" type="text" name="name">
+              <form id="test" name"test" action="">
+                <script src="JavaScript/datemaps.js"></script>
+                <input id="start_datetime" type="text" name="start_datetime">
+                <input id="end_datetime" type="text" name="end_datetime">
                 <button id="datetimes" type="submit" name="datetimes">Submit</button>
-                <p class="output"></p>
               </form>
             </td>
           </tr>
@@ -72,9 +73,7 @@
             </td>
           </tr>
         </table>
-
       </div>
-      <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script>
       <script src="JavaScript/maps.js"></script>
     </section>
   </body>

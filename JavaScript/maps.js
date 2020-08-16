@@ -83,6 +83,7 @@ function more_loads(){
     url: "includes/from_mysql_to_heatmap.inc.php",
     // async: true,
     success: function(text){
+      // console.log(text);
       response = text;
       data = JSON.parse(response);
       // console.log(Object.size(new_data));

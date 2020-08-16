@@ -2,18 +2,22 @@
 
 session_start();
 
-include 'dbhandler.inc.php';
+// if (isset($_POST['start_datetime']) || isset($_POST['end_datetime'])) {
+  include 'dbhandler.inc.php';
 
-if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
+  $big_array = array();
   $name = $_POST['start_datetime'];
   // echo $name;
+  // $name = "2018-04-25 18:27:00";
+  // echo $name;
   $another_name = $_POST['end_datetime'];
+  // $another_name = "2018-04-25 19:30:55";
   // echo $another_name;
 
   $error_empty = false;
 
   if (empty($name) || empty($another_name)) {
-    echo "<span class='form-error'>Fill in all fields!</span>";
+    // echo "<span class='form-error'>Fill in all fields!</span>";
     $error_empty = true;
   } else if (!empty($name) && !empty($another_name)) {
     // echo "<span class='form-success'>Success!</span>";
@@ -29,25 +33,19 @@ if (isset($_POST['start_datetime']) || $_POST['end_datetime']) {
 
       if ($resultCheck > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-          echo $row['latitude'] . '<br>';
-          echo $row['longitude'] . '<br>';
-          // $float_latitide = floatval($row['latitude']);
+          $float_latitide = floatval($row['latitude']);
+          $float_longitude = floatval($row['longitude']);
+          $lat_lon_opa_array = array();
+          array_push($lat_lon_opa_array, $float_latitide, $float_longitude);
+          array_push($big_array, $lat_lon_opa_array);
+          unset($lat_lon_opa_array);
         }
       }
     }
   }
-  // echo $float_latitide;
-} else {
-  echo "There was an error!";
-}
+  echo json_encode($big_array);
+// } else {
+//   exit();
+// }
 
 ?>
-
-<script>
-  var error_empty = "<?php echo $error_empty; ?>";
-  if(error_empty == true){
-    $("#start_datetime, #end_datetime").addClass("input-error");
-  }// else {
-  //   $("#start_datetime, #end_datetime").val("");
-  // }
-</script>
