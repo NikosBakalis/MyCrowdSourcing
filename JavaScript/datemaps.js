@@ -4,7 +4,7 @@ $("#test").submit(function(e) {
   var end_datetime = $("#end_datetime").val();
   $.ajax({
     type:"POST",
-    url:"includes/test.inc.php",
+    url:"includes/dates_to_heatmap.inc.php",
     data: {
       start_datetime: start_datetime,
       end_datetime: end_datetime
@@ -14,7 +14,7 @@ $("#test").submit(function(e) {
       console.log(end_datetime);
       $.ajax({
         type:"GET",
-        url:"includes/test.inc.php",
+        url:"includes/dates_to_heatmap.inc.php",
         success:function(response2){
           data = JSON.parse(response1);
           if (map.hasLayer(heatdates) && map.hasLayer(heat)) {
