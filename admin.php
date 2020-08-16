@@ -16,23 +16,6 @@
     <title></title>
   </head>
   <body>
-
-    <!-- <script>
-      $(document).ready(function(){
-        $("#test").submit(function(event){
-          event.preventDefault();
-          var start_datetime = $("#start_datetime").val();
-          var end_datetime = $("#end_datetime").val();
-          $(".output").load("includes/test.inc.php", {
-            start_datetime: start_datetime,
-            end_datetime: end_datetime
-          });
-        });
-      });
-    </script> -->
-
-
-
     <section class="main">
       <div class="circled_leaflet_map">
         <table class="map_table">
