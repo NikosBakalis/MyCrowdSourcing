@@ -5,7 +5,7 @@ var tiles = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?k
   //minZoom: 14
 }).addTo(map);
 
-var heat = L.heatLayer([[38.230462, 21.753150]], {radius: 15}).addTo(map), draw = true;
+var heat = L.heatLayer([], {radius: 15}).addTo(map), draw = true;
 
 // var marker = L. ΕΔΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ!
 
@@ -146,3 +146,24 @@ function more_loads(){
     }
   });
 }
+
+$("#datetimes").submit(function(e) {
+  e.preventDefault();
+  var start_datetime = $("#start_datetime").val();
+  var end_datetime = $("#end_datetime").val();
+  $.ajax({
+    type:"POST",
+    url:"includes/dates_to_heatmap.inc.php",
+    data: {
+      start_datetime: start_datetime,
+      end_datetime: end_datetime
+    },
+    success:function(response){
+      // console.log(start_datetime);
+      // console.log(end_datetime);
+      map.removeLayer(heat);
+      data = JSON.parse(response);
+      heat = L.heatLayer(data, {radius: 15}).addTo(map), draw = true;
+    }
+  });
+});
