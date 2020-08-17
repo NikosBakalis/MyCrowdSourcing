@@ -7,6 +7,8 @@ var tiles = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?k
 
 var heat = L.heatLayer([[38.230462, 21.753150]], {radius: 15}).addTo(map), draw = true;
 
+// var marker = L. ΕΔΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ!
+
 function load_heatmap(points){
   var heat = L.heatLayer(points, {radius: 15}).addTo(map), draw = true;
 }
