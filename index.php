@@ -56,10 +56,8 @@
             <td id="bot_right">Bottom Right</td>
           </tr>
         </table>
-
       </div>
-
-      <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script>
+      <!-- <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script> -->
       <script src="JavaScript/maps.js"></script>
 
       <!-- <div class="more_info">
