@@ -35,11 +35,11 @@
               </div>
             </td>
             <td id="top_right">
-              <form id="test" name"test" action="">
-                <script src="JavaScript/datemaps.js"></script>
+              <form id="datetimes" name"datetimes" action="">
                 <input id="start_datetime" type="text" name="start_datetime">
                 <input id="end_datetime" type="text" name="end_datetime">
                 <button id="datetimes" type="submit" name="datetimes">Submit</button>
+                <script src="JavaScript/maps.js"></script>
               </form>
             </td>
           </tr>
