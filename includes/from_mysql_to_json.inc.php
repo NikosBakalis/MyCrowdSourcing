@@ -46,7 +46,6 @@ if(isset($_POST['from_mysql_to_json'])){
         if ($userObject != null) {
           array_push($recordObject->records, $userObject);
         }
-
         $compareTimestamp_l = "";
       }
 
@@ -78,7 +77,6 @@ if(isset($_POST['from_mysql_to_json'])){
         if ($locationObject != null) {
           array_push($userObject->locations, $locationObject);
         }
-
         $compareTimestamp_a = "";
       }
 
@@ -92,7 +90,6 @@ if(isset($_POST['from_mysql_to_json'])){
         if ($activityObject != null) {
           array_push($locationObject->activity, $activityObject);
         }
-
         $compareType = "";
       }
 
