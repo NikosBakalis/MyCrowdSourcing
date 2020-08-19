@@ -2,7 +2,6 @@
 
 session_start();
 
-// if (isset($_POST['start_datetime']) || isset($_POST['end_datetime'])) {
 include 'dbhandler.inc.php';
 
 $big_array = array();
@@ -11,6 +10,10 @@ $start_date = $_POST['start_datetime'];
 $end_date = $_POST['end_datetime'];
 
 if (!empty($activity) && (empty($start_date) && empty($end_date))) {
+  if (strpos($activity, ',') !== false) {
+    $activity = str_replace(",", "' OR type = '", $activity); // This one right here replaces "," values with " ' OR type = ' " if needed.
+    $activity = str_replace("= ' ", "= '", $activity); // This one right here replaces "," values with " ' OR type = ' " if needed.
+  }
   $sql = "SELECT * FROM location
           INNER JOIN activity
           ON location.userID = activity.userID
@@ -19,7 +22,7 @@ if (!empty($activity) && (empty($start_date) && empty($end_date))) {
           ON activity.userID = activity_details.userID
           AND activity.timestamp_l = activity_details.timestamp_l
           AND activity.timestamp_a = activity_details.timestamp_a
-          WHERE type = '$activity'";
+          WHERE activity_details.type = '$activity'";
 } elseif (empty($activity) && !empty($start_date) && !empty($end_date)) {
   $sql = "SELECT * FROM location WHERE timestamp_l >= '$start_date' AND timestamp_l <= '$end_date'";
 } else {
