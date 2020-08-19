@@ -35,7 +35,8 @@
               </div>
             </td>
             <td id="top_right">
-              <form id="datetimes" name"datetimes" action="">
+              <form id="datetimes" name"datetimes">
+                <input id="activity" type="text" name="activity">
                 <input id="start_datetime" type="text" name="start_datetime">
                 <input id="end_datetime" type="text" name="end_datetime">
                 <button id="datetimes" type="submit" name="datetimes">Submit</button>

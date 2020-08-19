@@ -149,12 +149,14 @@ function more_loads(){
 
 $("#datetimes").submit(function(e) {
   e.preventDefault();
+  var activity = $("#activity").val();
   var start_datetime = $("#start_datetime").val();
   var end_datetime = $("#end_datetime").val();
   $.ajax({
     type:"POST",
     url:"includes/dates_to_heatmap.inc.php",
     data: {
+      activity: activity,
       start_datetime: start_datetime,
       end_datetime: end_datetime
     },
