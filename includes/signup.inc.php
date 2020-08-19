@@ -16,6 +16,20 @@ function decrypt($encrypted_string, $decryption_key){ //This one right here is t
   return $string;
 }
 
+function password_security($tested_password){ // This one right here is the security checker of the password.
+  $isSecured = false;
+  $contains_letter = preg_match('/[a-zA-Z]/', $tested_password);
+  $contains_digit = preg_match('/\d/', $tested_password);
+  $contains_special = preg_match('/[^a-zA-Z\d]/', $tested_password);
+
+  $contains_all = $contains_letter && $contains_digit && $contains_special;
+
+  if (strlen($tested_password) >= 8 && $contains_all == "1") {
+    $isSecured = true;
+  }
+  return $isSecured;
+}
+
 /* This one right here we will chech if the user entered
 this sections using the submit button
 If that's true then we will let him continue
@@ -45,6 +59,9 @@ if (isset($_POST['signup_submit'])) {
   else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) { //This one right here checks the usernames symbols.
     header("Location: ../signup.php?error=invalid_username&firstname=".$firstname."&lastname=".$lastname."&email=".$email);
     exit();
+  }
+  else if (!password_security($password)) { //This one right here checks the security of the password.
+    header("Location: ../signup.php?error=password_too_simple&firstname=".$firstname."&lastname=".$lastname."&username=".$username."&email=".$email);
   }
   else if ($password !== $repassword) { //This one right here checks the similarity of password and confirm password.
     header("Location: ../signup.php?error=password_check_failed&firstname=".$firstname."&lastname=".$lastname."&username=".$username."&email=".$email);
@@ -89,9 +106,9 @@ if (isset($_POST['signup_submit'])) {
         }
       }
     }
+    mysqli_stmt_close($stmt); //This one right here closes the statement.
+    mysqi_close($connection); //This one right here closes the connection.
   }
-  mysqli_stmt_close($stmt); //This one right here closes the statement.
-  mysqi_close($connection); //This one right here closes the connection.
 }
 else { //This one right here sent the curious user back to home when he tries to enter the include page in other way that from the button I mentioned on lines 19-20-21-22.
   header("Location: ../signup.php");

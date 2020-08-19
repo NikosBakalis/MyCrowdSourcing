@@ -29,6 +29,9 @@
               else if($_GET['error'] == "invalid_username"){
                 echo '<p class="signup_error">Invalid username!</p>';
               }
+              else if($_GET['error'] == "password_too_simple"){
+                echo '<p class="signup_error">Password too simple! Use at least 8 character that contains at least one Letter, one Digit and one Special!</p>';
+              }
               else if($_GET['error'] == "password_check_failed"){
                 echo '<p class="signup_error">Password and Confirm-Password do not match!</p>';
               }
