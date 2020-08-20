@@ -40,7 +40,9 @@
                         </form>
                         </div>';
                 } else {
-                  echo 'Top Right';
+                  echo 'You are logged out!
+                        Please Login/Signup
+                        to upload your crowd sourcing!';
                 }
                 ?>
 
@@ -49,16 +51,20 @@
               <div id="mapid">
               </div>
             </td>
-            <td id="top_right">Top Right</td>
+            <td id="top_right">
+              <script src="JavaScript/eco.js"></script>
+            </td>
           </tr>
           <tr>
-            <td id="bot_left">Bottom Left</td>
+            <td id="bot_left">
+              <script src="JavaScript/latest_upload_and_datetimes.js"></script>
+            </td>
             <td id="bot_right">Bottom Right</td>
           </tr>
+          <script src="JavaScript/maps.js"></script>
         </table>
       </div>
       <!-- <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script> -->
-      <script src="JavaScript/maps.js"></script>
 
       <!-- <div class="more_info">
 
