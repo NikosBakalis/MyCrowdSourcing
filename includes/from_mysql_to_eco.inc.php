@@ -60,6 +60,4 @@ if (!empty($_SESSION['userID'])) {
   }
 }
 
-// echo json_encode($big_array);
-
 ?>
