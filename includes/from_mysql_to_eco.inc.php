@@ -22,11 +22,11 @@ if (!empty($_SESSION['userID'])) {
 
     if ($resultCheck2 > 0) {
       if ($resultCheck1 / $resultCheck2 > 0.25) {
-        echo "Good effort! Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%.";
+        echo "Good effort! <br> Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%.";
       } else if ($resultCheck = ($resultCheck1 / $resultCheck2) > 0.50) {
-        echo "AMAZING!!! Your ECO score is: " . round(($resultCheck), 4) * 100 . "%.";
+        echo "AMAZING!!! <br> Your ECO score is: " . round(($resultCheck), 4) * 100 . "%.";
       } else {
-        echo "Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%. You can do better than that!";
+        echo "Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%. <br> You can do better than that!";
       }
       $sql3 = "UPDATE user SET eco_score = round(($resultCheck1 / $resultCheck2), 4) * 100 WHERE id = ?";
       if (!mysqli_stmt_prepare($stmt, $sql3)) { //This one right here will check if the sql statement above working properly.
@@ -37,7 +37,25 @@ if (!empty($_SESSION['userID'])) {
         mysqli_stmt_execute($stmt);
       }
     } else {
-      echo "It seems you don't have an ECO score yet. Please upload your data first!";
+      echo "It seems you don't have an ECO score yet. <br> Please upload your data first!";
+    }
+  }
+  $sql4 = "SELECT * FROM user ORDER BY eco_score DESC LIMIT 3";
+  if (!mysqli_stmt_prepare($stmt, $sql4)) { //This one right here will check if the sql statement above working properly.
+    echo "Connection failed!";
+    exit();
+  } else {
+    $result4 = mysqli_query($connection, $sql4);
+    if ($result4->num_rows > 0) {
+      $placement = 1;
+      echo "<br><br><br>Most ECO friendly users below:<br>";
+      while($row = $result4->fetch_assoc()) {
+        $firstLetter = substr($row['lastname'], 0, 1);
+        echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
+        $placement = $placement + 1;
+      }
+    } else {
+      echo "0 results";
     }
   }
 }
