@@ -7,8 +7,8 @@ include 'dbhandler.inc.php';
 if (!empty($_SESSION['userID'])) {
   $current_userID = $_SESSION['userID'];
 
-  $sql1 = "SELECT * FROM activity_details WHERE userID = '$current_userID' AND (type = 'ON_BICYCLE' OR type = 'ON_FOOT' OR type = 'WALKING' OR type = 'RUNNING')";
-  $sql2 = "SELECT * FROM activity_details WHERE userID = '$current_userID'";
+  $sql1 = "SELECT * FROM activity_details WHERE userID = '$current_userID' AND (type = 'ON_BICYCLE' OR type = 'ON_FOOT' OR type = 'WALKING' OR type = 'RUNNING') AND (MONTH(timestamp_l) = MONTH(CURRENT_DATE()) AND YEAR(timestamp_l) = YEAR(CURRENT_DATE()))";
+  $sql2 = "SELECT * FROM activity_details WHERE userID = '$current_userID' AND MONTH(timestamp_l) = MONTH(CURRENT_DATE()) AND YEAR(timestamp_l) = YEAR(CURRENT_DATE())";
   $stmt = mysqli_stmt_init($connection);
   if (!mysqli_stmt_prepare($stmt, $sql1) || !mysqli_stmt_prepare($stmt, $sql2)) { //This one right here will check if the sql statement above working properly.
     echo "Connection failed!";
@@ -37,7 +37,7 @@ if (!empty($_SESSION['userID'])) {
         mysqli_stmt_execute($stmt);
       }
     } else {
-      echo "It seems you don't have an ECO score yet. <br> Please upload your data first!";
+      echo "It seems you don't have an ECO score for the current month.<br>Please upload more recent data!";
     }
   }
   $sql4 = "SELECT * FROM user ORDER BY eco_score DESC LIMIT 3";
