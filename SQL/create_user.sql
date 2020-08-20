@@ -6,6 +6,7 @@ CREATE TABLE user(
     email TINYTEXT NOT NULL,
     pwd LONGTEXT NOT NULL,
     type VARCHAR(20) DEFAULT 'user', CONSTRAINT values_table check (type in ('user', 'admin')),
+    latest_upload DATETIME,
     PRIMARY KEY(id),
     UNIQUE(email)
 );
