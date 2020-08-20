@@ -48,7 +48,7 @@ if (!empty($_SESSION['userID'])) {
     $result4 = mysqli_query($connection, $sql4);
     if ($result4->num_rows > 0) {
       $placement = 1;
-      echo "<br><br><br>Most ECO friendly users below:<br>";
+      echo "<br><br><br>Most ECO friendly users of month below:<br>";
       while($row = $result4->fetch_assoc()) {
         $firstLetter = substr($row['lastname'], 0, 1);
         echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
