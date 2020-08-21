@@ -48,6 +48,21 @@ function execInBackground($cmd, $current_userID, $json_name) {
   proc_close($process); // This one right here closes the process we opened before.
 }
 
+function update_latest_upload($current_userID){
+  require 'dbhandler.inc.php';
+
+  $sql = "UPDATE user SET latest_upload = NOW() WHERE id = ?";
+  $stmt = mysqli_stmt_init($connection);
+
+  if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
+    header("Location: ../index.php?upload=fail");
+    exit();
+  } else { //This one right here is called if the sql statement is working properly and executes it.
+    mysqli_stmt_bind_param($stmt, "s", $current_userID);
+    mysqli_stmt_execute($stmt);
+  }
+}
+
 if (isset($_POST['submit_file'])) { //This one right here checks if the user came here from the submit button.
   $file = $_FILES['upload_file']; //This one right here stores the uploaded file to $file variable.
 
@@ -78,6 +93,8 @@ if (isset($_POST['submit_file'])) { //This one right here checks if the user cam
             move_uploaded_file($file_tmp_name, $file_destination); //This one right here moves the uploaded file from temporary location to the location we want to.
 
             execInBackground('C:/xampp/php/php.exe C:/xampp/htdocs/MyCrowdSourcing/includes/from_json_to_mysql_with_json_machine.inc.php', $_SESSION['userID'], $file_name_new);
+
+            update_latest_upload($_SESSION['userID']);
             // include('from_json_to_array_with_json_machine.inc.php');
             header("Location: ../index.php?upload=success");
             exit();
