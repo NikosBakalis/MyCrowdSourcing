@@ -44,7 +44,7 @@ td {
 #mapid {
   width: auto;
   padding-top: 100%;
-  border-radius: 100%;
+  border-radius: 0%;
   position: relative;
   z-index: 500;
   margin: auto;

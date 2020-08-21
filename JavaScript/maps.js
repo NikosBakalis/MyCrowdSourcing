@@ -7,6 +7,29 @@ var tiles = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?k
 
 var heat = L.heatLayer([], {radius: 15}).addTo(map), draw = true;
 
+// FeatureGroup is to store editable layers
+var drawnItems = new L.FeatureGroup();
+map.addLayer(drawnItems);
+var drawControl = new L.Control.Draw({
+  edit: {
+      featureGroup: drawnItems
+  }
+});
+map.addControl(drawControl);
+
+map.on('draw:created', function(event){
+  var layer = event.layer,
+  feature = layer.feature = layer.feature || {};
+
+  feature.type = feature.type || "Feature";
+  var props = feature.properties = feature.properties || {};
+  drawnItems.addLayer(layer);
+});
+
+// document.getElementById("convert").addEventListener("click", function(){
+//   var hasil = $('#result').html(JSON.stringify(drawnItems.toGeoJSON()));
+// });
+
 // var marker = L. ΕΔΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ!
 
 function load_heatmap(points){
