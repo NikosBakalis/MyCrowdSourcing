@@ -38,7 +38,7 @@
                 <?php
                 if (isset($_SESSION['userID'])) { //This one right here checks if we have a session with a user and fetches the appropriate message.
                   echo '<div id="form_div">
-                        <form action="includes/uploads.inc.php" method="post" enctype="multipart/form-data">
+                        <form action="includes/uploads.inc.php" id="upload" method="post" enctype="multipart/form-data">
                         <input id="file" type="file" name="upload_file">
                         <button id="submit" type="submit" name="submit_file">UPLOAD</button>
                         </form>
@@ -70,7 +70,7 @@
       </div>
       <!-- <script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.10000.js"></script> -->
 
-      <script src="JavaScript/maps.js"></script>
+      <!-- <script src="JavaScript/maps.js"></script> -->
 
       <!-- <div class="more_info">
 

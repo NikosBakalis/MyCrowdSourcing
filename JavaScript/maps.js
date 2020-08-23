@@ -17,17 +17,52 @@ var drawControl = new L.Control.Draw({
 });
 map.addControl(drawControl);
 
+var latlngrad = [];
 map.on('draw:created', function(event){
   var layer = event.layer,
-  feature = layer.feature = layer.feature || {};
+      type = event.layerType,
+      feature = layer.feature = layer.feature || {};
 
   feature.type = feature.type || "Feature";
   var props = feature.properties = feature.properties || {};
   drawnItems.addLayer(layer);
+  // console.log(Polygon.getBounds().contains([38.230462, 21.753150]));
+  console.log(type);
+  if (type === "marker") {
+    console.log(layer.getLatLng());
+  } else if (type === "circle") {
+    var lat = Object.values(layer.getLatLng())[0];
+    var lng = Object.values(layer.getLatLng())[1];
+    latlngrad.push(lat, lng, layer.getRadius() / 1000);
+    // console.log(latlngrad);
+    $.ajax({
+      url: "includes/from_drawmap_to_circle_text.inc.php",
+      method: "POST",
+      data: {
+        latlngrad: latlngrad
+      },
+      success: function (response) {
+        console.log(response);
+      }
+    })
+    latlngrad = [];
+  } else {
+    console.log(layer.getBounds().contains([38.230462, 21.753150]));
+    if (!layer.getBounds().contains([38.230462, 21.753150])) {
+      console.log("no");
+    }
+  }
 });
 
-// document.getElementById("convert").addEventListener("click", function(){
-//   var hasil = $('#result').html(JSON.stringify(drawnItems.toGeoJSON()));
+// document.getElementById("bot_right").addEventListener("click", function(){
+//   // var hasil = $('#result').html(JSON.stringify(drawnItems.toGeoJSON()));
+//   console.log(JSON.stringify(drawnItems.toGeoJSON()));
+//   console.log("\n");
+//   console.log(props);
+//   // if (drawControl.getBounds().contains([38.230462, 21.753150])) {
+//   //   console.log('YES');
+//   // }
+//   // drawnItems.getBounds().contains(MarketLatLng);
 // });
 
 // var marker = L. ΕΔΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ!
@@ -192,3 +227,18 @@ $("#datetimes").submit(function(e) {
     }
   });
 });
+
+// $("#submit").submit(function(e) {
+//   e.preventDefault();
+//   $.ajax({
+//     type:"GET",
+//     url:"includes/from_json_to_mysql_with_json_machine.inc.php",
+//     success:function(response){
+//       // console.log(start_datetime);
+//       // console.log(end_datetime);
+//       // map.removeLayer(heat);
+//       // data = JSON.parse(response);
+//       console.log(response);
+//     }
+//   });
+// });
