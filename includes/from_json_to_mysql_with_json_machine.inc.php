@@ -10,24 +10,75 @@ function isInsideCirlce($latitude_point, $longitude_point){
   $lat_array = array();
   $lng_array = array();
   $rad_array = array();
-  $handle = fopen("../uploads/circle_contents.txt", "r");
-  if ($handle) {
-    while (($line = fgets($handle)) !== false) {
-      $pieces = explode("%%", $line);
-      array_push($lat_array, $pieces[0]);
-      array_push($lng_array, $pieces[1]);
-      array_push($rad_array, $pieces[2]);
-    }
-    fclose($handle);
-  } else {
-    // error opening the file.
-  }
   $result = true;
-  foreach ($lat_array as $index => $lat) {
-    if (getDistanceBetweenPointsNew(38.230462, 21.753150, $latitude_point, $longitude_point, $unit = 'Km') < 10 && getDistanceBetweenPointsNew($lat_array[$index], $lng_array[$index], $latitude_point, $longitude_point, $unit = 'Km') > $rad_array[$index]) {
-      // echo $result;
+  if (file_exists("../uploads/circle_contents.txt")) {
+    $handle = fopen("../uploads/circle_contents.txt", "r");
+    if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+        $pieces = explode("%%", $line);
+        array_push($lat_array, $pieces[0]);
+        array_push($lng_array, $pieces[1]);
+        array_push($rad_array, $pieces[2]);
+      }
+      fclose($handle);
     } else {
-      $result = false;
+      // error opening the file.
+    }
+    foreach ($lat_array as $index => $lat) {
+      if (getDistanceBetweenPointsNew(38.230462, 21.753150, $latitude_point, $longitude_point, $unit = 'Km') < 10 && getDistanceBetweenPointsNew($lat_array[$index], $lng_array[$index], $latitude_point, $longitude_point, $unit = 'Km') > $rad_array[$index]) {
+        // echo $result;
+      } else {
+        $result = false;
+      }
+    }
+  }
+  return $result;
+}
+
+// This one right here is a function that allow us to find if a point is inside a polygon.
+function isInsidePolygon($longitude_x, $latitude_y){
+  $lat_array = array();
+  $big_lat_array = array();
+  $lng_array = array();
+  $big_lng_array = array();
+  $result = true;
+  if (file_exists("../uploads/polygon_contents.txt")) {
+    $handle = fopen("../uploads/polygon_contents.txt", "r");
+    if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+        $pieces = explode("%%", $line);
+        $i = 0;
+        foreach ($pieces as $piece) {
+          $i++;
+          if ($i % 2 == 0) {
+            array_push($lng_array, $piece);
+          } else {
+            array_push($lat_array, $piece);
+          }
+        }
+        $points_polygon = count($lat_array) - 1;
+        // echo $points_polygon;
+        array_push($big_lat_array, $lat_array);
+        array_push($big_lng_array, $lng_array);
+        $lat_array = array();
+        $lng_array = array();
+      }
+      fclose($handle);
+    } else {
+      // error opening the file.
+    }
+
+    for($row = 0; $row < count($big_lng_array); $row++) {
+      $i = $j = 0;
+      for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
+        // echo $big_lat_array[$row][$i] . "\n";
+        if ((($big_lng_array[$row][$i] > $latitude_y != ($big_lng_array[$row][$j] > $latitude_y)) &&
+        ($longitude_x < ($big_lat_array[$row][$j] - $big_lat_array[$row][$i]) * ($latitude_y - $big_lng_array[$row][$i]) / ($big_lng_array[$row][$j] - $big_lng_array[$row][$i]) + $big_lat_array[$row][$i]))){
+          // echo "Is in polygon\n";
+        } else {
+          $result = !$result;
+        }
+      }
     }
   }
   return $result;
@@ -50,6 +101,7 @@ function getDistanceBetweenPointsNew($latitude_center, $longitude_center, $latit
 
     return (round($distance, 7)); //This one right here returns the distance rounded up to seven digits after comma. Like this one 24.1234567.
 }
+
 
 $resource = opendir("C:/xampp/htdocs/MyCrowdSourcing/uploads"); //This one right here checks the directory we want.
 while(($files = readdir($resource)) != false) { //This one right here executes if the directory we selected above isn't empty.
@@ -85,7 +137,7 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
               $thisTimestampMs_l = date('Y-m-d H:i:s', $location_values['timestampMs'] / 1000);
               $thisLatitudeE7 = $location_values['latitudeE7'] / pow(10, 7);
               $thislongitudeE7 = $location_values['longitudeE7'] / pow(10, 7);
-              if (isInsideCirlce($thisLatitudeE7, $thislongitudeE7)) { //This one right here is the use of the function we created on line 9.
+              if (isInsideCirlce($thisLatitudeE7, $thislongitudeE7) && isInsidePolygon($thisLatitudeE7, $thislongitudeE7)) { //This one right here is the use of the function we created on line 9.
                 mysqli_stmt_bind_param($stmt1, "ssddiiiii", $_SESSION['userID'], $thisTimestampMs_l, $thisLatitudeE7, $thislongitudeE7, $location_values['accuracy'], $location_values['heading'], $location_values['verticalAccuracy'], $location_values['velocity'], $location_values['altitude']);
                 mysqli_stmt_execute($stmt1);
                 if (isset($location_values['activity'])){

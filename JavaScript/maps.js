@@ -18,6 +18,7 @@ var drawControl = new L.Control.Draw({
 map.addControl(drawControl);
 
 var latlngrad = [];
+var latlng = [];
 map.on('draw:created', function(event){
   var layer = event.layer,
       type = event.layerType,
@@ -34,7 +35,7 @@ map.on('draw:created', function(event){
     var lat = Object.values(layer.getLatLng())[0];
     var lng = Object.values(layer.getLatLng())[1];
     latlngrad.push(lat, lng, layer.getRadius() / 1000);
-    // console.log(latlngrad);
+    console.log(latlngrad);
     $.ajax({
       url: "includes/from_drawmap_to_circle_text.inc.php",
       method: "POST",
@@ -47,10 +48,51 @@ map.on('draw:created', function(event){
     })
     latlngrad = [];
   } else {
-    console.log(layer.getBounds().contains([38.230462, 21.753150]));
-    if (!layer.getBounds().contains([38.230462, 21.753150])) {
-      console.log("no");
+    // console.log(layer.getBounds().contains([38.230462, 21.753150]));
+    // console.log(layer.getLatLngs());
+    latlngobj = Object.values(layer.getLatLngs())[0];
+    for (const property in latlngobj) {
+      // console.log(latlng[property]);
+      for (const insideProperty in latlngobj[property]) {
+        // console.log(latlngobj[property][insideProperty]);
+        latlng.push(latlngobj[property][insideProperty]);
+      }
     }
+    // console.log(latlng);
+    var lat = [];
+    var lng = [];
+    for (var i = 0; i < latlng.length; i=i+8) {
+      // console.log(latlng[i]);
+      lat.push(latlng[i]);
+      lng.push(latlng[i + 1]);
+
+    }
+    // console.log(lat);
+    // console.log(lng);
+    latlng = [];
+    for (var i = 0; i < lat.length; i++) {
+      latlng.push(lat[i], lng[i]);
+    }
+    // console.log(latlng);
+    var uniquelatlng = [];
+    $.each(latlng, function(i, el){
+        if($.inArray(el, uniquelatlng) === -1) uniquelatlng.push(el);
+    });
+    // console.log(uniquelatlng);
+    // latlng = Object.values(latlng);
+    // console.log(latlng);
+    $.ajax({
+      url: "includes/from_drawmap_to_polygon_text.inc.php",
+      method: "POST",
+      data: {
+        uniquelatlng: uniquelatlng
+      },
+      success: function (response) {
+        console.log(response);
+      }
+    })
+    latlng = [];
+    uniquelatlng = [];
   }
 });
 
