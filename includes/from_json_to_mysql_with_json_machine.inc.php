@@ -7,11 +7,11 @@ require_once('C:/xampp/htdocs/MyCrowdSourcing/includes/json_machine/JsonMachine.
 // This one right here checks if any point of the JSON that user sent is inside the circles the user draw.
 // If no continues with drawing the point, if yes deletes the point.
 function isInsideCirlce($latitude_point, $longitude_point){
-  $lat_array = array();
-  $lng_array = array();
-  $rad_array = array();
-  $result = true;
+  $result1 = true;
   if (file_exists("../uploads/circle_contents.txt")) {
+    $lat_array = array();
+    $lng_array = array();
+    $rad_array = array();
     $handle = fopen("../uploads/circle_contents.txt", "r");
     if ($handle) {
       while (($line = fgets($handle)) !== false) {
@@ -26,23 +26,23 @@ function isInsideCirlce($latitude_point, $longitude_point){
     }
     foreach ($lat_array as $index => $lat) {
       if (getDistanceBetweenPointsNew(38.230462, 21.753150, $latitude_point, $longitude_point, $unit = 'Km') < 10 && getDistanceBetweenPointsNew($lat_array[$index], $lng_array[$index], $latitude_point, $longitude_point, $unit = 'Km') > $rad_array[$index]) {
-        // echo $result;
+        // echo $result2;
       } else {
-        $result = false;
+        $result1 = false;
       }
     }
   }
-  return $result;
+  return $result1;
 }
 
 // This one right here is a function that allow us to find if a point is inside a polygon.
 function isInsidePolygon($longitude_x, $latitude_y){
-  $lat_array = array();
-  $big_lat_array = array();
-  $lng_array = array();
-  $big_lng_array = array();
-  $result = true;
+  $result2 = true;
   if (file_exists("../uploads/polygon_contents.txt")) {
+    $lat_array = array();
+    $big_lat_array = array();
+    $lng_array = array();
+    $big_lng_array = array();
     $handle = fopen("../uploads/polygon_contents.txt", "r");
     if ($handle) {
       while (($line = fgets($handle)) !== false) {
@@ -51,15 +51,16 @@ function isInsidePolygon($longitude_x, $latitude_y){
         foreach ($pieces as $piece) {
           $i++;
           if ($i % 2 == 0) {
-            array_push($lng_array, $piece);
+            array_push($lng_array, round($piece, 7));
           } else {
-            array_push($lat_array, $piece);
+            array_push($lat_array, round($piece, 7));
           }
         }
         $points_polygon = count($lat_array) - 1;
         // echo $points_polygon;
         array_push($big_lat_array, $lat_array);
         array_push($big_lng_array, $lng_array);
+
         $lat_array = array();
         $lng_array = array();
       }
@@ -68,20 +69,31 @@ function isInsidePolygon($longitude_x, $latitude_y){
       // error opening the file.
     }
 
+    // print_r($big_lat_array);
+    // print_r($big_lng_array);
     for($row = 0; $row < count($big_lng_array); $row++) {
+      $result2 = true;
       $i = $j = 0;
       for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
-        // echo $big_lat_array[$row][$i] . "\n";
-        if ((($big_lng_array[$row][$i] > $latitude_y != ($big_lng_array[$row][$j] > $latitude_y)) &&
-        ($longitude_x < ($big_lat_array[$row][$j] - $big_lat_array[$row][$i]) * ($latitude_y - $big_lng_array[$row][$i]) / ($big_lng_array[$row][$j] - $big_lng_array[$row][$i]) + $big_lat_array[$row][$i]))){
+        if (($big_lng_array[$row][$i] > $latitude_y != ($big_lng_array[$row][$j] > $latitude_y)) &&
+        ($longitude_x < ($big_lat_array[$row][$j] - $big_lat_array[$row][$i]) *
+
+        ($latitude_y - $big_lng_array[$row][$i]) /
+
+        ($big_lng_array[$row][$j] -
+
+        round($big_lng_array[$row][$i], 4)) +
+
+        $big_lat_array[$row][$i])) {
+          // echo $big_lng_array[$row][$i] . "\n";
           // echo "Is in polygon\n";
         } else {
-          $result = !$result;
+          $result2 = !$result2;
         }
       }
     }
   }
-  return $result;
+  return $result2;
 }
 
 // This one right here is a function that allow us to find all the places in a fixed distance away from a fixed center we want.
