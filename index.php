@@ -86,7 +86,6 @@
               <script>
                 $.post('includes/per_month_eco_score.inc.php',
                 function(result){
-                  console.log(result);
                   var both = jQuery.parseJSON(result);
                   var monthArray = [];
                   for (var i = 0; i < Object.values(both)[0].length; i++) {
