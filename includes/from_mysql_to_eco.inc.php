@@ -21,10 +21,10 @@ if (!empty($_SESSION['userID'])) {
     $resultCheck2 = mysqli_num_rows($result2);
 
     if ($resultCheck2 > 0) {
-      if ($resultCheck1 / $resultCheck2 > 0.25) {
+      if ($resultCheck1 / $resultCheck2 > 0.25 && $resultCheck1 / $resultCheck2 < 0.50) {
         echo "Good effort! <br> Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%.";
-      } else if ($resultCheck = ($resultCheck1 / $resultCheck2) > 0.50) {
-        echo "AMAZING!!! <br> Your ECO score is: " . round(($resultCheck), 4) * 100 . "%.";
+      } else if ($resultCheck1 / $resultCheck2 >= 0.50) {
+        echo "AMAZING!!! <br> Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%.";
       } else {
         echo "Your ECO score is: " . round(($resultCheck1 / $resultCheck2), 4) * 100 . "%. <br> You can do better than that!";
       }
@@ -37,6 +37,14 @@ if (!empty($_SESSION['userID'])) {
         mysqli_stmt_execute($stmt);
       }
     } else {
+      $sql3 = "UPDATE user SET eco_score = 0.00 WHERE id = ?";
+      if (!mysqli_stmt_prepare($stmt, $sql3)) { //This one right here will check if the sql statement above working properly.
+        echo "Connection failed!";
+        exit();
+      } else { //This one right here is called if the sql statement is working properly and executes it.
+        mysqli_stmt_bind_param($stmt, "s", $current_userID);
+        mysqli_stmt_execute($stmt);
+      }
       echo "It seems you don't have an ECO score for the current month.<br>Please upload more recent data!";
     }
   }
