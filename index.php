@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
@@ -30,6 +30,24 @@
   </head>
   <body>
     <section class="main">
+      <script>
+        function random_rgba() {
+          var o = Math.round, r = Math.random, s = 255;
+          return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + 1 + ')';
+          // return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+        }
+        function rgba_x_number_array(number) {
+          var rgba_array = [];
+          for (var i = 0; i < number; i++) {
+            rgba_array.push(random_rgba());
+          }
+          return rgba_array;
+        }
+
+        Chart.defaults.global.defaultFontColor = 'white';
+        Chart.defaults.global.title.fontSize = 20;
+
+      </script>
       <div class="circled_leaflet_map">
         <table class="map_table">
           <tr>
@@ -63,7 +81,54 @@
             <td id="bot_left">
               <script src="JavaScript/latest_upload_and_datetimes.js"></script>
             </td>
-            <td id="bot_right">Bottom Right</td>
+            <td id="bot_right">
+              <canvas id="perMonthECOScoreChart"></canvas>
+              <script>
+                $.post('includes/per_month_eco_score.inc.php',
+                function(result){
+                  console.log(result);
+                  var both = jQuery.parseJSON(result);
+                  var monthArray = [];
+                  for (var i = 0; i < Object.values(both)[0].length; i++) {
+                    monthArray.push(Object.values(both)[0][i]);
+                  }
+                  var ctx = document.getElementById('perMonthECOScoreChart').getContext('2d');
+                  var perMonthPercentageChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: Object.values(both)[0],
+                      datasets: [{
+                        label: '',
+                        data: Object.values(both)[1],
+                        backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                        borderColor: 'white',
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      legend: {
+                        display: false,
+                      },
+                      title: {
+                        display: true,
+                        text: 'Percentage of my ECO score per month'
+                      },
+                      scales: {
+                        yAxes: [{
+                          gridLines: {
+                            color: 'white',
+                            zeroLineColor: 'white'
+                          },
+                          ticks: {
+                            beginAtZero: true
+                          }
+                        }]
+                      }
+                    }
+                  });
+                });
+              </script>
+            </td>
           </tr>
           <script src="JavaScript/maps.js"></script>
         </table>
