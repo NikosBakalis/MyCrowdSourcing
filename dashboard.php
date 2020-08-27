@@ -5,7 +5,6 @@
 <?php
 
 if ($_SESSION['type'] == 'admin') {
-  echo "You are the real admin";
 
 ?>
 

@@ -38,9 +38,9 @@
             </td>
             <td id="top_right">
               <form id="datetimes" name"datetimes">
-                <input id="activity" type="text" name="activity">
-                <input id="start_datetime" type="text" name="start_datetime">
-                <input id="end_datetime" type="text" name="end_datetime">
+                <input id="activity" type="text" name="activity" placeholder="Activities">
+                <input id="start_datetime" type="text" name="start_datetime" placeholder="Start date">
+                <input id="end_datetime" type="text" name="end_datetime" placeholder="End date">
                 <button id="datetimes" type="submit" name="datetimes">Submit</button>
                 <script src="JavaScript/maps.js"></script>
               </form>
@@ -54,7 +54,7 @@
             </td>
             <td id="bot_right">
               <form action="includes/admin_delete_all.inc.php" method="post">
-                <button type="submit" name="admin_delete_all">DELETE EVERYTHING</button>
+                <button type="submit" name="admin_delete_all" onclick="return confirm('Are you sure?')">DELETE EVERYTHING</button>
               </form>
             </td>
           </tr>
