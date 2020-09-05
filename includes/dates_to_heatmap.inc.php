@@ -25,6 +25,22 @@ if (!empty($activity) && (empty($start_date) && empty($end_date))) {
           WHERE activity_details.type = '$activity'";
 } elseif (empty($activity) && !empty($start_date) && !empty($end_date)) {
   $sql = "SELECT * FROM location WHERE timestamp_l >= '$start_date' AND timestamp_l <= '$end_date'";
+} elseif (!empty($activity) && !empty($start_date) && !empty($end_date)) {
+  if (strpos($activity, ',') !== false) {
+    $activity = str_replace(",", "' OR type = '", $activity); // This one right here replaces "," values with " ' OR type = ' " if needed.
+    $activity = str_replace("= ' ", "= '", $activity); // This one right here replaces "," values with " ' OR type = ' " if needed.
+  }
+  $sql = "SELECT * FROM location
+          INNER JOIN activity
+          ON location.userID = activity.userID
+          AND location.timestamp_l = activity.timestamp_l
+          INNER JOIN activity_details
+          ON activity.userID = activity_details.userID
+          AND activity.timestamp_l = activity_details.timestamp_l
+          AND activity.timestamp_a = activity_details.timestamp_a
+          WHERE activity_details.type = '$activity'
+          AND activity_details.timestamp_l >= '$start_date'
+          AND activity_details.timestamp_l <= '$end_date'";
 } else {
   $sql = "SELECT * FROM location";
 }

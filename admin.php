@@ -60,7 +60,6 @@
           </tr>
         </table>
       </div>
-      <script src="JavaScript/maps.js"></script>
     </section>
   </body>
 </html>

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-CREATE PROCEDURE filter_json(IN  activity_stream VARCHAR(255))
+CREATE PROCEDURE filter_json(IN activity_stream VARCHAR(255))
 BEGIN
     DECLARE activities VARCHAR(255);
     DECLARE tmp VARCHAR(255);
