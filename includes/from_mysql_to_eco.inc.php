@@ -78,6 +78,7 @@ if (!empty($_SESSION['userID'])) {
             echo "<br>.<br>.<br>.";
             while($row = $result5->fetch_assoc()) {
               if ($current_userID == $row['id']) {
+                $firstLetter = substr($row['lastname'], 0, 1);
                 echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
               }
               $placement = $placement + 1;
