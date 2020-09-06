@@ -19,10 +19,11 @@ function decrypt($encrypted_string, $decryption_key){ //This one right here is t
 function password_security($tested_password){ // This one right here is the security checker of the password.
   $isSecured = false;
   $contains_letter = preg_match('/[a-zA-Z]/', $tested_password);
+  $contains_capital = preg_match('/[A-Z]/', $tested_password);
   $contains_digit = preg_match('/\d/', $tested_password);
   $contains_special = preg_match('/[^a-zA-Z\d]/', $tested_password);
 
-  $contains_all = $contains_letter && $contains_digit && $contains_special;
+  $contains_all = $contains_letter && $contains_capital && $contains_digit && $contains_special;
 
   if (strlen($tested_password) >= 8 && $contains_all == "1") {
     $isSecured = true;
