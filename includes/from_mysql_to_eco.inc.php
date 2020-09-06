@@ -57,10 +57,33 @@ if (!empty($_SESSION['userID'])) {
     if ($result4->num_rows > 0) {
       $placement = 1;
       echo "<br><br><br>Most ECO friendly users of month below:<br>";
+      $isOneOfTheThree = false;
       while($row = $result4->fetch_assoc()) {
         $firstLetter = substr($row['lastname'], 0, 1);
         echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
         $placement = $placement + 1;
+        if ($current_userID == $row['id']) {
+          $isOneOfTheThree = true;
+        }
+      }
+      if(!$isOneOfTheThree){
+        $sql5 = "SELECT * FROM user ORDER BY eco_score DESC";
+        if (!mysqli_stmt_prepare($stmt, $sql5)) { //This one right here will check if the sql statement above working properly.
+          echo "Connection failed!";
+          exit();
+        } else {
+          $result4 = mysqli_query($connection, $sql4);
+          if ($result4->num_rows > 0) {
+            $placement = 1;
+            echo "<br>.<br>.<br>.";
+            while($row = $result4->fetch_assoc()) {
+              if ($current_userID == $row['id']) {
+                echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
+              }
+              $placement = $placement + 1;
+            }
+          }
+        }
       }
     } else {
       echo "0 results";
