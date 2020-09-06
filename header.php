@@ -31,11 +31,11 @@
         <ul class="navigation">
           <?php
             if (isset($_SESSION['userID']) && $_SESSION['type'] == 'admin') {
-              echo '<a href="admin.php"><li>Admin</li></a>';
+              echo '<a href="admin.php" name="admin"><li>Admin</li></a>';
               // echo '<a href="dashboard.php"><li>Dashboard</li></a>';
             }
           ?>
-          <a href="index.php"><li>Home</li></a>
+          <a href="index.php" name="index"><li>Home</li></a>
           <?php
             if (isset($_SESSION['userID'])) {
               echo '<a href="dashboard.php"><li>Dashboard</li></a>';

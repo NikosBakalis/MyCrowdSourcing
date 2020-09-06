@@ -14,7 +14,7 @@
           <h1 class="logo_text"><span>MY</span>CROWDSOURCING<span>.</span>COM</h1>
           <p>
             is a sourcing model in which users
-            are allowed to apload their Google
+            are allowed to upload their Google
             Location History JSON from:
             <a  href="https://takeout.google.com"> Here </a>
             <br>After that all of your data will be

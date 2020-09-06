@@ -179,6 +179,7 @@ var new_response = "";
 var counter = 0;
 more_loads();
 function more_loads(){
+  var replacements = "";
   // var response = '';
   $.ajax({
     type: "GET",
