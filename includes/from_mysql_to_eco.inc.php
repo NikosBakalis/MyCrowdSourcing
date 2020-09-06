@@ -72,11 +72,11 @@ if (!empty($_SESSION['userID'])) {
           echo "Connection failed!";
           exit();
         } else {
-          $result4 = mysqli_query($connection, $sql4);
-          if ($result4->num_rows > 0) {
+          $result5 = mysqli_query($connection, $sql5);
+          if ($result5->num_rows > 0) {
             $placement = 1;
             echo "<br>.<br>.<br>.";
-            while($row = $result4->fetch_assoc()) {
+            while($row = $result5->fetch_assoc()) {
               if ($current_userID == $row['id']) {
                 echo "<br>". $placement . ": " . $row["firstname"] . " " . $firstLetter . ". " . $row['eco_score'] . "%";
               }
