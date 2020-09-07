@@ -6,8 +6,12 @@ include 'dbhandler.inc.php';
 
 $big_array = array();
 
-$userID = $_SESSION['userID'];
-$sql = "SELECT * FROM location WHERE userID = '$userID'";
+$current_userID = $_SESSION['userID'];
+if ($_SESSION['type'] == "admin") {
+  $sql = "SELECT * FROM location"; // This one right here selects everything from location table. I want only the count but I will retrieve it with mysqli_num_rows() function.
+} elseif ($_SESSION['type'] === "user") {
+  $sql = "SELECT * FROM location WHERE userID = '$current_userID'"; // This one right here selects everything from location table. I want only the count but I will retrieve it with mysqli_num_rows() function.
+}
 $stmt = mysqli_stmt_init($connection);
 if (!mysqli_stmt_prepare($stmt, $sql)) { //This one right here will check if the sql statement above working properly.
   echo "Connection failed!";
