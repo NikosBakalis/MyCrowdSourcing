@@ -504,6 +504,14 @@ else {
             });
             </script>
           </div>
+          <div id="div4">
+            <form id="dashboards" name"dashboards">
+              <input id="start_datetime" type="text" name="start_datetime" placeholder="Start date">
+              <input id="end_datetime" type="text" name="end_datetime" placeholder="End date">
+              <button id="datetimes" type="submit" name="datetimes">Submit</button>
+              <script src="JavaScript/maps.js"></script>
+            </form>
+          </div>
         </div>
       </div>
     </div>
