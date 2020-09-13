@@ -11,10 +11,6 @@ $current_userID = $_SESSION['userID'];
 $typeArray = array();
 $percentageArray = array();
 $bothArray = array();
-// $array['key1'] = 'one';
-// $array['key2'] = 'two';
-
-  // $error_empty = false;
 
   if (empty($name)) { // This one right here checks if the input of the user is empty.
     echo "<span class='form-error'>Fill in all fields!</span>"; // This one right here echo this message if the input is empty.
