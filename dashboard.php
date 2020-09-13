@@ -42,7 +42,7 @@ if ($_SESSION['type'] == 'admin') {
           <div id="div1">
             <canvas id="activityDetailsPercentageChart"></canvas>
             <script>
-            $.post('includes/per_activity_details_percentage.inc.php',
+            $.post('includes/per_activity_details_percentage_datetimes.inc.php',
             function(result){
               var both = jQuery.parseJSON(result);
               var typeArray = [];
@@ -329,7 +329,7 @@ if ($_SESSION['type'] == 'admin') {
 <?php
 
 }
-else {
+elseif ($_SESSION['type'] == 'user') {
   // header("Location: index.php");
 ?>
 
@@ -505,14 +505,190 @@ else {
             </script>
           </div>
           <div id="div4">
-            <form id="dashboards" name"dashboards">
+            <form id="dashboard" name"dashboard">
               <input id="start_datetime" type="text" name="start_datetime" placeholder="Start date">
               <input id="end_datetime" type="text" name="end_datetime" placeholder="End date">
-              <button id="datetimes" type="submit" name="datetimes">Submit</button>
-              <script src="JavaScript/maps.js"></script>
+              <button id="dashboard" type="submit" name="dashboard">Submit</button>
+              <!-- <script src="JavaScript/dashboard.js"></script> -->
             </form>
           </div>
         </div>
+        <script>
+          $("#dashboard").submit(function(e) {
+            e.preventDefault();
+            var start_datetime = $("#start_datetime").val();
+            var end_datetime = $("#end_datetime").val();
+            // var activityDetailsPercentageChart = $('#activityDetailsPercentageChart');
+            $.ajax({
+              type:"POST",
+              url:"includes/per_activity_details_percentage_datetimes.inc.php",
+              data: {
+                start_datetime: start_datetime,
+                end_datetime: end_datetime
+              },
+              success:function(response){
+                // console.log(activityDetailsPercentageChart);
+                $('#activityDetailsPercentageChart').remove();
+                $('#div1').append('<canvas id="activityDetailsPercentageChart"><canvas>');
+                canvas = document.querySelector('#activityDetailsPercentageChart');
+                var both = jQuery.parseJSON(response);
+                var typeArray = [];
+                for (var i = 0; i < Object.values(both)[0].length; i++) {
+                  typeArray.push(Object.values(both)[0][i]);
+                }
+                var ctx = document.getElementById('activityDetailsPercentageChart').getContext('2d');
+                // ctx.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                var activityDetailsPercentageChart = new Chart(ctx, {
+                  type: 'pie',
+                  data: {
+                    labels: Object.values(both)[0], // 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+                    datasets: [{
+                      data: Object.values(both)[1], // 12, 19, 3, 5, 2, 3
+                      backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                      borderColor: 'white',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    legend: {
+                      position: 'left'
+                    },
+                    title: {
+                      display: true,
+                      text: 'Percentage of each type of activity'
+                    },
+                    scales: {
+                      yAxes: [{
+                        gridLines: {
+                          display: false,
+                        },
+                        ticks: {
+                          display: false
+                        }
+                      }]
+                    }
+                  }
+                });
+              }
+            });
+          });
+
+          $("#dashboard").submit(function(e) {
+            e.preventDefault();
+            var start_datetime = $("#start_datetime").val();
+            var end_datetime = $("#end_datetime").val();
+            $.ajax({
+              type:"POST",
+              url:"includes/per_hour_percentage_datetimes.inc.php",
+              data: {
+                start_datetime: start_datetime,
+                end_datetime: end_datetime
+              },
+              success:function(response){
+                // console.log(activityDetailsPercentageChart);
+                $('#perHourPercentageChart').remove();
+                $('#div2').append('<canvas id="perHourPercentageChart"><canvas>');
+                canvas = document.querySelector('#perHourPercentageChart');
+                var both = jQuery.parseJSON(response);
+                var typeArray = [];
+                for (var i = 0; i < Object.values(both)[0].length; i++) {
+                  typeArray.push(Object.values(both)[0][i]);
+                }
+                var ctx = document.getElementById('perHourPercentageChart').getContext('2d');
+                var perHourPercentageChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: Object.values(both)[0],
+                    datasets: [{
+                      data: Object.values(both)[1],
+                      backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                      borderColor: 'white',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    legend: {
+                      display: false
+                    },
+                    title: {
+                      display: true,
+                      text: 'Percentage of the activity per hour'
+                    },
+                    scales: {
+                      yAxes: [{
+                        gridLines: {
+                          color: 'white',
+                          zeroLineColor: 'white'
+                        },
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }]
+                    }
+                  }
+                });
+              }
+            });
+          });
+
+          $("#dashboard").submit(function(e) {
+            e.preventDefault();
+            var start_datetime = $("#start_datetime").val();
+            var end_datetime = $("#end_datetime").val();
+            $.ajax({
+              type:"POST",
+              url:"includes/per_day_percentage_datetimes.inc.php",
+              data: {
+                start_datetime: start_datetime,
+                end_datetime: end_datetime
+              },
+              success:function(response){
+                // console.log(activityDetailsPercentageChart);
+                $('#perDayPercentageChart').remove();
+                $('#div3').append('<canvas id="perDayPercentageChart"><canvas>');
+                canvas = document.querySelector('#perDayPercentageChart');
+                var both = jQuery.parseJSON(response);
+                var typeArray = [];
+                for (var i = 0; i < Object.values(both)[0].length; i++) {
+                  typeArray.push(Object.values(both)[0][i]);
+                }
+                var ctx = document.getElementById('perDayPercentageChart').getContext('2d');
+                var perDayPercentageChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: Object.values(both)[0],
+                    datasets: [{
+                      data: Object.values(both)[1],
+                      backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                      borderColor: 'white',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    legend: {
+                      display: false
+                    },
+                    title: {
+                      display: true,
+                      text: 'Percentage of the activity per day'
+                    },
+                    scales: {
+                      yAxes: [{
+                        gridLines: {
+                          color: 'white',
+                          zeroLineColor: 'white'
+                        },
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }]
+                    }
+                  }
+                });
+              }
+            });
+          });
+        </script>
       </div>
     </div>
   </body>
