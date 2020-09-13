@@ -25,8 +25,8 @@ function isInsideCirlce($latitude_point, $longitude_point){
       // error opening the file.
     }
     foreach ($lat_array as $index => $lat) {
-      if (getDistanceBetweenPointsNew(38.230462, 21.753150, $latitude_point, $longitude_point, $unit = 'Km') < 10 && getDistanceBetweenPointsNew($lat_array[$index], $lng_array[$index], $latitude_point, $longitude_point, $unit = 'Km') > $rad_array[$index]) {
-        // echo $result2;
+      if (getDistanceBetweenPointsNew($lat_array[$index], $lng_array[$index], $latitude_point, $longitude_point, $unit = 'Km') > $rad_array[$index]) {
+        // $result1 = true;
       } else {
         $result1 = false;
       }
@@ -149,37 +149,39 @@ while(($files = readdir($resource)) != false) { //This one right here executes i
               $thisTimestampMs_l = date('Y-m-d H:i:s', $location_values['timestampMs'] / 1000);
               $thisLatitudeE7 = $location_values['latitudeE7'] / pow(10, 7);
               $thislongitudeE7 = $location_values['longitudeE7'] / pow(10, 7);
-              if (isInsideCirlce($thisLatitudeE7, $thislongitudeE7) && isInsidePolygon($thisLatitudeE7, $thislongitudeE7)) { //This one right here is the use of the function we created on line 9.
-                mysqli_stmt_bind_param($stmt1, "ssddiiiii", $_SESSION['userID'], $thisTimestampMs_l, $thisLatitudeE7, $thislongitudeE7, $location_values['accuracy'], $location_values['heading'], $location_values['verticalAccuracy'], $location_values['velocity'], $location_values['altitude']);
-                mysqli_stmt_execute($stmt1);
-                if (isset($location_values['activity'])){
-                  foreach ($location_values['activity'] as $keys => $activity_values) {
-                    $sql2 = "INSERT INTO activity(userID, timestamp_l, timestamp_a) VALUES (?, ?, ?)";
-                    $stmt2 = mysqli_stmt_init($connection);
-                    if (!mysqli_stmt_prepare($stmt2, $sql2)) { //This one right here will check if the sql statement above working properly.
-                      echo "Connection failed!";
-                      exit();
-                    }
-                    else {
-                      $thisTimestampMs_a = date('Y-m-d H:i:s', $activity_values['timestampMs'] / 1000); //This one right here help us change googles json data while parsing so as to use them later.
-                      mysqli_stmt_bind_param($stmt2, "sss", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a);
-                      mysqli_stmt_execute($stmt2);
-                      foreach ($activity_values['activity'] as $keyss => $activity_details_values) {
-                        $sql3 = "INSERT INTO activity_details(userID, timestamp_l, timestamp_a, type, confidence) VALUES (?, ?, ?, ?, ?)";
-                        $stmt3 = mysqli_stmt_init($connection);
-                        if (!mysqli_stmt_prepare($stmt3, $sql3)) { //This one right here will check if the sql statement above working properly.
-                          echo "Connection failed!";
-                          exit();
-                        }
-                        else {
-                          mysqli_stmt_bind_param($stmt3, "ssssi", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a, $activity_details_values['type'], $activity_details_values['confidence']);
-                          mysqli_stmt_execute($stmt3);
-                        } //else closes.
-                      } //foreach closes.
-                    } //else closes.
-                  } //foreach closes.
-                } //if closes.
-              } //functions if closes.
+              if (getDistanceBetweenPointsNew(38.230462, 21.753150, $thisLatitudeE7, $thislongitudeE7, $unit = 'Km') < 10) {
+                if (isInsideCirlce($thisLatitudeE7, $thislongitudeE7) && isInsidePolygon($thisLatitudeE7, $thislongitudeE7)) { //This one right here is the use of the function we created on line 9.
+                  mysqli_stmt_bind_param($stmt1, "ssddiiiii", $_SESSION['userID'], $thisTimestampMs_l, $thisLatitudeE7, $thislongitudeE7, $location_values['accuracy'], $location_values['heading'], $location_values['verticalAccuracy'], $location_values['velocity'], $location_values['altitude']);
+                  mysqli_stmt_execute($stmt1);
+                  if (isset($location_values['activity'])){
+                    foreach ($location_values['activity'] as $keys => $activity_values) {
+                      $sql2 = "INSERT INTO activity(userID, timestamp_l, timestamp_a) VALUES (?, ?, ?)";
+                      $stmt2 = mysqli_stmt_init($connection);
+                      if (!mysqli_stmt_prepare($stmt2, $sql2)) { //This one right here will check if the sql statement above working properly.
+                        echo "Connection failed!";
+                        exit();
+                      }
+                      else {
+                        $thisTimestampMs_a = date('Y-m-d H:i:s', $activity_values['timestampMs'] / 1000); //This one right here help us change googles json data while parsing so as to use them later.
+                        mysqli_stmt_bind_param($stmt2, "sss", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a);
+                        mysqli_stmt_execute($stmt2);
+                        foreach ($activity_values['activity'] as $keyss => $activity_details_values) {
+                          $sql3 = "INSERT INTO activity_details(userID, timestamp_l, timestamp_a, type, confidence) VALUES (?, ?, ?, ?, ?)";
+                          $stmt3 = mysqli_stmt_init($connection);
+                          if (!mysqli_stmt_prepare($stmt3, $sql3)) { //This one right here will check if the sql statement above working properly.
+                            echo "Connection failed!";
+                            exit();
+                          }
+                          else {
+                            mysqli_stmt_bind_param($stmt3, "ssssi", $_SESSION['userID'], $thisTimestampMs_l, $thisTimestampMs_a, $activity_details_values['type'], $activity_details_values['confidence']);
+                            mysqli_stmt_execute($stmt3);
+                          } //else closes.
+                        } //foreach closes.
+                      } //else closes.
+                    } //foreach closes.
+                  } //if closes.
+                } //functions if closes.
+              } // function if closes.
             } //else closes.
           } //foreach closes.
         } //if closes.
