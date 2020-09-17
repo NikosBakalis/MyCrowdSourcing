@@ -42,93 +42,93 @@ if ($_SESSION['type'] == 'admin') {
           <div id="div1">
             <canvas id="activityDetailsPercentageChart"></canvas>
             <script>
-            $.post('includes/per_activity_details_percentage.inc.php',
-            function(result){
-              var both = jQuery.parseJSON(result);
-              var typeArray = [];
-              for (var i = 0; i < Object.values(both)[0].length; i++) {
-                typeArray.push(Object.values(both)[0][i]);
-              }
-              var ctx = document.getElementById('activityDetailsPercentageChart').getContext('2d');
-              // ctx.style.backgroundColor = 'rgba(0,0,0,0.5)';
-              var activityDetailsPercentageChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                  labels: Object.values(both)[0], // 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
-                  datasets: [{
-                    data: Object.values(both)[1], // 12, 19, 3, 5, 2, 3
-                    backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
-                    borderColor: 'white',
-                    borderWidth: 1
-                  }]
-                },
-                options: {
-                  legend: {
-                    position: 'left'
-                  },
-                  title: {
-                    display: true,
-                    text: 'Percentage of each type of activity'
-                  },
-                  scales: {
-                    yAxes: [{
-                      gridLines: {
-                        display: false,
-                      },
-                      ticks: {
-                        display: false
-                      }
-                    }]
-                  }
+              $.post('includes/per_activity_details_percentage.inc.php',
+              function(result){
+                var both = jQuery.parseJSON(result);
+                var typeArray = [];
+                for (var i = 0; i < Object.values(both)[0].length; i++) {
+                  typeArray.push(Object.values(both)[0][i]);
                 }
+                var ctx = document.getElementById('activityDetailsPercentageChart').getContext('2d');
+                // ctx.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                var activityDetailsPercentageChart = new Chart(ctx, {
+                  type: 'pie',
+                  data: {
+                    labels: Object.values(both)[0], // 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+                    datasets: [{
+                      data: Object.values(both)[1], // 12, 19, 3, 5, 2, 3
+                      backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                      borderColor: 'white',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    legend: {
+                      position: 'left'
+                    },
+                    title: {
+                      display: true,
+                      text: 'Percentage of each type of activity'
+                    },
+                    scales: {
+                      yAxes: [{
+                        gridLines: {
+                          display: false,
+                        },
+                        ticks: {
+                          display: false
+                        }
+                      }]
+                    }
+                  }
+                });
               });
-            });
             </script>
           </div>
           <div id="div2">
             <canvas id="perUserPercentageChart"></canvas>
             <script>
-            $.post('includes/per_user_percentage.inc.php',
-            function(result){
-              var both = jQuery.parseJSON(result);
-              var userArray = [];
-              for (var i = 0; i < Object.values(both)[0].length; i++) {
-                userArray.push(Object.values(both)[0][i]);
-              }
-              var ctx = document.getElementById('perUserPercentageChart').getContext('2d');
-              var perUserPercentageChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                  labels: Object.values(both)[0],
-                  datasets: [{
-                    data: Object.values(both)[1],
-                    backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
-                    borderColor: 'white',
-                    borderWidth: 1
-                  }]
-                },
-                options: {
-                  legend: {
-                    display: false
-                  },
-                  title: {
-                    display: true,
-                    text: 'Percentage of the activity per user'
-                  },
-                  scales: {
-                    yAxes: [{
-                      gridLines: {
-                        color: 'white',
-                        zeroLineColor: 'white'
-                      },
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  }
+              $.post('includes/per_user_percentage.inc.php',
+              function(result){
+                var both = jQuery.parseJSON(result);
+                var userArray = [];
+                for (var i = 0; i < Object.values(both)[0].length; i++) {
+                  userArray.push(Object.values(both)[0][i]);
                 }
+                var ctx = document.getElementById('perUserPercentageChart').getContext('2d');
+                var perUserPercentageChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: Object.values(both)[0],
+                    datasets: [{
+                      data: Object.values(both)[1],
+                      backgroundColor: rgba_x_number_array(Object.values(both)[1].length),
+                      borderColor: 'white',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    legend: {
+                      display: false
+                    },
+                    title: {
+                      display: true,
+                      text: 'Percentage of the activity per user'
+                    },
+                    scales: {
+                      yAxes: [{
+                        gridLines: {
+                          color: 'white',
+                          zeroLineColor: 'white'
+                        },
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }]
+                    }
+                  }
+                });
               });
-            });
             </script>
           </div>
         </div>
