@@ -42,7 +42,7 @@ if ($_SESSION['type'] == 'admin') {
           <div id="div1">
             <canvas id="activityDetailsPercentageChart"></canvas>
             <script>
-            $.post('includes/per_activity_details_percentage_datetimes.inc.php',
+            $.post('includes/per_activity_details_percentage.inc.php',
             function(result){
               var both = jQuery.parseJSON(result);
               var typeArray = [];
