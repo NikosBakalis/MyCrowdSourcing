@@ -1,3 +1,9 @@
+body{
+  background: url(../images/earth-map-dark-texture-background-104605.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
 .login_box{
   margin: auto;
   width: 20%;
