@@ -16,31 +16,6 @@ function execInBackground($cmd, $current_userID, $json_name) {
   else { // This one right here checks if we use trollinux.
     exec($cmd . " > /dev/null &"); // This one right here is like proc_open.
   }
-  // echo filesize("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt");
-  // echo file_get_contents("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt");
-
-
-  // if($old_content = file_get_contents("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt")){
-  //   $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!"); //This one right here creates a file in uploads folder with name "current_userID.txt"
-  //   $txt = $_SESSION['userID']; // This one right here stores the value of the userID to a variable with name $txt.
-  //   // echo "11";
-  //   // $old_content = file_get_contents("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt");
-  //   // echo $old_content."<br>";
-  //   // fwrite($myfile, $old_content."<br>"); // This one right here writes in the file the userID of the current user.
-  //   // fwrite($myfile, $txt." : ".$json_name);
-  //   $input = $txt." : ".$json_name;
-  //   // echo $old_content."<br>";
-  //   echo $txt." : ".$json_name;
-  //   file_put_contents("C:/xampp/htdocs/MyCrowdSourcing/uploads/current_userID.txt", $input, FILE_APPEND);
-  // }
-  // else {
-  //   $myfile = fopen("../uploads/current_userID.txt", "w") or die("Unable to open file!"); //This one right here creates a file in uploads folder with name "current_userID.txt"
-  //   $txt = $_SESSION['userID']; // This one right here stores the value of the userID to a variable with name $txt.
-  //   // echo "12";
-  //   fwrite($myfile, $txt." : ".$json_name); // This one right here writes in the file the userID of the current user.
-  //   echo $txt." : ".$json_name;
-  // }
-  // fclose($myfile); // This one right here closes the file.
 
   $write = $_SESSION['userID']." : ".$json_name;
   $myfile = file_put_contents('C:\xampp\htdocs\MyCrowdSourcing\uploads\current_userID.txt', $write.PHP_EOL , FILE_APPEND | LOCK_EX);

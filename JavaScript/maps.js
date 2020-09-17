@@ -184,16 +184,11 @@ function more_loads(){
   $.ajax({
     type: "GET",
     url: "includes/from_mysql_to_heatmap.inc.php",
-    // async: true,
     success: function(text){
-      // console.log(text);
       response = text;
       data = JSON.parse(response);
-      // console.log(Object.size(new_data));
-      // console.log(Object.size(data));
       if (Object.size(data) === 0) {
         counter = 0;
-        // console.log("data = 0");
       }
       else if (Object.size(new_data) !== Object.size(data)) {
         counter = 0;
@@ -202,47 +197,23 @@ function more_loads(){
         var new_obj_to_string = JSON.stringify(new_data);
         var obj_to_string = JSON.stringify(data);
         var diff = string_diff(new_obj_to_string, obj_to_string);
-        // console.log(diff);
         var replacements = diff.replaceAt(0, "[");
-        // console.log(replacements);
         var final = JSON.parse(replacements);
         draw_heatmap(final);
         new_data = data;
         new_response = response;
         data = null;
         response = null;
-        // new_obj_to_string = null;
-        // obj_to_string = null;
-        // diff = null;
-        // replacements = null;
-        // final = null;
         more_loads();
       }
       else if (Object.size(new_data) === Object.size(data) && counter < 10) { // This one right here is trash code.
         counter = counter + 1;
         draw = false;
-        // console.log(counter);
         more_loads();
       }
-      // else if (counter >= 10) { // This one right here is trash code.
-      //   setInterval(more_loads, 10000);
-      //   console.log(counter);
-      //   console.log('WHAT?');
-      // }
       else {
         counter = 0;
         console.log("What the actual fuck?");
-        // var myVar = setInterval(more_loads, 10000);
-        // data = null;
-        // new_data = null;
-        // response = null;
-        // new_response = null;
-        // counter = 0;
-        // new_obj_to_string = null;
-        // obj_to_string = null;
-        // diff = null;
-        // replacements = null;
-        // final = null;
       }
     }
   });
