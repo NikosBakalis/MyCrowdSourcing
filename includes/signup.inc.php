@@ -99,7 +99,7 @@ if (isset($_POST['signup_submit'])) {
         }
         else { //This one right here is called if the sql statement is working properly and executes it again.
           $encryptedID = encrypt($email, $password);
-          $hashedPassword = password_hash($password, PASSWORD_DEFAULT); //BUT FIRST!!! This one right here hashes the password on bcrypt Andrea cuz its fucking awesome and way better than SHA-256 :P :P.
+          $hashedPassword = password_hash($password, PASSWORD_DEFAULT); //BUT FIRST!!! This one right here hashes the password on bcrypt Maki cuz its fucking awesome and way better than SHA-256 :P :P.
           mysqli_stmt_bind_param($stmt, "ssssss", $encryptedID, $firstname, $lastname, $username, $email, $hashedPassword);
           mysqli_stmt_execute($stmt);
           header("Location: ../signup.php?signup=success");
