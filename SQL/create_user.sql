@@ -3,7 +3,7 @@ CREATE TABLE user(
     firstname TINYTEXT NOT NULL,
     lastname TINYTEXT NOT NULL,
     username TINYTEXT NOT NULL,
-    email TINYTEXT NOT NULL,
+    email VARCHAR(255) NOT NULL,
     pwd LONGTEXT NOT NULL,
     type VARCHAR(20) DEFAULT 'user', CONSTRAINT values_table check (type in ('user', 'admin')),
     latest_upload DATETIME,
